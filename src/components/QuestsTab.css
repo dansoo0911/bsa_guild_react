@@ -1,0 +1,781 @@
+/* ============================================
+   AAA-УРОВЕНЬ: СИСТЕМА ЗАДАНИЙ ГИЛЬДИИ
+   ============================================ */
+
+.quests-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(10, 15, 25, 0.95) 0%, rgba(15, 20, 30, 0.95) 100%);
+}
+
+.quests-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Заголовок */
+.quests-header {
+  margin-bottom: 24px;
+}
+
+.quests-title-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.quests-main-title {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 32px;
+  font-weight: bold;
+  color: #E5E0C5;
+  text-shadow: 
+    0 0 10px rgba(229, 224, 197, 0.5),
+    0 2px 4px rgba(0, 0, 0, 0.8);
+  margin: 0 0 8px 0;
+  letter-spacing: 1px;
+}
+
+.quests-subtitle {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 14px;
+  color: #8A9BA8;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Переключатель типов заданий */
+.quest-type-selector {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, rgba(20, 30, 45, 0.8) 0%, rgba(15, 22, 35, 0.8) 100%);
+  border: 1px solid rgba(60, 80, 110, 0.4);
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.quest-type-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  color: #8A9BA8;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.quest-type-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(100, 181, 246, 0.1) 50%, transparent 100%);
+  transition: left 0.5s ease;
+}
+
+.quest-type-button:hover::before {
+  left: 100%;
+}
+
+.quest-type-button:hover {
+  background: rgba(100, 181, 246, 0.1);
+  border-color: rgba(100, 181, 246, 0.3);
+  color: #B8C5D1;
+  transform: translateY(-2px);
+}
+
+.quest-type-button.active {
+  background: linear-gradient(135deg, rgba(100, 181, 246, 0.2) 0%, rgba(74, 144, 226, 0.15) 100%);
+  border-color: rgba(100, 181, 246, 0.6);
+  color: #64B5F6;
+  box-shadow: 
+    0 4px 12px rgba(100, 181, 246, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.quest-type-icon {
+  font-size: 20px;
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+.quest-type-label {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.quest-type-count {
+  background: rgba(100, 181, 246, 0.2);
+  border: 1px solid rgba(100, 181, 246, 0.4);
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 12px;
+  min-width: 40px;
+  text-align: center;
+}
+
+.quest-type-button.active .quest-type-count {
+  background: rgba(100, 181, 246, 0.4);
+  border-color: rgba(100, 181, 246, 0.6);
+  box-shadow: 0 0 8px rgba(100, 181, 246, 0.4);
+}
+
+.quest-notification-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  border: 2px solid rgba(26, 42, 58, 0.9);
+  border-radius: 50%;
+  color: #1a2a3a;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 
+    0 2px 6px rgba(255, 215, 0, 0.5),
+    0 0 10px rgba(255, 215, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+  line-height: 1;
+  z-index: 10;
+  animation: notification-pulse 2s ease-in-out infinite;
+}
+
+@keyframes notification-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 
+      0 2px 6px rgba(255, 215, 0, 0.5),
+      0 0 10px rgba(255, 215, 0, 0.3),
+      inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 
+      0 2px 8px rgba(255, 215, 0, 0.7),
+      0 0 15px rgba(255, 215, 0, 0.5),
+      inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Список заданий */
+.quests-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+/* Карточка задания */
+.quest-card {
+  background: linear-gradient(135deg, rgba(20, 30, 45, 0.95) 0%, rgba(15, 22, 35, 0.95) 100%);
+  border: 2px solid rgba(60, 80, 110, 0.4);
+  border-radius: 10px;
+  padding: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.quest-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    rgba(100, 181, 246, 0.6) 0%, 
+    rgba(100, 181, 246, 0.3) 50%, 
+    rgba(100, 181, 246, 0.6) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.quest-card:hover {
+  border-color: rgba(100, 181, 246, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.quest-card:hover::before {
+  opacity: 1;
+}
+
+.quest-card.completed {
+  border-color: rgba(255, 215, 0, 0.5);
+  background: linear-gradient(135deg, 
+    rgba(30, 40, 55, 0.95) 0%, 
+    rgba(25, 32, 45, 0.95) 100%);
+}
+
+.quest-card.completed::before {
+  background: linear-gradient(90deg, 
+    rgba(255, 215, 0, 0.6) 0%, 
+    rgba(255, 215, 0, 0.3) 50%, 
+    rgba(255, 215, 0, 0.6) 100%);
+  opacity: 0.6;
+}
+
+.quest-card.quest-type-daily {
+  border-left: 4px solid rgba(100, 181, 246, 0.6);
+}
+
+.quest-card.quest-type-weekly {
+  border-left: 4px solid rgba(156, 39, 176, 0.6);
+}
+
+.quest-card.quest-type-guild {
+  border-left: 4px solid rgba(255, 193, 7, 0.6);
+}
+
+/* Заголовок карточки */
+.quest-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.quest-icon {
+  font-size: 28px;
+  filter: drop-shadow(0 0 8px rgba(100, 181, 246, 0.6));
+  flex-shrink: 0;
+  animation: quest-icon-pulse 3s ease-in-out infinite;
+}
+
+@keyframes quest-icon-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(100, 181, 246, 0.6));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(100, 181, 246, 0.9));
+    transform: scale(1.05);
+  }
+}
+
+.quest-card.completed .quest-icon {
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.8));
+  animation: quest-icon-completed 2s ease-in-out infinite;
+}
+
+@keyframes quest-icon-completed {
+  0%, 100% {
+    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.8));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(255, 215, 0, 1));
+  }
+}
+
+.quest-title-section {
+  flex: 1;
+}
+
+.quest-title {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 15px;
+  font-weight: bold;
+  color: #E5E0C5;
+  margin: 0 0 4px 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.quest-description {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  color: #8A9BA8;
+  margin: 0;
+  line-height: 1.3;
+  opacity: 0.9;
+}
+
+.quest-completed-badge {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.3) 0%, rgba(56, 142, 60, 0.3) 100%);
+  border: 2px solid rgba(76, 175, 80, 0.6);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  font-weight: bold;
+  color: #81C784;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 12px rgba(76, 175, 80, 0.4);
+  flex-shrink: 0;
+}
+
+/* Прогресс */
+.quest-progress-section {
+  margin-bottom: 10px;
+}
+
+.quest-progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.quest-progress-text {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #B8C5D1;
+}
+
+.quest-progress-percent {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #64B5F6;
+  text-shadow: 0 0 8px rgba(100, 181, 246, 0.6);
+}
+
+.quest-progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background: rgba(60, 80, 110, 0.5);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.quest-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(100, 181, 246, 0.8) 0%, 
+    rgba(74, 144, 226, 0.8) 50%,
+    rgba(100, 181, 246, 0.8) 100%);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+  position: relative;
+  box-shadow: 
+    0 0 12px rgba(100, 181, 246, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.quest-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.3) 50%, 
+    transparent 100%);
+  animation: progress-shine 2s ease-in-out infinite;
+}
+
+@keyframes progress-shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.quest-progress-bar.completed {
+  background: linear-gradient(90deg, 
+    rgba(255, 215, 0, 0.8) 0%, 
+    rgba(255, 193, 7, 0.8) 50%,
+    rgba(255, 215, 0, 0.8) 100%);
+  box-shadow: 
+    0 0 16px rgba(255, 215, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Участники (для общегильдийских) */
+.quest-contributors {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: rgba(100, 181, 246, 0.1);
+  border: 1px solid rgba(100, 181, 246, 0.3);
+  border-radius: 6px;
+}
+
+.contributors-icon {
+  font-size: 16px;
+}
+
+.contributors-text {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 12px;
+  color: #64B5F6;
+  font-weight: bold;
+}
+
+/* Футер карточки */
+.quest-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  border-top: 1px solid rgba(60, 80, 110, 0.3);
+}
+
+.quest-rewards {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.quest-reward-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 193, 7, 0.1) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.quest-reward-item:hover {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.25) 0%, rgba(255, 193, 7, 0.2) 100%);
+  border-color: rgba(255, 215, 0, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
+}
+
+.reward-icon {
+  font-size: 14px;
+  filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.6));
+}
+
+.reward-icon-image {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.reward-value {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.6);
+}
+
+.quest-expires {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: rgba(100, 181, 246, 0.1);
+  border: 1px solid rgba(100, 181, 246, 0.3);
+  border-radius: 6px;
+}
+
+.expires-icon {
+  font-size: 12px;
+  animation: expires-pulse 2s ease-in-out infinite;
+}
+
+@keyframes expires-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+.expires-text {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #64B5F6;
+  font-weight: bold;
+}
+
+/* Секция пожертвования */
+.quest-donation {
+  border-left: 4px solid rgba(255, 215, 0, 0.6);
+  background: linear-gradient(135deg, 
+    rgba(30, 40, 55, 0.95) 0%, 
+    rgba(25, 32, 45, 0.95) 100%);
+}
+
+.quest-donation-section {
+  margin-bottom: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.donation-progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  gap: 8px;
+}
+
+.donation-currency-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex: 1;
+}
+
+.donation-currency-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: rgba(60, 80, 110, 0.2);
+  border-radius: 5px;
+  border: 1px solid rgba(100, 181, 246, 0.3);
+}
+
+.donation-progress-text {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #B8C5D1;
+  white-space: nowrap;
+}
+
+.donation-balance-mini {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #8A9BA8;
+  opacity: 0.7;
+}
+
+.donation-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px;
+  background: rgba(20, 30, 45, 0.5);
+  border-radius: 4px;
+  border: 1px solid rgba(60, 80, 110, 0.4);
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 0;
+}
+
+.donation-item:hover {
+  background: rgba(30, 40, 55, 0.6);
+  border-color: rgba(100, 181, 246, 0.5);
+}
+
+.donation-icon {
+  font-size: 24px;
+  filter: drop-shadow(0 0 6px rgba(100, 181, 246, 0.6));
+  flex-shrink: 0;
+}
+
+.donation-icon-image {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(100, 181, 246, 0.6));
+  animation: currency-icon-float 3s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes currency-icon-float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-3px) scale(1.05);
+  }
+}
+
+.donation-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.donation-label {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 9px;
+  color: #8A9BA8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.donation-progress {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #E5E0C5;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.donation-status {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(60, 80, 110, 0.5);
+  border: 2px solid rgba(100, 181, 246, 0.3);
+}
+
+.donation-complete {
+  color: #81C784;
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(129, 199, 132, 0.8);
+  animation: donation-complete-pulse 2s ease-in-out infinite;
+}
+
+@keyframes donation-complete-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.donation-incomplete {
+  color: #8A9BA8;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.donation-player-balance {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+  padding: 6px 8px;
+  background: rgba(100, 181, 246, 0.1);
+  border: 1px solid rgba(100, 181, 246, 0.3);
+  border-radius: 5px;
+}
+
+.player-balance-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 9px;
+  color: #B8C5D1;
+}
+
+.balance-currency-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 4px rgba(100, 181, 246, 0.5));
+  flex-shrink: 0;
+}
+
+.player-balance-item strong {
+  color: #64B5F6;
+  font-weight: bold;
+  text-shadow: 0 0 6px rgba(100, 181, 246, 0.6);
+}
+
+.donation-button-compact {
+  padding: 6px 12px;
+  background: linear-gradient(135deg, 
+    rgba(255, 215, 0, 0.3) 0%, 
+    rgba(255, 193, 7, 0.2) 100%);
+  border: 2px solid rgba(255, 215, 0, 0.6);
+  border-radius: 5px;
+  color: #FFD700;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.donation-button-compact:hover:not(.disabled) {
+  background: linear-gradient(135deg, 
+    rgba(255, 215, 0, 0.5) 0%, 
+    rgba(255, 193, 7, 0.4) 100%);
+  border-color: rgba(255, 215, 0, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 215, 0, 0.4);
+}
+
+.donation-button-compact.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: linear-gradient(135deg, 
+    rgba(100, 100, 100, 0.2) 0%, 
+    rgba(80, 80, 80, 0.1) 100%);
+  border-color: rgba(100, 100, 100, 0.4);
+  color: #8A9BA8;
+  box-shadow: none;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .quest-type-selector {
+    flex-direction: column;
+  }
+
+  .quest-card-header {
+    flex-direction: column;
+  }
+
+  .quest-footer {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .donation-player-balance {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+

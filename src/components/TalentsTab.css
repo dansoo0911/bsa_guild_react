@@ -1,0 +1,3250 @@
+/**
+ * Стили для вкладки "Таланты гильдии" - AAA уровень
+ * Вдохновлено: Lost Ark, WoW Dragonflight, Genshin Impact, Diablo Immortal
+ */
+
+.talents-tab-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  padding: 8px;
+  gap: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a1520 0%, #1a2a3a 50%, #0f1a2a 100%);
+}
+
+/* ============================================
+   Верхняя панель с информацией о гильдии - AAA
+   ============================================ */
+
+.guild-info-panel-aaa {
+  background: linear-gradient(135deg, #1a2a3a 0%, #0f1a2a 50%, #1a2a3a 100%);
+  border: 1px solid #4a5a7a;
+  border-radius: 8px;
+  box-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(74, 90, 122, 0.15),
+    inset 0 1px 5px rgba(0, 0, 0, 0.3),
+    inset 0 -1px 5px rgba(255, 255, 255, 0.03);
+  padding: 10px 14px;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.guild-info-simple-aaa {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.guild-info-main-aaa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.guild-level-simple-aaa,
+.guild-gp-simple-aaa {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.guild-level-label-aaa,
+.guild-gp-label-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 12px;
+  color: #B8C5D1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
+}
+
+.guild-level-value-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #E5E0C5;
+  text-shadow: 
+    0 0 6px rgba(229, 224, 197, 0.3),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.guild-level-hint-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #8A9BA8;
+  opacity: 0.8;
+  cursor: help;
+}
+
+.guild-gp-value-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #D4AF37;
+  text-shadow: 
+    0 0 6px rgba(212, 175, 55, 0.4),
+    0 0 12px rgba(212, 175, 55, 0.2),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.guild-gp-hint-aaa {
+  font-size: 14px;
+  opacity: 0.7;
+  cursor: help;
+  transition: opacity 0.2s ease;
+}
+
+.guild-gp-hint-aaa:hover {
+  opacity: 1;
+}
+
+.guild-info-panel-aaa::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    rgba(255, 215, 0, 0.3) 50%,
+    transparent 100%);
+  animation: shimmer-top 3s ease-in-out infinite;
+}
+
+@keyframes shimmer-top {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+.guild-info-header-aaa {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.guild-info-title {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #E5E0C5;
+  text-shadow: 
+    0 0 4px rgba(255, 215, 0, 0.3),
+    0 0 8px rgba(255, 215, 0, 0.15),
+    2px 2px 4px rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.guild-info-divider {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    rgba(90, 106, 122, 0.3) 20%,
+    rgba(90, 106, 122, 0.4) 50%,
+    rgba(90, 106, 122, 0.3) 80%,
+    transparent 100%);
+}
+
+.guild-info-content-aaa {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 4px 8px;
+  align-items: center;
+}
+
+.guild-info-item-aaa {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: linear-gradient(135deg, rgba(26, 42, 58, 0.6) 0%, rgba(15, 26, 42, 0.6) 100%);
+  border: 1px solid rgba(74, 90, 122, 0.5);
+  border-radius: 4px;
+  box-shadow: 
+    inset 0 1px 3px rgba(0, 0, 0, 0.3),
+    0 1px 2px rgba(255, 255, 255, 0.05);
+  font-size: 11px;
+}
+
+.guild-info-label-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #B8C5D1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
+  white-space: nowrap;
+}
+
+.guild-info-value-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #E5E0C5;
+  text-shadow: 
+    0 0 6px rgba(229, 224, 197, 0.3),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+  white-space: nowrap;
+}
+
+.guild-info-value-aaa.gp-value-aaa {
+  color: #D4AF37;
+  text-shadow: 
+    0 0 6px rgba(212, 175, 55, 0.4),
+    0 0 12px rgba(212, 175, 55, 0.2),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.guild-exp-bar-container-aaa {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  grid-column: 1 / -1;
+}
+
+.guild-exp-bar-aaa {
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(to bottom, #0f1a2a, #1a2a3a);
+  border: 1px solid #3a4a5a;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.6),
+    0 1px 2px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.guild-exp-bar-fill-aaa {
+  height: 100%;
+  background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 50%, #66BB6A 100%);
+  background-size: 200% 100%;
+  border-radius: 9px;
+  box-shadow: 
+    0 0 10px rgba(76, 175, 80, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.25),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: progress-shimmer 2s ease-in-out infinite;
+}
+
+.guild-exp-bar-fill-aaa::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%);
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+.guild-exp-bar-glow {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+}
+
+@keyframes progress-shimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.guild-exp-text-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #8A9BA8;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
+  text-align: center;
+}
+
+/* ============================================
+   Основной контент: две колонки - AAA
+   ============================================ */
+
+.talents-main-content-aaa {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  align-items: flex-start;
+}
+
+/* ============================================
+   Левая колонка - список талантов - AAA
+   ============================================ */
+
+.talents-left-column-aaa {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: linear-gradient(135deg, #1a2a3a 0%, #0f1a2a 50%, #1a2a3a 100%);
+  border: 1px solid #3a4a5a;
+  border-radius: 8px;
+  box-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.4),
+    inset 0 1px 5px rgba(0, 0, 0, 0.3),
+    inset 0 -1px 5px rgba(255, 255, 255, 0.02);
+  padding: 8px;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Поиск талантов - AAA */
+.talent-search-container-aaa {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px 6px 10px;
+  background: linear-gradient(135deg, #2a3a5a 0%, #1a2a4a 50%, #2a3a5a 100%);
+  border: 1px solid #4a5a7a;
+  border-radius: 4px;
+  box-shadow: 
+    inset 0 1px 4px rgba(0, 0, 0, 0.4),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.talent-filters-container-aaa {
+  display: flex;
+  gap: 8px;
+  padding: 6px;
+  background: linear-gradient(135deg, rgba(26, 42, 58, 0.6) 0%, rgba(15, 26, 42, 0.6) 100%);
+  border: 1px solid rgba(74, 90, 122, 0.5);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.filter-group-aaa {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.filter-label-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 9px;
+  color: #B8C5D1;
+  white-space: nowrap;
+}
+
+.filter-select-aaa {
+  flex: 1;
+  padding: 4px 6px;
+  background: linear-gradient(135deg, #1a2a3a 0%, #0f1a2a 100%);
+  border: 1px solid #3a4a5a;
+  border-radius: 4px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 9px;
+  color: #E5E0C5;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.filter-select-aaa:hover {
+  border-color: #5a6a7a;
+  box-shadow: 0 0 8px rgba(74, 90, 122, 0.3);
+}
+
+.filter-select-aaa:focus {
+  border-color: #6a7a8a;
+  box-shadow: 0 0 12px rgba(74, 90, 122, 0.5);
+}
+
+.talent-search-container-aaa:focus-within {
+  border-color: #5a6a8a;
+  box-shadow: 
+    inset 0 2px 6px rgba(0, 0, 0, 0.4),
+    0 0 25px rgba(74, 90, 122, 0.5),
+    0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.search-icon-aaa {
+  font-size: 18px;
+  color: #8A9BA8;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 4px rgba(138, 155, 168, 0.5));
+}
+
+.talent-search-input-aaa {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 13px;
+  color: #E5E0C5;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
+}
+
+.talent-search-input-aaa::placeholder {
+  color: #A0B0C0;
+  opacity: 0.9;
+}
+
+/* Список талантов */
+.talents-list-container-aaa {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  padding-right: 4px;
+}
+
+.talents-list-container-aaa::-webkit-scrollbar {
+  width: 10px;
+}
+
+.talents-list-container-aaa::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom, #1a2a3a, #0f1a2a);
+  border-radius: 5px;
+  border: 1px solid #2a3a4a;
+}
+
+.talents-list-container-aaa::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #4a5a7a, #3a4a5a);
+  border-radius: 5px;
+  border: 1px solid #1a2a3a;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.talents-list-container-aaa::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #5a6a8a, #4a5a7a);
+  box-shadow: 0 0 8px rgba(74, 90, 122, 0.5);
+}
+
+/* Карточка таланта - AAA */
+.talent-card-aaa {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  background: linear-gradient(135deg, rgba(42, 58, 90, 0.92) 0%, rgba(26, 42, 74, 0.92) 50%, rgba(42, 58, 90, 0.92) 100%);
+  border: 1px solid #3a4a5a;
+  border-left: 3px solid #3a4a5a;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.05),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+  overflow: visible;
+  margin-bottom: 10px;
+}
+
+/* Визуальный индикатор статуса слева */
+.talent-status-indicator-aaa {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  transition: all 0.3s ease;
+}
+
+.talent-status-indicator-aaa.status-available {
+  background: linear-gradient(to bottom, #4CAF50, #2E7D32);
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+}
+
+.talent-status-indicator-aaa.status-locked {
+  background: linear-gradient(to bottom, #f44336, #c62828);
+  box-shadow: 0 0 8px rgba(244, 67, 54, 0.4);
+}
+
+.talent-status-indicator-aaa.status-maxed {
+  background: linear-gradient(to bottom, #FFD700, #FFA000);
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+.talent-status-indicator-aaa.status-default {
+  background: linear-gradient(to bottom, #6a7a8a, #5a6a7a);
+}
+
+/* Стили для карточек с разными статусами */
+.talent-card-aaa.can-upgrade {
+  border-left-color: #4CAF50;
+  background: linear-gradient(135deg, rgba(42, 68, 80, 0.95) 0%, rgba(26, 52, 64, 0.95) 50%, rgba(42, 68, 80, 0.95) 100%);
+}
+
+.talent-card-aaa.can-upgrade:hover {
+  border-left-color: #66BB6A;
+  box-shadow: 
+    0 4px 12px rgba(76, 175, 80, 0.3),
+    0 0 20px rgba(76, 175, 80, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.08),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.talent-card-aaa.locked {
+  border-left-color: #f44336;
+  opacity: 0.85;
+}
+
+.talent-card-aaa.locked:hover {
+  opacity: 1;
+  border-left-color: #ff5252;
+}
+
+.talent-card-aaa.maxed {
+  border-left-color: #FFD700;
+  background: linear-gradient(135deg, rgba(52, 48, 40, 0.95) 0%, rgba(42, 38, 30, 0.95) 50%, rgba(52, 48, 40, 0.95) 100%);
+}
+
+.talent-card-aaa::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 12px;
+  right: 12px;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    rgba(90, 106, 122, 0.25) 20%,
+    rgba(90, 106, 122, 0.3) 50%,
+    rgba(90, 106, 122, 0.25) 80%,
+    transparent 100%);
+  pointer-events: none;
+}
+
+.talent-card-aaa::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%);
+  transition: left 0.5s ease;
+}
+
+.talent-card-aaa:hover::before {
+  left: 100%;
+}
+
+.talent-card-aaa:hover {
+  background: linear-gradient(135deg, #2a3a4a 0%, #1a2a3a 50%, #2a3a4a 100%);
+  border-color: #5a6a7a;
+  border-left-color: #6a7a8a;
+  transform: translateX(3px) scale(1.01);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(90, 106, 122, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.08),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.talent-card-aaa.can-upgrade:hover {
+  transform: translateX(3px) scale(1.02);
+  border-left-color: #66BB6A;
+}
+
+.talent-card-aaa.selected {
+  background: linear-gradient(135deg, #2a3a4a 0%, #1a2a3a 50%, #2a3a4a 100%);
+  border-color: #6a7a8a;
+  border-left-color: #8a9aaa;
+  border-width: 2px;
+  border-left-width: 5px;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(90, 106, 122, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.1),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.3);
+  transform: translateX(3px);
+  position: relative;
+}
+
+.talent-card-aaa.selected::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 0 8px 8px;
+  border-color: transparent transparent transparent #6a7a8a;
+  filter: drop-shadow(2px 0 4px rgba(0, 0, 0, 0.3));
+}
+
+.talent-card-aaa.selected.can-upgrade {
+  border-left-color: #66BB6A;
+  box-shadow: 
+    0 4px 12px rgba(76, 175, 80, 0.4),
+    0 0 25px rgba(76, 175, 80, 0.25),
+    inset 0 1px 2px rgba(255, 255, 255, 0.1),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.talent-card-aaa.selected.can-upgrade::after {
+  border-color: transparent transparent transparent #66BB6A;
+}
+
+.talent-card-aaa.upgrading {
+  animation: upgrade-success 0.8s ease;
+}
+
+@keyframes upgrade-success {
+  0%, 100% {
+    box-shadow: 
+      0 4px 20px rgba(76, 175, 80, 0.5),
+      0 0 30px rgba(76, 175, 80, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 8px 40px rgba(76, 175, 80, 0.8),
+      0 0 60px rgba(76, 175, 80, 0.6),
+      inset 0 0 20px rgba(76, 175, 80, 0.3);
+    transform: scale(1.02);
+  }
+}
+
+.talent-selected-indicator-aaa {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #6a7a8a, #5a6a7a, #6a7a8a);
+  border-radius: 10px 0 0 10px;
+  box-shadow: 0 0 6px rgba(90, 106, 122, 0.4);
+}
+
+.talent-card-icon-aaa {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #4a5a7a;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a2a3a 0%, #0f1a2a 50%, #1a2a3a 100%);
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: 
+    inset 0 1px 3px rgba(0, 0, 0, 0.4),
+    0 2px 8px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  overflow: visible;
+}
+
+.talent-card-aaa.can-upgrade .talent-card-icon-aaa {
+  border-color: #5a8a6a;
+  box-shadow: 
+    inset 0 1px 3px rgba(0, 0, 0, 0.4),
+    0 2px 8px rgba(76, 175, 80, 0.3),
+    0 0 12px rgba(76, 175, 80, 0.2);
+}
+
+.talent-card-aaa.locked .talent-card-icon-aaa {
+  border-color: #7a4a4a;
+  opacity: 0.7;
+}
+
+.talent-card-aaa.maxed .talent-card-icon-aaa {
+  border-color: #8a7a4a;
+  box-shadow: 
+    inset 0 1px 3px rgba(0, 0, 0, 0.4),
+    0 2px 8px rgba(255, 215, 0, 0.2);
+}
+
+.talent-icon-level-badge-aaa {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #D4AF37, #B8941F);
+  border: 2px solid #1a2a3a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  font-weight: bold;
+  color: #1a2a3a;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    0 0 6px rgba(212, 175, 55, 0.5);
+  z-index: 2;
+}
+
+.talent-card-aaa.selected .talent-card-icon-aaa {
+  border-color: #6a7a8a;
+  box-shadow: 
+    0 0 8px rgba(90, 106, 122, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.talent-icon-symbol-aaa {
+  font-size: 36px;
+  line-height: 1;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.talent-card-aaa:hover .talent-icon-symbol-aaa {
+  transform: scale(1.1);
+}
+
+.talent-card-aaa.can-upgrade .talent-icon-symbol-aaa {
+  filter: drop-shadow(0 0 6px rgba(76, 175, 80, 0.4));
+}
+
+.talent-card-aaa.selected .talent-icon-symbol-aaa {
+  filter: drop-shadow(0 0 4px rgba(90, 106, 122, 0.4));
+}
+
+.talent-icon-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(90, 106, 122, 0.15) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.talent-card-aaa.selected .talent-icon-glow {
+  opacity: 0.5;
+}
+
+/* Убрана радио-кнопка - все таланты активны одновременно */
+
+.talent-card-info-aaa {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  overflow: visible;
+}
+
+.talent-card-header-aaa {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.talent-card-name-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: #E5E0C5;
+  text-shadow: 
+    0 0 4px rgba(229, 224, 197, 0.2),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  flex: 1;
+  transition: color 0.2s ease;
+}
+
+.talent-card-aaa.can-upgrade .talent-card-name-aaa {
+  color: #C8E6C9;
+}
+
+.talent-card-aaa.locked .talent-card-name-aaa {
+  color: #B0BEC5;
+}
+
+.talent-card-aaa.maxed .talent-card-name-aaa {
+  color: #FFE082;
+}
+
+.talent-card-level-badge-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #E5E0C5;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
+  white-space: nowrap;
+  padding: 4px 8px;
+  background: linear-gradient(135deg, rgba(26, 42, 58, 0.8) 0%, rgba(15, 26, 42, 0.8) 100%);
+  border: 1px solid rgba(74, 90, 122, 0.6);
+  border-radius: 6px;
+  box-shadow: 
+    inset 0 1px 2px rgba(255, 255, 255, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.talent-card-aaa.can-upgrade .talent-card-level-badge-aaa {
+  background: linear-gradient(135deg, rgba(46, 125, 50, 0.3) 0%, rgba(27, 94, 32, 0.3) 100%);
+  border-color: rgba(76, 175, 80, 0.5);
+  color: #C8E6C9;
+}
+
+.talent-card-aaa.maxed .talent-card-level-badge-aaa {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.3) 0%, rgba(255, 152, 0, 0.3) 100%);
+  border-color: rgba(255, 215, 0, 0.5);
+  color: #FFE082;
+}
+
+.talent-card-bonus-aaa,
+.talent-card-next-bonus-aaa {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+.talent-card-bonus-aaa .bonus-value-aaa,
+.talent-card-next-bonus-aaa .bonus-value-aaa {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.bonus-label-aaa {
+  color: #8A9BA8;
+  font-size: 9px;
+}
+
+.bonus-value-aaa {
+  color: #6BB86B;
+  font-weight: bold;
+  text-shadow: 0 0 4px rgba(107, 184, 107, 0.3);
+}
+
+.bonus-value-aaa.highlight {
+  color: #FFD700;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
+}
+
+.talent-card-progress-aaa {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.talent-progress-bar-aaa {
+  flex: 1;
+  height: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 
+    inset 0 1px 3px rgba(0, 0, 0, 0.6),
+    0 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.talent-progress-fill-aaa {
+  height: 100%;
+  background: linear-gradient(to right, #4CAF50, #2E7D32, #4CAF50);
+  background-size: 200% 100%;
+  border-radius: 3px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 0 6px rgba(76, 175, 80, 0.6),
+    inset 0 1px 0px rgba(255, 255, 255, 0.2);
+  animation: progress-shimmer 2s ease-in-out infinite;
+}
+
+@keyframes progress-shimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.progress-text-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 9px;
+  color: #B8C5D1;
+  min-width: 32px;
+  text-align: right;
+}
+
+.talent-card-cost-section-aaa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+  padding-top: 5px;
+  border-top: 1px solid rgba(74, 90, 122, 0.4);
+  gap: 5px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.talent-cost-info-aaa {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  background: rgba(26, 42, 58, 0.5);
+  border: 1px solid rgba(74, 90, 122, 0.3);
+  transition: all 0.2s ease;
+  flex: 1;
+  min-width: 0;
+}
+
+.talent-cost-info-aaa:hover {
+  transform: scale(1.03);
+}
+
+.talent-cost-info-aaa.available {
+  background: rgba(76, 175, 80, 0.15);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.talent-cost-info-aaa.insufficient {
+  background: rgba(244, 67, 54, 0.15);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+.talent-cost-info-aaa.locked {
+  background: rgba(158, 158, 158, 0.15);
+  border: 1px solid rgba(158, 158, 158, 0.3);
+  opacity: 0.7;
+}
+
+.cost-status-aaa.locked {
+  color: #9E9E9E;
+  text-shadow: 0 0 4px rgba(158, 158, 158, 0.5);
+}
+
+.cost-icon-aaa {
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.cost-value-aaa {
+  color: #D4AF37;
+  font-weight: bold;
+  text-shadow: 0 0 4px rgba(212, 175, 55, 0.3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.cost-status-aaa {
+  font-size: 11px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.cost-status-aaa.available {
+  color: #4CAF50;
+  text-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+}
+
+.cost-status-aaa.insufficient {
+  color: #f44336;
+  text-shadow: 0 0 4px rgba(244, 67, 54, 0.5);
+}
+
+.talent-efficiency-mini-aaa {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 8px;
+  color: #8A9BA8;
+  padding: 3px 5px;
+  background: rgba(26, 42, 58, 0.4);
+  border: 1px solid rgba(74, 90, 122, 0.3);
+  border-radius: 3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.efficiency-label-mini {
+  color: #8A9BA8;
+}
+
+.efficiency-value-mini {
+  color: #4CAF50;
+  font-weight: bold;
+  text-shadow: 0 0 4px rgba(76, 175, 80, 0.3);
+}
+
+.talent-card-level-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.talent-card-level-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #B8C5D1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
+}
+
+.talent-card-level-icon {
+  font-size: 10px;
+  opacity: 0.7;
+  filter: drop-shadow(0 0 2px rgba(184, 197, 209, 0.3));
+}
+
+.talent-card-level-aaa .level-value {
+  color: #FFD700;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+.talent-mini-progress {
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 1px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.4);
+  flex: 1;
+  min-width: 60px;
+  margin-top: 3px;
+}
+
+.talent-mini-progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, rgba(76, 175, 80, 0.9), rgba(46, 125, 50, 0.9));
+  border-radius: 1px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 3px rgba(76, 175, 80, 0.3);
+}
+
+/* Tooltip */
+.talent-tooltip-aaa {
+  position: absolute;
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 280px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #1a2a3a 0%, #0f1a2a 100%);
+  border: 2px solid #4a5a7a;
+  border-radius: 8px;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(74, 90, 122, 0.4);
+  z-index: 1000;
+  pointer-events: none;
+  animation: tooltip-fade-in 0.2s ease;
+}
+
+@keyframes tooltip-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+.tooltip-title {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+  margin-bottom: 6px;
+}
+
+.tooltip-description {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 12px;
+  color: #B8C5D1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
+  line-height: 1.5;
+}
+
+/* ============================================
+   Правая колонка - детали таланта - AAA
+   ============================================ */
+
+.talents-right-column-aaa {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: linear-gradient(135deg, #151f2a 0%, #0f1a2a 50%, #151f2a 100%);
+  border: 1px solid #5a6a7a;
+  border-radius: 8px;
+  box-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.4),
+    inset 0 1px 5px rgba(0, 0, 0, 0.4),
+    inset 0 -1px 5px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 1px rgba(90, 106, 122, 0.2);
+  padding: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0;
+  position: relative;
+  height: 100%;
+  align-self: stretch;
+}
+
+.talents-right-column-aaa::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(to right, transparent 0%, rgba(90, 106, 122, 0.05) 50%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, rgba(90, 106, 122, 0.05) 50%, transparent 100%);
+  pointer-events: none;
+  border-radius: 12px;
+}
+
+
+/* Блок 1: Заголовок таланта - AAA */
+.talent-detail-header-aaa {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  background: linear-gradient(135deg, rgba(26, 42, 58, 0.6) 0%, rgba(15, 26, 42, 0.6) 100%);
+  border: 1px solid #4a5a6a;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 3px rgba(255, 255, 255, 0.05);
+}
+
+.talent-detail-icon-large-aaa {
+  width: 64px;
+  height: 64px;
+  border: 2px solid #6a7a8a;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2a3a5a 0%, #1a2a4a 50%, #2a3a5a 100%);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(90, 106, 122, 0.2),
+    inset 0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 -2px 4px rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+  position: relative;
+  overflow: visible;
+}
+
+.talent-detail-icon-symbol-aaa {
+  font-size: 40px;
+  line-height: 1;
+  filter: drop-shadow(0 0 6px rgba(90, 106, 122, 0.4));
+  position: relative;
+  z-index: 2;
+}
+
+.talent-icon-background-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180%;
+  height: 180%;
+  background: radial-gradient(circle, rgba(90, 106, 122, 0.15) 0%, transparent 60%);
+  filter: blur(25px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.talent-detail-title-section-aaa {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.talent-detail-name-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #E5E0C5;
+  text-shadow: 
+    0 0 4px rgba(255, 215, 0, 0.2),
+    0 0 8px rgba(255, 215, 0, 0.1),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.talent-detail-description-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  color: #B8C5D1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
+  line-height: 1.5;
+  flex-shrink: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* Разделитель */
+.talent-section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    rgba(90, 106, 122, 0.3) 20%,
+    rgba(90, 106, 122, 0.4) 50%,
+    rgba(90, 106, 122, 0.3) 80%,
+    transparent 100%);
+  margin: 4px 0;
+  flex-shrink: 0;
+}
+
+/* Разделитель между блоками */
+.talent-detail-block-aaa + .talent-detail-block-aaa::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    rgba(90, 106, 122, 0.2) 20%,
+    rgba(90, 106, 122, 0.3) 50%,
+    rgba(90, 106, 122, 0.2) 80%,
+    transparent 100%);
+}
+
+/* Блоки деталей таланта - AAA */
+.talent-detail-block-aaa {
+  background: linear-gradient(135deg, #1a2530 0%, #151f2a 50%, #1a2530 100%);
+  border: 1px solid #3a4a5a;
+  border-radius: 6px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.4),
+    inset 0 1px 3px rgba(0, 0, 0, 0.3),
+    inset 0 -1px 3px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.talent-detail-block-aaa:hover {
+  border-color: #4a5a6a;
+  box-shadow: 
+    0 3px 8px rgba(0, 0, 0, 0.5),
+    inset 0 1px 3px rgba(0, 0, 0, 0.3),
+    inset 0 -1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Блок прогрессии таланта - визуальное сравнение До/После */
+.talent-progression-block-aaa {
+  background: linear-gradient(135deg, #1a2530 0%, #151f2a 50%, #1a2530 100%);
+  border: 1px solid #3a4a5a;
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 
+    0 3px 10px rgba(0, 0, 0, 0.4),
+    inset 0 1px 3px rgba(0, 0, 0, 0.3),
+    inset 0 -1px 3px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-bottom: 8px;
+}
+
+.progression-header-aaa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.progression-title-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #B8C5D1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.progression-level-badge-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+  padding: 4px 10px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 6px;
+}
+
+.comparison-container-aaa {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  background: rgba(26, 42, 58, 0.3);
+  border-radius: 8px;
+  border: 1px solid rgba(74, 90, 122, 0.3);
+}
+
+.comparison-side-aaa {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.current-side-aaa {
+  background: rgba(26, 42, 58, 0.4);
+  border: 1px solid rgba(74, 90, 122, 0.4);
+}
+
+.next-side-aaa {
+  background: rgba(255, 215, 0, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.15);
+}
+
+.comparison-label-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 9px;
+  color: #8A9BA8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.comparison-level-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  color: #B8C5D1;
+  font-weight: bold;
+}
+
+.comparison-bonus-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: #6BB86B;
+  text-shadow: 0 0 4px rgba(107, 184, 107, 0.3);
+  margin-top: 4px;
+}
+
+.comparison-bonus-aaa.highlight-bonus-aaa {
+  color: #FFD700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+  font-size: 14px;
+}
+
+.comparison-arrow-aaa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.arrow-line-aaa {
+  width: 2px;
+  height: 30px;
+  background: linear-gradient(to bottom, #6BB86B, #FFD700);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+.arrow-head-aaa {
+  font-size: 24px;
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+  animation: arrow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes arrow-pulse {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(3px);
+    opacity: 0.8;
+  }
+}
+
+.talent-level-progress-container-aaa {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.talent-level-progress-info-aaa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+}
+
+.progress-current-aaa {
+  color: #E5E0C5;
+  font-weight: bold;
+}
+
+.progress-separator-aaa {
+  color: #8A9BA8;
+}
+
+.progress-max-aaa {
+  color: #B8C5D1;
+}
+
+.progress-percent-aaa {
+  color: #8A9BA8;
+  margin-left: 4px;
+}
+
+.maxed-progression-aaa {
+  background: linear-gradient(135deg, rgba(52, 48, 40, 0.6) 0%, rgba(42, 38, 30, 0.6) 100%);
+  border-color: rgba(255, 215, 0, 0.4);
+}
+
+.max-level-content-aaa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  padding: 8px;
+}
+
+.max-level-icon-aaa {
+  font-size: 32px;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
+  animation: star-rotate 3s ease-in-out infinite;
+}
+
+@keyframes star-rotate {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+}
+
+.max-level-text-main-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: #FFE082;
+  text-shadow: 0 0 6px rgba(255, 224, 130, 0.4);
+}
+
+/* Компактный блок требований */
+.talent-requirement-compact-aaa {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(26, 42, 58, 0.4);
+  border: 1px solid rgba(74, 90, 122, 0.4);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.talent-requirement-compact-aaa.requirement-met {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: rgba(76, 175, 80, 0.4);
+}
+
+.talent-requirement-compact-aaa.requirement-locked {
+  background: rgba(244, 67, 54, 0.1);
+  border-color: rgba(244, 67, 54, 0.3);
+}
+
+.requirement-icon-aaa {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.talent-requirement-compact-aaa.requirement-met .requirement-icon-aaa {
+  color: #4CAF50;
+  text-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+}
+
+.talent-requirement-compact-aaa.requirement-locked .requirement-icon-aaa {
+  color: #f44336;
+  text-shadow: 0 0 8px rgba(244, 67, 54, 0.6);
+}
+
+.requirement-info-aaa {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.requirement-label-compact-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 9px;
+  color: #8A9BA8;
+  text-transform: uppercase;
+}
+
+.requirement-value-compact-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.requirement-value-compact-aaa.met {
+  color: #4CAF50;
+  text-shadow: 0 0 4px rgba(76, 175, 80, 0.4);
+}
+
+.requirement-value-compact-aaa.locked {
+  color: #f44336;
+  text-shadow: 0 0 4px rgba(244, 67, 54, 0.4);
+}
+
+/* Компактный блок стоимости */
+.talent-cost-compact-block-aaa {
+  background: linear-gradient(135deg, #1a2530 0%, #151f2a 50%, #1a2530 100%);
+  border: 1px solid #3a4a5a;
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 
+    0 3px 10px rgba(0, 0, 0, 0.4),
+    inset 0 1px 3px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+  margin-bottom: 8px;
+}
+
+.cost-compact-header-aaa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.cost-compact-label-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #B8C5D1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cost-compact-hint-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 9px;
+  color: #8A9BA8;
+  font-style: italic;
+  opacity: 0.7;
+  cursor: help;
+}
+
+.cost-options-row-aaa {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/* GP карточка стоимости */
+.cost-gp-card-aaa {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: rgba(26, 42, 58, 0.5);
+  border: 1px solid rgba(74, 90, 122, 0.4);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.cost-gp-card-aaa.available {
+  background: rgba(76, 175, 80, 0.15);
+  border-color: rgba(76, 175, 80, 0.5);
+  box-shadow: 0 0 12px rgba(76, 175, 80, 0.3);
+}
+
+.cost-gp-card-aaa.insufficient {
+  background: rgba(244, 67, 54, 0.1);
+  border-color: rgba(244, 67, 54, 0.3);
+  opacity: 0.9;
+}
+
+.cost-gp-icon-aaa {
+  font-size: 28px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+}
+
+.cost-gp-content-aaa {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.cost-gp-value-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 16px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cost-gp-value-aaa.available {
+  color: #D4AF37;
+  text-shadow: 0 0 6px rgba(212, 175, 55, 0.4);
+}
+
+.cost-gp-value-aaa.insufficient {
+  color: #f44336;
+  text-shadow: 0 0 6px rgba(244, 67, 54, 0.4);
+}
+
+.cost-gp-label-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #8A9BA8;
+  line-height: 1.3;
+}
+
+.cost-gp-status-aaa {
+  font-size: 24px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.cost-gp-status-aaa.available {
+  color: #4CAF50;
+  text-shadow: 0 0 10px rgba(76, 175, 80, 0.6);
+  animation: check-pulse 2s ease-in-out infinite;
+}
+
+.cost-gp-status-aaa.insufficient {
+  color: #f44336;
+  text-shadow: 0 0 10px rgba(244, 67, 54, 0.6);
+}
+
+/* Блок информации о недостатке GP */
+.talent-insufficient-gp-block-aaa {
+  background: linear-gradient(135deg, #1a2530 0%, #151f2a 50%, #1a2530 100%);
+  border: 1px solid #3a4a5a;
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 
+    0 3px 10px rgba(0, 0, 0, 0.4),
+    inset 0 1px 3px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+  margin-bottom: 8px;
+}
+
+/* Информация о недостатке GP */
+.cost-insufficient-info-aaa {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(244, 67, 54, 0.15);
+  border: 1px solid rgba(244, 67, 54, 0.4);
+  border-radius: 6px;
+}
+
+.insufficient-icon-aaa {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.insufficient-text-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  color: #f44336;
+  flex: 1;
+  line-height: 1.4;
+}
+
+.insufficient-text-aaa strong {
+  color: #FF6B6B;
+  font-weight: bold;
+}
+
+/* Кнопка магазина гильдии */
+.guild-shop-button-aaa {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 16px;
+  margin-top: 10px;
+  background: linear-gradient(135deg, #3a4a5a 0%, #2a3a4a 50%, #3a4a5a 100%);
+  background-size: 200% 100%;
+  border: 2px solid #6a7a8a;
+  border-radius: 8px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #E5E0C5;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(106, 122, 138, 0.2),
+    inset 0 2px 4px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.guild-shop-button-aaa::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.guild-shop-button-aaa:hover {
+  background-position: 100% 0;
+  transform: translateY(-2px) scale(1.02);
+  border-color: #7a8a9a;
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(106, 122, 138, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.15);
+}
+
+.guild-shop-button-aaa:hover::before {
+  opacity: 1;
+}
+
+.guild-shop-button-aaa:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 
+    0 3px 10px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.shop-button-icon-aaa {
+  font-size: 18px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+  position: relative;
+  z-index: 1;
+}
+
+.shop-button-text-aaa {
+  position: relative;
+  z-index: 1;
+  text-shadow: 
+    0 0 4px rgba(229, 224, 197, 0.25),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.cost-option-card-aaa {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(26, 42, 58, 0.5);
+  border: 1px solid rgba(74, 90, 122, 0.4);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.cost-option-card-aaa.will-use {
+  border-color: rgba(255, 215, 0, 0.5);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+}
+
+.cost-option-card-aaa.available {
+  background: rgba(76, 175, 80, 0.15);
+  border-color: rgba(76, 175, 80, 0.4);
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+}
+
+.cost-option-card-aaa.insufficient {
+  background: rgba(244, 67, 54, 0.1);
+  border-color: rgba(244, 67, 54, 0.3);
+  opacity: 0.8;
+}
+
+.cost-option-card-aaa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.cost-option-icon-aaa {
+  font-size: 24px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+}
+
+.cost-option-content-aaa {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.cost-option-value-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #D4AF37;
+  text-shadow: 0 0 4px rgba(212, 175, 55, 0.3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cost-option-value-aaa.available {
+  color: #D4AF37;
+}
+
+.cost-option-value-aaa.insufficient {
+  color: #f44336;
+}
+
+.cost-option-value-aaa.premium.available {
+  color: #4ECDC4;
+  text-shadow: 0 0 4px rgba(78, 205, 196, 0.4);
+}
+
+.cost-option-label-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 9px;
+  color: #8A9BA8;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.cost-option-hint-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 8px;
+  color: #6A7A8A;
+  margin-top: 2px;
+}
+
+.cost-option-badge-aaa {
+  position: absolute;
+  top: -6px;
+  right: 8px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 7px;
+  font-weight: bold;
+  color: #4CAF50;
+  background: rgba(76, 175, 80, 0.2);
+  border: 1px solid rgba(76, 175, 80, 0.5);
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+}
+
+.cost-option-card-aaa.premium .cost-option-badge-aaa {
+  color: #4ECDC4;
+  background: rgba(78, 205, 196, 0.2);
+  border-color: rgba(78, 205, 196, 0.5);
+  box-shadow: 0 0 8px rgba(78, 205, 196, 0.3);
+}
+
+.cost-option-hint-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 8px;
+  color: #6A7A8A;
+  margin-top: 2px;
+  opacity: 0.8;
+}
+
+.cost-option-badge-aaa {
+  position: absolute;
+  top: -8px;
+  right: 8px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 8px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 1;
+}
+
+.cost-option-badge-aaa.will-use-badge {
+  background: rgba(255, 215, 0, 0.9);
+  color: #1a2530;
+  border: 1px solid rgba(255, 215, 0, 1);
+  box-shadow: 0 2px 6px rgba(255, 215, 0, 0.4);
+  animation: badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 2px 6px rgba(255, 215, 0, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 2px 10px rgba(255, 215, 0, 0.6);
+  }
+}
+
+.cost-option-status-aaa {
+  font-size: 18px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.cost-option-status-aaa.available {
+  color: #4CAF50;
+  text-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+  animation: check-pulse 2s ease-in-out infinite;
+}
+
+.cost-option-status-aaa.insufficient {
+  color: #f44336;
+  text-shadow: 0 0 8px rgba(244, 67, 54, 0.6);
+}
+
+.cost-time-compact-aaa {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  background: rgba(74, 90, 122, 0.2);
+  border: 1px solid rgba(74, 90, 122, 0.4);
+  border-radius: 4px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #B8C5D1;
+}
+
+.time-icon-compact-aaa {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.time-text-compact-aaa {
+  flex: 1;
+}
+
+/* Информация о том, что будет использовано */
+.cost-will-use-info-aaa {
+  padding: 8px 10px;
+  background: rgba(26, 42, 58, 0.5);
+  border: 1px solid rgba(74, 90, 122, 0.4);
+  border-radius: 6px;
+  margin-top: 4px;
+}
+
+.will-use-gp-info-aaa,
+.will-use-premium-info-aaa,
+.will-use-none-info-aaa {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+}
+
+.will-use-gp-info-aaa {
+  color: #D4AF37;
+}
+
+.will-use-premium-info-aaa {
+  color: #4ECDC4;
+}
+
+.will-use-none-info-aaa {
+  color: #f44336;
+}
+
+.will-use-icon-aaa {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.will-use-text-aaa {
+  flex: 1;
+}
+
+.will-use-text-aaa strong {
+  font-weight: bold;
+  text-shadow: 0 0 4px currentColor;
+}
+
+.will-use-hint-aaa {
+  color: #8A9BA8;
+  font-size: 10px;
+  margin-left: 4px;
+  font-weight: normal;
+}
+
+.endless-hint-compact-aaa,
+.efficiency-compact-aaa {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  background: rgba(26, 42, 58, 0.4);
+  border: 1px solid rgba(74, 90, 122, 0.3);
+  border-radius: 4px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #B8C5D1;
+}
+
+.endless-hint-compact-aaa {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: rgba(255, 215, 0, 0.3);
+  color: #FFD700;
+}
+
+.efficiency-compact-aaa {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: rgba(76, 175, 80, 0.3);
+  color: #4CAF50;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.efficiency-content-aaa {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.efficiency-text-compact-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #4CAF50;
+}
+
+.efficiency-text-compact-aaa strong {
+  font-weight: bold;
+  text-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+}
+
+.efficiency-explanation-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 9px;
+  color: #6BB86B;
+  opacity: 0.9;
+  font-style: italic;
+  margin-left: 20px;
+}
+
+.hint-icon-compact-aaa,
+.efficiency-icon-compact-aaa {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.talent-detail-block-aaa::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    rgba(90, 106, 122, 0.2) 50%,
+    transparent 100%);
+}
+
+.talent-detail-block-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0;
+}
+
+.block-icon {
+  font-size: 14px;
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
+}
+
+.talent-detail-block-title-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: #E5E0C5;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.talent-detail-info-row-aaa {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.talent-detail-label-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #B8C5D1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.talent-detail-value-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 13px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.talent-level-display-wrapper-aaa {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.talent-level-progress-aaa {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.talent-level-progress-bar-aaa {
+  flex: 1;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.talent-level-progress-fill-aaa {
+  height: 100%;
+  background: linear-gradient(to right, #4CAF50, #2E7D32, #4CAF50);
+  background-size: 200% 100%;
+  border-radius: 3px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 0 6px rgba(76, 175, 80, 0.6),
+    inset 0 1px 0px rgba(255, 255, 255, 0.2);
+  animation: progress-shimmer 2s ease-in-out infinite;
+}
+
+.talent-level-progress-text-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #B8C5D1;
+  min-width: 40px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.talent-current-bonus-display-aaa {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  background: rgba(26, 42, 58, 0.4);
+  border: 1px solid rgba(74, 90, 122, 0.3);
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+.current-bonus-label-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #8A9BA8;
+}
+
+.current-bonus-value-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #6BB86B;
+  text-shadow: 0 0 4px rgba(107, 184, 107, 0.3);
+}
+
+.next-level-content-aaa {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.next-level-bonus-wrapper-aaa {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 6px;
+}
+
+.next-bonus-icon-aaa {
+  font-size: 20px;
+  color: #FFD700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+  animation: bounce-up 2s ease-in-out infinite;
+}
+
+@keyframes bounce-up {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.talent-detail-value-aaa.level-display {
+  color: #E5E0C5;
+  text-shadow: 
+    0 0 8px rgba(229, 224, 197, 0.4),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.talent-detail-value-aaa.bonus-value-aaa {
+  color: #6BB86B;
+  filter: saturate(0.9);
+  text-shadow: 
+    0 0 4px rgba(107, 184, 107, 0.25),
+    0 0 8px rgba(107, 184, 107, 0.12),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.talent-detail-value-aaa.next-bonus-value-aaa {
+  color: #D4AF37;
+  filter: saturate(0.85);
+  text-shadow: 
+    0 0 4px rgba(212, 175, 55, 0.25),
+    0 0 8px rgba(212, 175, 55, 0.12),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.talent-detail-value-aaa.max-level-text-aaa {
+  color: #8A9BA8;
+  font-style: italic;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
+}
+
+.talent-detail-value-aaa.requirement-met-value {
+  color: #6BB86B;
+  text-shadow: 
+    0 0 6px rgba(107, 184, 107, 0.3),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.talent-detail-value-aaa.requirement-not-met-value {
+  color: #f44336;
+  text-shadow: 
+    0 0 10px rgba(244, 67, 54, 0.6),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Специальные стили для блоков */
+.current-level-block {
+  border-color: #4a5a5a;
+  background: linear-gradient(135deg, #1a2520 0%, #151f1a 50%, #1a2520 100%);
+}
+
+.next-level-block {
+  border-color: #5a5a4a;
+  background: linear-gradient(135deg, #25201a 0%, #1f1a15 50%, #25201a 100%);
+}
+
+.max-level-block {
+  border-color: #4a4a4a;
+  background: linear-gradient(135deg, #1a1a1a 0%, #151515 50%, #1a1a1a 100%);
+}
+
+.requirement-block.requirement-not-met {
+  border-color: #6a4a4a;
+  background: linear-gradient(135deg, #251a1a 0%, #1f1515 50%, #251a1a 100%);
+}
+
+.requirement-block.requirement-met {
+  border-color: #4a5a4a;
+  background: linear-gradient(135deg, #1a251a 0%, #151f15 50%, #1a251a 100%);
+}
+
+.talent-detail-warning-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  color: #f44336;
+  text-shadow: 
+    0 0 6px rgba(244, 67, 54, 0.4),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+  padding: 6px 10px;
+  background: rgba(244, 67, 54, 0.15);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  border-radius: 4px;
+  margin-top: 4px;
+  box-shadow: 
+    inset 0 1px 3px rgba(0, 0, 0, 0.2),
+    0 0 8px rgba(244, 67, 54, 0.15);
+}
+
+/* Стоимость улучшения - AAA */
+.cost-block {
+  border-color: #5a6a5a;
+  background: linear-gradient(135deg, rgba(26, 37, 32, 0.85) 0%, rgba(21, 31, 26, 0.85) 50%, rgba(26, 37, 32, 0.85) 100%);
+}
+
+.talent-cost-row-aaa {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.talent-cost-card-aaa {
+  padding: 10px 12px;
+  background: rgba(26, 42, 58, 0.4);
+  border: 1px solid rgba(74, 90, 122, 0.4);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.talent-cost-card-aaa.cost-available-card {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: rgba(76, 175, 80, 0.4);
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+}
+
+.talent-cost-card-aaa.cost-insufficient-card {
+  background: rgba(244, 67, 54, 0.1);
+  border-color: rgba(244, 67, 54, 0.3);
+}
+
+.talent-cost-card-aaa.premium-cost-card {
+  margin-top: 8px;
+}
+
+.cost-card-header-aaa {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cost-icon-large-aaa {
+  font-size: 24px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+}
+
+.cost-card-info-aaa {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.cost-status-icon-aaa {
+  font-size: 20px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.cost-status-icon-aaa.available {
+  color: #4CAF50;
+  text-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+  animation: check-pulse 2s ease-in-out infinite;
+}
+
+.cost-status-icon-aaa.insufficient {
+  color: #f44336;
+  text-shadow: 0 0 8px rgba(244, 67, 54, 0.6);
+}
+
+@keyframes check-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+.cost-time-info-aaa {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  background: rgba(74, 90, 122, 0.2);
+  border-radius: 4px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+}
+
+.time-icon-aaa {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.cost-icon {
+  font-size: 18px;
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.cost-icon.gp-icon {
+  color: #D4AF37;
+  text-shadow: 0 0 4px rgba(212, 175, 55, 0.4);
+}
+
+.cost-icon.premium-icon {
+  color: #4ECDC4;
+  text-shadow: 0 0 4px rgba(78, 205, 196, 0.4);
+}
+
+.talent-cost-value-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 12px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.talent-cost-value-aaa.cost-available-aaa {
+  color: #D4AF37;
+  font-weight: bold;
+  text-shadow: 
+    0 0 4px rgba(212, 175, 55, 0.4),
+    0 0 8px rgba(212, 175, 55, 0.2),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Цвет для кристаллов (бирюзовый) */
+.premium-cost-row .premium-cost.cost-available-aaa {
+  color: #4ECDC4;
+  font-weight: bold;
+  text-shadow: 
+    0 0 4px rgba(78, 205, 196, 0.4),
+    0 0 8px rgba(78, 205, 196, 0.2),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.talent-cost-value-aaa.cost-insufficient-aaa {
+  color: #f44336;
+  text-shadow: 
+    0 0 12px rgba(244, 67, 54, 0.7),
+    0 0 24px rgba(244, 67, 54, 0.4),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.talent-cost-warning-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #f44336;
+  text-shadow: 
+    0 0 4px rgba(244, 67, 54, 0.4),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+  margin-left: auto;
+  padding: 3px 6px;
+  background: rgba(244, 67, 54, 0.15);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  border-radius: 3px;
+}
+
+/* Блок 6: Кнопка действия - AAA */
+.talent-detail-actions-aaa {
+  display: flex;
+  margin-top: auto;
+  padding-top: 8px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.talent-detail-actions-aaa::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    rgba(90, 106, 122, 0.2) 20%,
+    rgba(90, 106, 122, 0.3) 50%,
+    rgba(90, 106, 122, 0.2) 80%,
+    transparent 100%);
+}
+
+.talent-upgrade-button-aaa {
+  width: 100%;
+  position: relative;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #E5E0C5;
+  text-shadow: 
+    0 0 4px rgba(229, 224, 197, 0.25),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+  text-align: center;
+  padding: 14px 20px;
+  border: 2px solid;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.button-icon-aaa {
+  font-size: 20px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+}
+
+.talent-upgrade-button-aaa {
+  background: linear-gradient(135deg, #2a4a3a 0%, #1a3a2a 50%, #2a4a3a 100%);
+  background-size: 200% 100%;
+  border-color: #5a7a6a;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(90, 122, 106, 0.2),
+    inset 0 2px 6px rgba(255, 255, 255, 0.1),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(90, 122, 106, 0.3);
+}
+
+.talent-upgrade-button-aaa.learn-button {
+  background: linear-gradient(135deg, #3a4a5a 0%, #2a3a4a 50%, #3a4a5a 100%);
+  border-color: #6a7a8a;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(106, 122, 138, 0.2),
+    inset 0 2px 6px rgba(255, 255, 255, 0.1),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(106, 122, 138, 0.3);
+}
+
+.talent-upgrade-button-aaa.upgrade-button {
+  background: linear-gradient(135deg, #2a4a3a 0%, #1a3a2a 50%, #2a4a3a 100%);
+  border-color: #5a7a6a;
+}
+
+.talent-upgrade-button-aaa:hover:not(.disabled) {
+  background-position: 100% 0;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 
+    0 6px 25px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(90, 122, 106, 0.3),
+    inset 0 2px 6px rgba(255, 255, 255, 0.15),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(90, 122, 106, 0.4);
+}
+
+.talent-upgrade-button-aaa.learn-button:hover:not(.disabled) {
+  border-color: #7a8a9a;
+  box-shadow: 
+    0 6px 25px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(106, 122, 138, 0.3),
+    inset 0 2px 6px rgba(255, 255, 255, 0.15),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(106, 122, 138, 0.4);
+}
+
+.talent-upgrade-button-aaa:active:not(.disabled) {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 
+    0 3px 15px rgba(76, 175, 80, 0.5),
+    0 0 30px rgba(76, 175, 80, 0.3),
+    inset 0 2px 6px rgba(255, 255, 255, 0.2),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.talent-upgrade-button-aaa.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: linear-gradient(135deg, #4a4a4a 0%, #2a2a2a 50%, #4a4a4a 100%);
+  border-color: #5a5a5a;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Кнопка "Купить GP" убрана - не нужна */
+
+.button-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.talent-upgrade-button-aaa:hover:not(.disabled) .button-glow {
+  opacity: 1;
+  animation: button-glow-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes button-glow-pulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.button-text {
+  position: relative;
+  z-index: 1;
+}
+
+.button-cost-aaa {
+  position: relative;
+  z-index: 1;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
+  margin-left: auto;
+  padding-left: 10px;
+  border-left: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+/* ============================================
+   Новые элементы: информация о GP и подсказки
+   ============================================ */
+
+.guild-info-hint-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #8A9BA8;
+  margin-left: 6px;
+  opacity: 0.8;
+  cursor: help;
+}
+
+.gp-contribution-info {
+  grid-column: 1 / -1;
+  margin-top: 2px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(74, 90, 122, 0.3);
+  font-size: 10px;
+}
+
+.endless-talent-hint-aaa {
+  margin-top: 6px;
+  padding: 6px 8px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 193, 7, 0.1) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 
+    0 2px 8px rgba(255, 215, 0, 0.2),
+    inset 0 1px 3px rgba(255, 215, 0, 0.1);
+  animation: hint-pulse 2s ease-in-out infinite;
+  font-size: 10px;
+}
+
+@keyframes hint-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 2px 8px rgba(255, 215, 0, 0.2),
+      inset 0 1px 3px rgba(255, 215, 0, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 2px 12px rgba(255, 215, 0, 0.4),
+      inset 0 1px 3px rgba(255, 215, 0, 0.2);
+  }
+}
+
+.hint-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.hint-text {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #FFD700;
+  text-shadow: 
+    0 0 4px rgba(255, 215, 0, 0.3),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+  line-height: 1.3;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.talents-progress-bar-aaa {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(74, 90, 122, 0.3);
+}
+
+.progress-label-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 9px;
+  color: #B8C5D1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
+  margin-bottom: 4px;
+}
+
+.progress-bar-wrapper-aaa {
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(to bottom, #1a2a3a, #0f1a2a);
+  border: 1px solid #3a4a5a;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.progress-bar-text-overlay-aaa {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 8px;
+  font-weight: bold;
+  color: #E5E0C5;
+  text-shadow: 
+    0 0 4px rgba(0, 0, 0, 0.8),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.progress-bar-fill-aaa {
+  height: 100%;
+  background: linear-gradient(to right, #4CAF50, #2E7D32);
+  border-radius: 4px;
+  box-shadow: 
+    0 0 8px rgba(76, 175, 80, 0.6),
+    inset 0 1px 0px rgba(255, 255, 255, 0.2);
+  transition: width 0.5s ease;
+}
+
+/* Бейджи для талантов */
+.endless-badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 6px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 193, 7, 0.15) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 4px;
+  font-size: 10px;
+  color: #FFD700;
+  font-weight: bold;
+  text-shadow: 0 0 4px rgba(255, 215, 0, 0.5);
+}
+
+.recommended-badge {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 12px;
+  animation: star-twinkle 1.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.6));
+}
+
+@keyframes star-twinkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+.max-level-badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 6px;
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.2) 0%, rgba(46, 125, 50, 0.15) 100%);
+  border: 1px solid rgba(76, 175, 80, 0.4);
+  border-radius: 4px;
+  font-size: 9px;
+  color: #4CAF50;
+  font-weight: bold;
+  text-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+}
+
+/* Стили для эндо-талантов */
+.talent-card-aaa.endless-talent {
+  border-left: 3px solid rgba(255, 215, 0, 0.5);
+}
+
+.talent-card-aaa.endless-talent.recommended {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(42, 58, 90, 0.92) 50%, rgba(255, 215, 0, 0.1) 100%);
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow: 
+    0 2px 8px rgba(255, 215, 0, 0.3),
+    0 0 15px rgba(255, 215, 0, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.08);
+}
+
+.talent-card-aaa.endless-talent.recommended:hover {
+  box-shadow: 
+    0 4px 12px rgba(255, 215, 0, 0.4),
+    0 0 20px rgba(255, 215, 0, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+/* Tooltip улучшения */
+.tooltip-endless-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 6px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 193, 7, 0.2) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  border-radius: 4px;
+  font-size: 10px;
+  color: #FFD700;
+  font-weight: bold;
+}
+
+.tooltip-hint {
+  margin-top: 8px;
+  padding: 6px 8px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 4px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #FFD700;
+  line-height: 1.4;
+}
+
+.tooltip-stats {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(74, 90, 122, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tooltip-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #B8C5D1;
+}
+
+.tooltip-stat-value {
+  color: #E5E0C5;
+  font-weight: bold;
+}
+
+.tooltip-stat-value.highlight {
+  color: #FFD700;
+  text-shadow: 0 0 4px rgba(255, 215, 0, 0.5);
+}
+
+.tooltip-stat-value.efficiency {
+  color: #4CAF50;
+  text-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+}
+
+/* Подсказки о стоимости */
+.cost-source-hint {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #8A9BA8;
+  margin-left: 6px;
+  opacity: 0.7;
+  cursor: help;
+}
+
+.talent-detail-hint-aaa {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #8A9BA8;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.endless-upgrade-hint-aaa {
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 6px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  color: #FFD700;
+  line-height: 1.5;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.15);
+}
+
+.hint-icon-large-aaa {
+  font-size: 20px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.5));
+}
+
+.hint-text-large-aaa {
+  flex: 1;
+}
+
+/* Дополнительные стили для улучшенной системы */
+.gp-weekly-info {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #8A9BA8;
+  margin-left: 6px;
+  opacity: 0.7;
+}
+
+.cost-time-info-aaa {
+  margin-top: 6px;
+  padding: 6px 8px;
+  background: rgba(74, 90, 122, 0.2);
+  border: 1px solid rgba(74, 90, 122, 0.4);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+}
+
+.time-label {
+  color: #B8C5D1;
+}
+
+.time-value {
+  color: #FFD700;
+  font-weight: bold;
+}
+
+.talent-efficiency-info-aaa {
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.15);
+}
+
+.efficiency-icon-aaa {
+  font-size: 18px;
+  color: #4CAF50;
+  filter: drop-shadow(0 0 4px rgba(76, 175, 80, 0.5));
+  flex-shrink: 0;
+}
+
+.efficiency-label {
+  color: #B8C5D1;
+}
+
+.efficiency-value {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.recommended-talents-hint-aaa {
+  margin-top: 6px;
+  padding: 6px 8px;
+  background: linear-gradient(135deg, rgba(255, 152, 0, 0.15) 0%, rgba(255, 193, 7, 0.1) 100%);
+  border: 1px solid rgba(255, 152, 0, 0.3);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 
+    0 2px 8px rgba(255, 152, 0, 0.2),
+    inset 0 1px 3px rgba(255, 152, 0, 0.1);
+  font-size: 10px;
+}
+
+.priority-badge {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 12px;
+  animation: fire-pulse 1.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px rgba(255, 87, 34, 0.6));
+}
+
+@keyframes fire-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+.progress-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(to right, #4CAF50, #2E7D32);
+  border-radius: 0 0 6px 6px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+}
+
+.talent-card-level-aaa {
+  position: relative;
+}
+
+.talent-stats-block-aaa {
+  margin-top: 6px;
+  padding: 6px 8px;
+  background: linear-gradient(135deg, rgba(26, 42, 58, 0.4) 0%, rgba(15, 26, 42, 0.4) 100%);
+  border: 1px solid rgba(74, 90, 122, 0.3);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stats-row-aaa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+}
+
+.stats-label-aaa {
+  color: #B8C5D1;
+}
+
+.stats-value-aaa {
+  color: #E5E0C5;
+  font-weight: bold;
+}
+
+.stats-value-aaa.efficiency-stats {
+  color: #4CAF50;
+  text-shadow: 0 0 4px rgba(76, 175, 80, 0.3);
+}
+
+.talent-upgrade-button-aaa.premium-available {
+  background: linear-gradient(135deg, #2a4a5a 0%, #1a3a4a 50%, #2a4a5a 100%);
+  border-color: #5a7a8a;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(78, 205, 196, 0.15),
+    inset 0 2px 4px rgba(255, 255, 255, 0.1),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(78, 205, 196, 0.2);
+}
+
+.talent-upgrade-button-aaa.premium-available:hover:not(.disabled) {
+  border-color: #6a8a9a;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(78, 205, 196, 0.2),
+    inset 0 2px 4px rgba(255, 255, 255, 0.12),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(78, 205, 196, 0.25);
+}
+
+.endless-preview-aaa {
+  margin-top: 10px;
+  padding: 8px;
+  background: rgba(255, 215, 0, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 4px;
+}
+
+.preview-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  color: #B8C5D1;
+}
+
+.preview-row:last-child {
+  margin-bottom: 0;
+}
+
+.preview-value {
+  color: #E5E0C5;
+  font-weight: bold;
+}
+
+.preview-value.highlight {
+  color: #FFD700;
+  text-shadow: 0 0 4px rgba(255, 215, 0, 0.5);
+}
+
+.preview-value.positive {
+  color: #4CAF50;
+  text-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+}
+
+.max-level-hint-aaa {
+  margin-top: 8px;
+  padding: 6px 8px;
+  background: rgba(138, 155, 168, 0.1);
+  border: 1px solid rgba(138, 155, 168, 0.3);
+  border-radius: 4px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #8A9BA8;
+  font-style: italic;
+  text-align: center;
+}

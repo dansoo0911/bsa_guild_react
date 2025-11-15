@@ -1,0 +1,402 @@
+/* ============================================
+   ТЕХНИЧЕСКОЕ ОКНО НАСТРОЕК
+   ============================================ */
+
+.dev-settings-panel {
+  width: auto;
+  min-width: 160px;
+  background: linear-gradient(135deg, rgba(15, 25, 40, 0.95) 0%, rgba(10, 18, 30, 0.95) 100%);
+  border: 1px solid rgba(100, 181, 246, 0.3);
+  border-radius: 6px;
+  overflow: visible;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  position: relative;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.dev-settings-panel:hover {
+  border-color: rgba(100, 181, 246, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.dev-settings-panel.expanded {
+  border-color: rgba(100, 181, 246, 0.6);
+  box-shadow: 0 4px 16px rgba(100, 181, 246, 0.3);
+}
+
+.dev-settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(30, 45, 65, 0.9) 0%, rgba(20, 32, 50, 0.9) 100%);
+  border-bottom: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  border-radius: 6px;
+}
+
+.dev-settings-header:hover {
+  background: linear-gradient(135deg, rgba(40, 55, 75, 0.95) 0%, rgba(30, 42, 60, 0.95) 100%);
+  border-bottom-color: rgba(100, 181, 246, 0.4);
+}
+
+.dev-settings-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dev-settings-icon {
+  font-size: 14px;
+  filter: drop-shadow(0 0 4px rgba(100, 181, 246, 0.6));
+}
+
+.dev-settings-label {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #64B5F6;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 6px rgba(100, 181, 246, 0.6);
+}
+
+.dev-settings-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  color: #64B5F6;
+  background: rgba(100, 181, 246, 0.1);
+  border: 1px solid rgba(100, 181, 246, 0.3);
+  border-radius: 3px;
+  transition: all 0.2s ease;
+}
+
+.dev-settings-toggle:hover {
+  background: rgba(100, 181, 246, 0.2);
+  border-color: rgba(100, 181, 246, 0.5);
+}
+
+.dev-settings-panel.expanded .dev-settings-toggle {
+  transform: rotate(180deg);
+  background: rgba(100, 181, 246, 0.25);
+  border-color: rgba(100, 181, 246, 0.6);
+}
+
+.dev-settings-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  padding: 10px;
+  background: linear-gradient(135deg, rgba(15, 25, 40, 0.98) 0%, rgba(10, 18, 30, 0.98) 100%);
+  border: 1px solid rgba(100, 181, 246, 0.3);
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  min-width: 280px;
+  animation: expandSettings 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@keyframes expandSettings {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 500px;
+  }
+}
+
+.dev-settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  background: rgba(20, 32, 50, 0.5);
+  border: 1px solid rgba(100, 181, 246, 0.2);
+  border-radius: 4px;
+}
+
+.dev-section-title {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  font-weight: bold;
+  color: #64B5F6;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.dev-role-selector {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.dev-role-btn {
+  padding: 4px 10px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  font-weight: bold;
+  color: #C8D5E1;
+  background: linear-gradient(135deg, rgba(30, 45, 65, 0.6) 0%, rgba(20, 32, 50, 0.6) 100%);
+  border: 1px solid rgba(100, 181, 246, 0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.dev-role-btn:hover {
+  background: linear-gradient(135deg, rgba(40, 55, 75, 0.7) 0%, rgba(30, 42, 60, 0.7) 100%);
+  border-color: rgba(100, 181, 246, 0.5);
+  color: #90CAF9;
+  transform: translateY(-1px);
+}
+
+.dev-role-btn.active {
+  background: linear-gradient(135deg, rgba(100, 181, 246, 0.3) 0%, rgba(66, 165, 245, 0.25) 100%);
+  border-color: rgba(100, 181, 246, 0.6);
+  color: #64B5F6;
+  box-shadow: 0 0 8px rgba(100, 181, 246, 0.4);
+}
+
+.dev-current-role {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: rgba(20, 32, 50, 0.6);
+  border: 1px solid rgba(100, 181, 246, 0.3);
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+.dev-current-label {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 9px;
+  color: #B8C5D1;
+  opacity: 0.8;
+}
+
+.dev-current-value {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #64B5F6;
+  text-shadow: 0 0 6px rgba(100, 181, 246, 0.7);
+}
+
+.dev-current-value.role-глава {
+  color: #FFD700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+}
+
+.dev-current-value.role-заместитель {
+  color: #FF6B6B;
+  text-shadow: 0 0 8px rgba(255, 107, 107, 0.8);
+}
+
+.dev-current-value.role-ветеран {
+  color: #4ECDC4;
+  text-shadow: 0 0 8px rgba(78, 205, 196, 0.8);
+}
+
+.dev-current-value.role-новобранец {
+  color: #95A5A6;
+  text-shadow: 0 0 8px rgba(149, 165, 166, 0.8);
+}
+
+.dev-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(15, 25, 40, 0.4);
+  border: 1px dashed rgba(100, 181, 246, 0.2);
+  border-radius: 4px;
+}
+
+.dev-placeholder-text {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #6B7A8F;
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.dev-crystals-control {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.dev-crystals-input {
+  flex: 1;
+  padding: 6px 10px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  color: #C8D5E1;
+  background: rgba(15, 25, 40, 0.6);
+  border: 1px solid rgba(100, 181, 246, 0.3);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.dev-crystals-input:focus {
+  outline: none;
+  border-color: rgba(100, 181, 246, 0.6);
+  background: rgba(20, 32, 50, 0.8);
+  box-shadow: 0 0 8px rgba(100, 181, 246, 0.3);
+}
+
+.dev-crystals-apply {
+  padding: 6px 12px;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  font-weight: bold;
+  color: #64B5F6;
+  background: linear-gradient(135deg, rgba(100, 181, 246, 0.2) 0%, rgba(66, 165, 245, 0.15) 100%);
+  border: 1px solid rgba(100, 181, 246, 0.4);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.dev-crystals-apply:hover {
+  background: linear-gradient(135deg, rgba(100, 181, 246, 0.3) 0%, rgba(66, 165, 245, 0.25) 100%);
+  border-color: rgba(100, 181, 246, 0.6);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(100, 181, 246, 0.3);
+}
+
+.dev-current-value-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: rgba(20, 32, 50, 0.6);
+  border: 1px solid rgba(100, 181, 246, 0.3);
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+/* Спидран настройки */
+.dev-speedrun-control {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dev-speedrun-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.dev-speedrun-label {
+  font-size: 11px;
+  color: #B8C5D1;
+  font-weight: 500;
+}
+
+.dev-speedrun-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  background: rgba(20, 30, 45, 0.4);
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+.dev-speedrun-status-value {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.dev-speedrun-status-value.active {
+  color: #4CAF50;
+  background: rgba(76, 175, 80, 0.2);
+}
+
+.dev-speedrun-status-value.inactive {
+  color: #F44336;
+  background: rgba(244, 67, 54, 0.2);
+}
+
+/* Toggle Switch */
+.dev-toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.dev-toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.dev-toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(60, 80, 110, 0.6);
+  transition: 0.3s;
+  border-radius: 24px;
+  border: 1px solid rgba(100, 181, 246, 0.3);
+}
+
+.dev-toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #B8C5D1;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.dev-toggle-switch input:checked + .dev-toggle-slider {
+  background-color: rgba(100, 181, 246, 0.4);
+  border-color: rgba(100, 181, 246, 0.6);
+}
+
+.dev-toggle-switch input:checked + .dev-toggle-slider:before {
+  transform: translateX(20px);
+  background-color: #64B5F6;
+}
+
+.dev-toggle-switch:hover .dev-toggle-slider {
+  box-shadow: 0 0 8px rgba(100, 181, 246, 0.4);
+}
+

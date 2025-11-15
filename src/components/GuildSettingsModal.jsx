@@ -1,0 +1,663 @@
+import { useState, useEffect } from 'react'
+import './GuildSettingsModal.css'
+import currencyRuby from '../assets/images/currency_ruby.png'
+import { roleColorTemplates, rolePermissions } from '../config/roleColorTemplates'
+
+function GuildSettingsModal({ isOpen, onClose, guildName, guildDescription = '', onSave }) {
+  const [activeTab, setActiveTab] = useState('guild') // 'guild', 'roles', or 'history'
+  const [name, setName] = useState(guildName)
+  const [description, setDescription] = useState(guildDescription)
+  const [autoAccept, setAutoAccept] = useState(false)
+  const [showPaymentModal, setShowPaymentModal] = useState(false)
+  const [nameChanged, setNameChanged] = useState(false)
+  
+  // Роли
+  const [roles, setRoles] = useState([
+    { id: 'leader', name: 'Глава', color: 'red', permissions: rolePermissions.map(p => p.id), isDefault: true },
+    { id: 'deputy', name: 'Заместитель', color: 'pink', permissions: rolePermissions.map(p => p.id), isDefault: true },
+    { id: 'veteran', name: 'Ветеран', color: 'purple', permissions: ['view_guild_balance', 'send_chat_messages'], isDefault: true },
+    { id: 'newbie', name: 'Новобранец', color: 'blue', permissions: ['view_guild_balance', 'send_chat_messages'], isDefault: true }
+  ])
+  const [editingRole, setEditingRole] = useState(null)
+  const [customRoles, setCustomRoles] = useState([])
+  const [showCreateRoleModal, setShowCreateRoleModal] = useState(false)
+  const [newRoleName, setNewRoleName] = useState('')
+  const [selectedTemplateName, setSelectedTemplateName] = useState('')
+  
+  // Предложенные названия ролей
+  const roleNameTemplates = [
+    'Офицер',
+    'Капитан',
+    'Командир',
+    'Стратег',
+    'Тактик',
+    'Воитель',
+    'Маг',
+    'Лекарь',
+    'Разведчик',
+    'Защитник',
+    'Атакующий',
+    'Поддержка',
+    'Элита',
+    'Мастер',
+    'Эксперт',
+    'Профессионал',
+    'Специалист',
+    'Ветеран',
+    'Опытный',
+    'Новичок'
+  ]
+
+  // История гильдии (моковые данные)
+  const [guildHistory] = useState([
+    {
+      id: 1,
+      type: 'currency_spent',
+      currency: 'GP',
+      amount: 50000,
+      player: 'Player_Leader',
+      item: 'Роль гильдии',
+      timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 часа назад
+    },
+    {
+      id: 2,
+      type: 'role_changed',
+      player: 'Storm_Warrior',
+      oldRole: 'Новобранец',
+      newRole: 'Ветеран',
+      changedBy: 'Player_Leader',
+      timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000), // 5 часов назад
+    },
+    {
+      id: 3,
+      type: 'member_added',
+      player: 'Ice_Mage',
+      addedBy: 'Player_Leader',
+      timestamp: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000), // 1 день назад
+    },
+    {
+      id: 4,
+      type: 'currency_spent',
+      currency: 'Кристаллы',
+      amount: 200,
+      player: 'Deputy_Player',
+      item: 'Загрузка картинки гильдии',
+      timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), // 2 дня назад
+    },
+    {
+      id: 5,
+      type: 'member_removed',
+      player: 'Old_Member',
+      removedBy: 'Player_Leader',
+      reason: 'Неактивность',
+      timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000), // 3 дня назад
+    },
+    {
+      id: 6,
+      type: 'member_updated',
+      player: 'Active_Player',
+      changes: ['Уровень: 85 → 87', 'Заслуги: 45000 → 52000'],
+      updatedBy: 'System',
+      timestamp: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000), // 4 дня назад
+    },
+    {
+      id: 7,
+      type: 'role_changed',
+      player: 'New_Recruit',
+      oldRole: 'Новобранец',
+      newRole: 'Офицер',
+      changedBy: 'Deputy_Player',
+      timestamp: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000), // 6 дней назад
+    },
+  ])
+
+  useEffect(() => {
+    if (isOpen) {
+      setName(guildName)
+      setDescription(guildDescription)
+      setNameChanged(false)
+      setEditingRole(null)
+    }
+  }, [isOpen, guildName, guildDescription])
+
+  const handleNameChange = (e) => {
+    const newName = e.target.value
+    setName(newName)
+    if (newName !== guildName) {
+      setNameChanged(true)
+    } else {
+      setNameChanged(false)
+    }
+  }
+
+  const handleDescriptionChange = (e) => {
+    setDescription(e.target.value)
+  }
+
+  const handleAutoAcceptChange = (e) => {
+    setAutoAccept(e.target.checked)
+  }
+
+  const handleSave = () => {
+    if (nameChanged) {
+      setShowPaymentModal(true)
+    } else {
+      onSave({
+        name: name,
+        description: description,
+        autoAccept: autoAccept,
+        roles: [...roles, ...customRoles]
+      })
+      onClose()
+    }
+  }
+
+  const handlePaymentConfirm = () => {
+    onSave({
+      name: name,
+      description: description,
+      autoAccept: autoAccept,
+      roles: [...roles, ...customRoles]
+    })
+    setShowPaymentModal(false)
+    onClose()
+  }
+
+  const handlePaymentCancel = () => {
+    setShowPaymentModal(false)
+    setName(guildName)
+    setNameChanged(false)
+  }
+
+  const isRoleEditable = (roleId) => {
+    return roleId !== 'leader' && roleId !== 'deputy'
+  }
+
+  const handleRoleColorChange = (roleId, colorId) => {
+    if (editingRole === roleId && isRoleEditable(roleId)) {
+      setRoles(roles.map(r => r.id === roleId ? { ...r, color: colorId } : r))
+      setCustomRoles(customRoles.map(r => r.id === roleId ? { ...r, color: colorId } : r))
+    }
+  }
+
+  const handleRolePermissionToggle = (roleId, permissionId) => {
+    if (editingRole === roleId && isRoleEditable(roleId)) {
+      const updateRole = (role) => {
+        if (role.id === roleId) {
+          const hasPermission = role.permissions.includes(permissionId)
+          return {
+            ...role,
+            permissions: hasPermission
+              ? role.permissions.filter(p => p !== permissionId)
+              : [...role.permissions, permissionId]
+          }
+        }
+        return role
+      }
+      setRoles(roles.map(updateRole))
+      setCustomRoles(customRoles.map(updateRole))
+    }
+  }
+
+  const handleRoleNameChange = (roleId, newName) => {
+    if (editingRole === roleId && isRoleEditable(roleId)) {
+      const updateRole = (role) => {
+        if (role.id === roleId) {
+          return { ...role, name: newName }
+        }
+        return role
+      }
+      setRoles(roles.map(updateRole))
+      setCustomRoles(customRoles.map(updateRole))
+    }
+  }
+
+  const handleCreateCustomRole = () => {
+    setShowCreateRoleModal(true)
+    setNewRoleName('')
+    setSelectedTemplateName('')
+  }
+
+  const handleCreateRoleConfirm = () => {
+    const roleName = selectedTemplateName || newRoleName || 'Новая роль'
+    const newRole = {
+      id: `custom_${Date.now()}`,
+      name: roleName,
+      color: 'blue',
+      permissions: ['view_guild_balance', 'send_chat_messages'],
+      isDefault: false
+    }
+    setCustomRoles([...customRoles, newRole])
+    setEditingRole(newRole.id)
+    setShowCreateRoleModal(false)
+    setNewRoleName('')
+    setSelectedTemplateName('')
+  }
+
+  const handleCreateRoleCancel = () => {
+    setShowCreateRoleModal(false)
+    setNewRoleName('')
+    setSelectedTemplateName('')
+  }
+
+  const handleTemplateNameSelect = (templateName) => {
+    setSelectedTemplateName(templateName)
+    setNewRoleName('')
+  }
+
+  const formatHistoryTime = (timestamp) => {
+    const now = new Date()
+    const diff = now - timestamp
+    const minutes = Math.floor(diff / 60000)
+    const hours = Math.floor(diff / 3600000)
+    const days = Math.floor(diff / 86400000)
+
+    if (minutes < 60) {
+      return `${minutes} мин. назад`
+    } else if (hours < 24) {
+      return `${hours} ч. назад`
+    } else if (days < 7) {
+      return `${days} дн. назад`
+    } else {
+      return timestamp.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', year: 'numeric' })
+    }
+  }
+
+  const handleDeleteCustomRole = (roleId) => {
+    if (window.confirm('Вы уверены, что хотите удалить эту роль?')) {
+      setCustomRoles(customRoles.filter(r => r.id !== roleId))
+      if (editingRole === roleId) {
+        setEditingRole(null)
+      }
+    }
+  }
+
+  const getRoleColor = (colorId) => {
+    const template = roleColorTemplates.find(t => t.id === colorId)
+    return template ? template.color : '#4169E1'
+  }
+
+  const getRoleGradient = (colorId) => {
+    const template = roleColorTemplates.find(t => t.id === colorId)
+    return template ? template.gradient : 'linear-gradient(135deg, #4169E1 0%, #1E40AF 100%)'
+  }
+
+  if (!isOpen) return null
+
+  const allRoles = [...roles, ...customRoles]
+
+  return (
+    <>
+      <div className="modal-overlay" onClick={onClose}>
+        <div className="modal-content settings-modal-content" onClick={(e) => e.stopPropagation()}>
+          <div className="modal-header">
+            <h2 className="modal-title">Настройки гильдии</h2>
+            <button className="modal-close-button" onClick={onClose}>×</button>
+          </div>
+          
+          {/* Вкладки */}
+          <div className="settings-tabs">
+            <button 
+              className={`settings-tab ${activeTab === 'guild' ? 'active' : ''}`}
+              onClick={() => setActiveTab('guild')}
+            >
+              Настройки гильдии
+            </button>
+            <button 
+              className={`settings-tab ${activeTab === 'roles' ? 'active' : ''}`}
+              onClick={() => setActiveTab('roles')}
+            >
+              Настройки ролей
+            </button>
+            <button 
+              className={`settings-tab ${activeTab === 'history' ? 'active' : ''}`}
+              onClick={() => setActiveTab('history')}
+            >
+              История гильдии
+            </button>
+          </div>
+
+          <div className="modal-body">
+            {activeTab === 'guild' ? (
+              <>
+                <div className="settings-section">
+                  <h3 className="settings-section-title">Основные настройки</h3>
+                  <div className="settings-item">
+                    <label className="settings-label">
+                      Название гильдии
+                      {nameChanged && (
+                        <span className="payment-info-inline">
+                          <img src={currencyRuby} alt="Рубины" className="currency-icon-small" />
+                          <span className="payment-cost">100</span>
+                        </span>
+                      )}
+                    </label>
+                    <input 
+                      type="text" 
+                      className="settings-input" 
+                      placeholder="Введите название" 
+                      value={name}
+                      onChange={handleNameChange}
+                    />
+                    {nameChanged && (
+                      <div className="payment-restriction">
+                        <span className="restriction-icon">⏱</span>
+                        <span className="restriction-text">Переименование доступно не чаще 1 раза в 7 дней</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="settings-item">
+                    <label className="settings-label">Описание гильдии</label>
+                    <textarea 
+                      className="settings-textarea" 
+                      placeholder="Введите описание" 
+                      rows="4"
+                      value={description}
+                      onChange={handleDescriptionChange}
+                    ></textarea>
+                  </div>
+                </div>
+                <div className="settings-section">
+                  <h3 className="settings-section-title">Права доступа</h3>
+                  <div className="settings-item">
+                    <label className="settings-checkbox-label">
+                      <input 
+                        type="checkbox" 
+                        className="settings-checkbox" 
+                        checked={autoAccept}
+                        onChange={handleAutoAcceptChange}
+                      />
+                      <span>Автоматическое принятие заявок</span>
+                    </label>
+                  </div>
+                </div>
+              </>
+            ) : activeTab === 'roles' ? (
+              <div className="settings-section">
+                <div className="roles-header">
+                  <h3 className="settings-section-title">Управление ролями</h3>
+                  <button className="create-role-button" onClick={handleCreateCustomRole}>
+                    + Создать роль
+                  </button>
+                </div>
+                
+                <div className="roles-list">
+                  {allRoles.map((role) => (
+                    <div 
+                      key={role.id} 
+                      className={`role-card ${editingRole === role.id ? 'editing' : ''}`}
+                    >
+                      <div 
+                        className={`role-card-header ${!isRoleEditable(role.id) ? 'role-locked' : ''}`}
+                        onClick={() => {
+                          if (isRoleEditable(role.id)) {
+                            setEditingRole(editingRole === role.id ? null : role.id)
+                          }
+                        }}
+                      >
+                        <div className="role-card-info">
+                          <div 
+                            className="role-color-preview"
+                            style={{ background: getRoleGradient(role.color) }}
+                          ></div>
+                          <div className="role-name-display">
+                            {editingRole === role.id && isRoleEditable(role.id) ? (
+                              <input
+                                type="text"
+                                className="role-name-input"
+                                value={role.name}
+                                onChange={(e) => handleRoleNameChange(role.id, e.target.value)}
+                                onClick={(e) => e.stopPropagation()}
+                              />
+                            ) : (
+                              <span className="role-name-text">{role.name}</span>
+                            )}
+                            {role.isDefault && <span className="role-default-badge">По умолчанию</span>}
+                            {!isRoleEditable(role.id) && <span className="role-locked-badge">🔒 Заблокировано</span>}
+                          </div>
+                        </div>
+                        <div className="role-card-actions">
+                          {!role.isDefault && (
+                            <button
+                              className="role-delete-button"
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                handleDeleteCustomRole(role.id)
+                              }}
+                              title="Удалить роль"
+                            >
+                              ×
+                            </button>
+                          )}
+                          {isRoleEditable(role.id) && (
+                            <span className="role-expand-icon">{editingRole === role.id ? '▲' : '▼'}</span>
+                          )}
+                        </div>
+                      </div>
+                      
+                      {editingRole === role.id && isRoleEditable(role.id) && (
+                        <div className="role-card-details">
+                          <div className="role-color-section">
+                            <label className="role-detail-label">Цвет роли</label>
+                            <div className="color-templates-grid">
+                              {roleColorTemplates.map((template) => (
+                                <button
+                                  key={template.id}
+                                  className={`color-template ${role.color === template.id ? 'selected' : ''}`}
+                                  style={{ background: template.gradient }}
+                                  onClick={() => handleRoleColorChange(role.id, template.id)}
+                                  title={template.name}
+                                >
+                                  {role.color === template.id && <span className="color-check">✓</span>}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                          
+                          <div className="role-permissions-section">
+                            <label className="role-detail-label">Права доступа</label>
+                            <div className="permissions-list">
+                              {rolePermissions.map((permission) => {
+                                const hasPermission = role.permissions.includes(permission.id)
+                                return (
+                                  <label key={permission.id} className="permission-item">
+                                    <input
+                                      type="checkbox"
+                                      checked={hasPermission}
+                                      onChange={() => handleRolePermissionToggle(role.id, permission.id)}
+                                    />
+                                    <div className="permission-info">
+                                      <span className="permission-name">{permission.name}</span>
+                                      <span className="permission-description">{permission.description}</span>
+                                    </div>
+                                  </label>
+                                )
+                              })}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="settings-section">
+                <h3 className="settings-section-title">История действий</h3>
+                <div className="history-list">
+                  {guildHistory.length === 0 ? (
+                    <div className="history-empty">
+                      <div className="history-empty-icon">📜</div>
+                      <div className="history-empty-text">История пуста</div>
+                    </div>
+                  ) : (
+                    guildHistory.map((event) => (
+                      <div key={event.id} className="history-item">
+                        <div className="history-item-content">
+                          <div className="history-item-header">
+                            <span className="history-item-title">
+                              {event.type === 'currency_spent' && (
+                                <>
+                                  <strong>{event.player}</strong> потратил{' '}
+                                  <strong>{event.amount.toLocaleString()} {event.currency}</strong> на{' '}
+                                  <strong>{event.item}</strong>
+                                </>
+                              )}
+                              {event.type === 'role_changed' && (
+                                <>
+                                  <strong>{event.changedBy}</strong> изменил роль{' '}
+                                  <strong>{event.player}</strong> с{' '}
+                                  <span className="history-role-old">{event.oldRole}</span> на{' '}
+                                  <span className="history-role-new">{event.newRole}</span>
+                                </>
+                              )}
+                              {event.type === 'member_added' && (
+                                <>
+                                  <strong>{event.addedBy}</strong> добавил участника{' '}
+                                  <strong>{event.player}</strong>
+                                </>
+                              )}
+                              {event.type === 'member_removed' && (
+                                <>
+                                  <strong>{event.removedBy}</strong> исключил участника{' '}
+                                  <strong>{event.player}</strong>
+                                  {event.reason && ` (${event.reason})`}
+                                </>
+                              )}
+                              {event.type === 'member_updated' && (
+                                <>
+                                  <strong>{event.player}</strong> обновлен{' '}
+                                  {event.updatedBy !== 'System' && `(${event.updatedBy})`}
+                                </>
+                              )}
+                            </span>
+                            <span className="history-item-time">
+                              {formatHistoryTime(event.timestamp)}
+                            </span>
+                          </div>
+                          {event.type === 'member_updated' && event.changes && (
+                            <div className="history-item-changes">
+                              {event.changes.map((change, idx) => (
+                                <span key={idx} className="history-change-item">{change}</span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+          
+          <div className="modal-footer">
+            <button className="modal-button modal-button-cancel" onClick={onClose}>
+              Отмена
+            </button>
+            <button className="modal-button modal-button-save" onClick={handleSave}>
+              Сохранить
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      {showPaymentModal && (
+        <div className="modal-overlay" onClick={handlePaymentCancel}>
+          <div className="modal-content payment-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2 className="modal-title">Оплата изменения названия</h2>
+              <button className="modal-close-button" onClick={handlePaymentCancel}>×</button>
+            </div>
+            <div className="modal-body">
+              <div className="payment-info">
+                <p className="payment-text">Изменение названия гильдии стоит:</p>
+                <div className="payment-amount-container">
+                  <img src={currencyRuby} alt="Рубины" className="currency-icon-large" />
+                  <span className="payment-amount">100</span>
+                </div>
+                <p className="payment-text-small">Новое название: <strong>{name}</strong></p>
+                <div className="payment-restriction-block">
+                  <span className="restriction-icon">⏱</span>
+                  <span className="restriction-text">Переименование доступно не чаще 1 раза в 7 дней</span>
+                </div>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button className="modal-button modal-button-cancel" onClick={handlePaymentCancel}>
+                Отмена
+              </button>
+              <button className="modal-button modal-button-save" onClick={handlePaymentConfirm}>
+                Оплатить и сохранить
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      {showCreateRoleModal && (
+        <div className="modal-overlay" onClick={handleCreateRoleCancel}>
+          <div className="modal-content create-role-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2 className="modal-title">Создание новой роли</h2>
+              <button className="modal-close-button" onClick={handleCreateRoleCancel}>×</button>
+            </div>
+            <div className="modal-body">
+              <div className="create-role-content">
+                <div className="create-role-section">
+                  <label className="role-detail-label">Выберите название из списка</label>
+                  <div className="role-name-templates-grid">
+                    {roleNameTemplates.map((template) => (
+                      <button
+                        key={template}
+                        className={`role-name-template ${selectedTemplateName === template ? 'selected' : ''}`}
+                        onClick={() => handleTemplateNameSelect(template)}
+                      >
+                        {template}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="create-role-section">
+                  <label className="role-detail-label">Или введите свое название</label>
+                  <input
+                    type="text"
+                    className="settings-input"
+                    placeholder="Введите название роли"
+                    value={newRoleName}
+                    onChange={(e) => {
+                      setNewRoleName(e.target.value)
+                      setSelectedTemplateName('')
+                    }}
+                  />
+                </div>
+                
+                {(selectedTemplateName || newRoleName.trim()) && (
+                  <div className="create-role-preview">
+                    <span className="preview-label">Выбрано:</span>
+                    <span className="preview-value">{selectedTemplateName || newRoleName}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button className="modal-button modal-button-cancel" onClick={handleCreateRoleCancel}>
+                Отмена
+              </button>
+              <button 
+                className="modal-button modal-button-save" 
+                onClick={handleCreateRoleConfirm}
+                disabled={!selectedTemplateName && !newRoleName.trim()}
+              >
+                Создать роль
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  )
+}
+
+export default GuildSettingsModal

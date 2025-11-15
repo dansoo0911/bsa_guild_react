@@ -1,0 +1,1052 @@
+.guild-panel {
+  width: 250px;
+  min-height: auto;
+  padding: 8px;
+  background: linear-gradient(to bottom, #1a2a3a, #0f1a2a);
+  border: 1px solid #3a4a5a;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.27);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 100%;
+  height: 100%;
+}
+
+/* Скролл для всей панели гильдии */
+.guild-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.guild-panel::-webkit-scrollbar-track {
+  background: rgba(15, 26, 42, 0.4);
+  border-radius: 3px;
+  margin: 2px 0;
+}
+
+.guild-panel::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, rgba(100, 120, 150, 0.6), rgba(74, 90, 122, 0.6));
+  border-radius: 3px;
+  border: 1px solid rgba(15, 26, 42, 0.3);
+}
+
+.guild-panel::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, rgba(120, 140, 170, 0.8), rgba(90, 110, 140, 0.8));
+}
+
+.guild-header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.guild-avatar-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.guild-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(212, 175, 55, 0.1) 100%);
+  box-shadow: 
+    0 0 12px rgba(255, 215, 0, 0.3),
+    inset 0 0 8px rgba(255, 215, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.guild-avatar:hover {
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.5),
+    inset 0 0 12px rgba(255, 215, 0, 0.2);
+  transform: scale(1.05);
+}
+
+.avatar-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+  animation: avatar-pulse 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes avatar-pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+.avatar-placeholder {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 
+    0 0 8px rgba(255, 215, 0, 0.6),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  position: relative;
+}
+
+.avatar-level-badge {
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    0 0 8px rgba(255, 215, 0, 0.6),
+    0 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.guild-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.guild-title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+}
+
+.guild-name {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 15px;
+  font-weight: bold;
+  color: #E5E0C5;
+  text-shadow: 
+    0 0 8px rgba(229, 224, 197, 0.3),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+  text-align: left;
+  line-height: 1.2;
+  letter-spacing: 0.3px;
+}
+
+.guild-level-badge {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  color: #FFD700;
+  text-shadow: 
+    0 0 6px rgba(255, 215, 0, 0.5),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+  text-align: left;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.guild-exp-bar-container {
+  width: 100%;
+  padding: 8px 10px;
+  background: linear-gradient(135deg, rgba(26, 42, 58, 0.5) 0%, rgba(15, 25, 35, 0.4) 100%);
+  border: 1px solid rgba(76, 175, 80, 0.2);
+  border-radius: 8px;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.guild-exp-bar-container:hover {
+  border-color: rgba(76, 175, 80, 0.4);
+  box-shadow: 
+    0 4px 12px rgba(76, 175, 80, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+.guild-exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.exp-label {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 9px;
+  color: #C8D5E1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.exp-percent {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #4CAF50;
+  text-shadow: 
+    0 0 8px rgba(76, 175, 80, 0.6),
+    0 0 12px rgba(76, 175, 80, 0.3);
+}
+
+.guild-exp-bar {
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(to bottom, rgba(20, 30, 45, 0.8), rgba(15, 25, 35, 0.9));
+  border: 1px solid rgba(42, 58, 74, 0.5);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.6),
+    0 0 4px rgba(76, 175, 80, 0.2);
+  margin-bottom: 6px;
+  position: relative;
+}
+
+.guild-exp-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50 0%, #66BB6A 50%, #4CAF50 100%);
+  border-radius: 4px;
+  box-shadow: 
+    0 0 12px rgba(76, 175, 80, 0.8),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.exp-bar-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: exp-shine 2.5s infinite;
+}
+
+@keyframes exp-shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.exp-bar-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(2px 2px at 60% 70%, rgba(255, 255, 255, 0.2), transparent),
+    radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.4), transparent);
+  background-size: 200% 200%;
+  animation: particles-float 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes particles-float {
+  0%, 100% {
+    background-position: 0% 0%, 100% 100%, 50% 50%;
+  }
+  50% {
+    background-position: 100% 100%, 0% 0%, 50% 50%;
+  }
+}
+
+.guild-exp-text {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 9px;
+  color: #B8C5D1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
+  text-align: left;
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-wrap: wrap;
+}
+
+.exp-current {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.exp-separator {
+  color: #8A9BA8;
+}
+
+.exp-required {
+  color: #B8C5D1;
+}
+
+.exp-remaining {
+  color: #8A9BA8;
+  font-size: 9px;
+  margin-left: 4px;
+  font-style: italic;
+}
+
+.guild-points {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(212, 175, 55, 0.1) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: 
+    0 0 16px rgba(255, 215, 0, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.guild-points::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.guild-points:hover {
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow: 
+    0 0 24px rgba(255, 215, 0, 0.4),
+    inset 0 1px 3px rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.guild-points:hover::before {
+  left: 100%;
+}
+
+.guild-points-icon-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.guild-points-icon {
+  font-size: 24px;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+  animation: coin-rotate 3s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+.guild-points-icon-image {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+  position: relative;
+  z-index: 1;
+  animation: coin-rotate 3s ease-in-out infinite;
+}
+
+.points-icon-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: icon-glow-pulse 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes icon-glow-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+@keyframes coin-rotate {
+  0%, 100% {
+    transform: rotateY(0deg) scale(1);
+  }
+  50% {
+    transform: rotateY(180deg) scale(1.1);
+  }
+}
+
+.guild-points-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.guild-points-label {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 9px;
+  color: #C8D5E1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.guild-points-value {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 
+    0 0 10px rgba(255, 215, 0, 0.8),
+    0 0 16px rgba(255, 215, 0, 0.4),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+}
+
+/* Блок описания гильдии */
+.guild-description-block {
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px 10px;
+  background: linear-gradient(135deg, rgba(30, 50, 70, 0.6) 0%, rgba(20, 35, 50, 0.6) 100%);
+  border: 1px solid rgba(100, 120, 150, 0.3);
+  border-radius: 6px;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.08),
+    0 0 15px rgba(100, 120, 150, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow-y: auto;
+  max-height: 120px;
+  min-height: 70px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.guild-description-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.guild-description-block:hover {
+  border-color: rgba(100, 120, 150, 0.5);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    inset 0 1px 2px rgba(255, 255, 255, 0.12),
+    0 0 20px rgba(100, 120, 150, 0.2);
+  transform: translateY(-1px);
+}
+
+.guild-description-block:hover::before {
+  opacity: 1;
+}
+
+.guild-description-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  margin-bottom: 3px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgba(74, 90, 122, 0.4);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.guild-description-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255, 215, 0, 0.6), transparent);
+  border-radius: 2px;
+}
+
+.description-icon {
+  font-size: 10px;
+  filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.4));
+  animation: icon-glow 3s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes icon-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));
+  }
+}
+
+.description-title {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  font-weight: bold;
+  color: #E5E0C5;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-shadow: 
+    0 0 6px rgba(229, 224, 197, 0.3),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+  flex: 1;
+  white-space: nowrap;
+}
+
+.guild-description-text {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  line-height: 1.4;
+  color: #C8D5E1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  flex: 1;
+  padding-right: 4px;
+  position: relative;
+  min-height: 0;
+}
+
+.guild-description-block::-webkit-scrollbar {
+  width: 6px;
+}
+
+.guild-description-block::-webkit-scrollbar-track {
+  background: rgba(15, 26, 42, 0.4);
+  border-radius: 3px;
+  margin: 2px 0;
+}
+
+.guild-description-block::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, rgba(100, 120, 150, 0.6), rgba(74, 90, 122, 0.6));
+  border-radius: 3px;
+  border: 1px solid rgba(15, 26, 42, 0.3);
+}
+
+.guild-description-block::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, rgba(120, 140, 170, 0.8), rgba(90, 110, 140, 0.8));
+}
+
+/* Статистика гильдии */
+.guild-stats {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-top: 6px;
+  padding: 8px;
+  background: linear-gradient(135deg, rgba(20, 30, 45, 0.6) 0%, rgba(15, 25, 35, 0.5) 100%);
+  border: 1px solid rgba(74, 90, 122, 0.4);
+  border-radius: 8px;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.05);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 8px;
+  background: linear-gradient(135deg, rgba(26, 42, 58, 0.6) 0%, rgba(20, 35, 50, 0.5) 100%);
+  border: 2px solid;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  min-height: 70px;
+}
+
+.stat-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.stat-item:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.stat-item:hover::before {
+  opacity: 1;
+}
+
+.stat-item.stat-online {
+  border-color: rgba(76, 175, 80, 0.5);
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(26, 42, 58, 0.6) 100%);
+}
+
+.stat-item.stat-online:hover {
+  border-color: rgba(76, 175, 80, 0.8);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.5),
+    0 0 16px rgba(76, 175, 80, 0.4);
+}
+
+.stat-item.stat-active {
+  border-color: rgba(255, 152, 0, 0.5);
+  background: linear-gradient(135deg, rgba(255, 152, 0, 0.1) 0%, rgba(26, 42, 58, 0.6) 100%);
+}
+
+.stat-item.stat-active:hover {
+  border-color: rgba(255, 152, 0, 0.8);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.5),
+    0 0 16px rgba(255, 152, 0, 0.4);
+}
+
+.stat-item.stat-points {
+  border-color: rgba(255, 215, 0, 0.5);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(26, 42, 58, 0.6) 100%);
+}
+
+.stat-item.stat-points:hover {
+  border-color: rgba(255, 215, 0, 0.8);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.5),
+    0 0 16px rgba(255, 215, 0, 0.4);
+}
+
+.stat-icon-wrapper {
+  position: relative;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-icon {
+  font-size: 20px;
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.6));
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.stat-item:hover .stat-icon {
+  transform: scale(1.15);
+}
+
+.stat-icon-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.stat-glow-green {
+  background: radial-gradient(circle, rgba(76, 175, 80, 0.4) 0%, transparent 70%);
+  animation: stat-glow-pulse 2s ease-in-out infinite;
+}
+
+.stat-glow-orange {
+  background: radial-gradient(circle, rgba(255, 152, 0, 0.4) 0%, transparent 70%);
+  animation: stat-glow-pulse 2s ease-in-out infinite;
+}
+
+.stat-glow-gold {
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, transparent 70%);
+  animation: stat-glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes stat-glow-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+.stat-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(76, 175, 80, 0.5);
+  animation: pulse-ring 2s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.8);
+    opacity: 0;
+  }
+}
+
+.stat-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.stat-value {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 
+    0 0 8px rgba(255, 215, 0, 0.6),
+    0 0 12px rgba(255, 215, 0, 0.3),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+  line-height: 1.2;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
+.stat-item.stat-online .stat-value {
+  color: #4CAF50;
+  text-shadow: 
+    0 0 8px rgba(76, 175, 80, 0.6),
+    0 0 12px rgba(76, 175, 80, 0.3),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.stat-item.stat-active .stat-value {
+  color: #FF9800;
+  text-shadow: 
+    0 0 8px rgba(255, 152, 0, 0.6),
+    0 0 12px rgba(255, 152, 0, 0.3),
+    1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.stat-label {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 8px;
+  color: #C8D5E1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  white-space: nowrap;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.stat-hint {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 8px;
+  color: #8A9BA8;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.guild-members {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 14px;
+  color: #B8C5D1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
+  text-align: left;
+  width: 100%;
+}
+
+.guild-actions {
+  width: 100%;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  overflow: visible;
+}
+
+/* Универсальные стили для кнопок действий */
+.guild-action-button {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  font-weight: bold;
+  color: #E5E0C5;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.67);
+  text-align: center;
+  width: 100%;
+  padding: 6px 8px;
+  background: linear-gradient(135deg, #2b4f6f 0%, #1e3a4b 50%, #2b4f6f 100%);
+  background-size: 200% 100%;
+  border: 1px solid #4a5a7a;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  text-transform: uppercase;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  letter-spacing: 0.2px;
+}
+
+.guild-action-button::before {
+  display: none;
+}
+
+.guild-action-button:hover {
+  background-position: 100% 0;
+  border-color: #5a6a8a;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(90, 106, 138, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.15);
+}
+
+.guild-action-button:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.button-icon {
+  font-size: 12px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+  position: relative;
+  z-index: 1;
+}
+
+.button-text {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.button-badge {
+  font-size: 10px;
+  padding: 2px 6px;
+  background: rgba(76, 175, 80, 0.2);
+  border: 1px solid rgba(76, 175, 80, 0.4);
+  border-radius: 10px;
+  color: #4CAF50;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+}
+
+.accept-members-button.has-requests {
+  /* Кнопка остается такой же, как остальные */
+}
+
+.requests-indicator {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  min-width: 18px;
+  height: 18px;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  border: 1px solid rgba(26, 42, 58, 0.8);
+  border-radius: 9px;
+  color: #1a2a3a;
+  font-size: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+  box-shadow: 
+    0 2px 6px rgba(255, 215, 0, 0.5),
+    0 0 10px rgba(255, 215, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+  line-height: 1;
+  z-index: 10;
+  animation: badge-bounce 2s ease-in-out infinite;
+  white-space: nowrap;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+@keyframes badge-bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.leave-guild-button {
+  background: linear-gradient(135deg, #6f2b2b 0%, #4a1e1e 50%, #6f2b2b 100%) !important;
+  border-color: #8a4a4a !important;
+  margin-top: 4px;
+}
+
+.leave-guild-button:hover {
+  background: linear-gradient(135deg, #8f3b3b 0%, #6a2e2e 50%, #8f3b3b 100%) !important;
+  border-color: #9a5a5a !important;
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(154, 90, 90, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.15) !important;
+}
+
+.confirm-leave {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.confirm-message {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 14px;
+  color: #E5E0C5;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.confirm-buttons {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.confirm-button,
+.cancel-button {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #E5E0C5;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.67);
+  text-align: center;
+  flex: 1;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid;
+  text-transform: uppercase;
+}
+
+.confirm-button {
+  background: linear-gradient(to bottom, #6f2b2b, #4a1e1e);
+  border-color: #8a4a4a;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0px #8a4a4a;
+}
+
+.confirm-button:hover {
+  background: linear-gradient(to bottom, #8f3b3b, #6a2e2e);
+  border-color: #9a5a5a;
+  brightness: 1.2;
+}
+
+.cancel-button {
+  background: linear-gradient(to bottom, #2b4f6f, #1e3a4b);
+  border-color: #4a5a7a;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0px #5a6a8a;
+}
+
+.cancel-button:hover {
+  background: linear-gradient(to bottom, #3b5f7f, #2e4a5b);
+  border-color: #5a6a8a;
+  brightness: 1.2;
+}
+
+.confirm-button:active,
+.cancel-button:active {
+  brightness: 0.9;
+  transform: translateY(1px);
+}
+
