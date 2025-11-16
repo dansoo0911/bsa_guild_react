@@ -17,6 +17,7 @@ function App() {
   const [unreadMessages, setUnreadMessages] = useState(3) // Количество непрочитанных сообщений
   const [currentPlayerRole, setCurrentPlayerRole] = useState(guildConfig.myRole)
   const [guildCrystals, setGuildCrystals] = useState(guildConfig.guild.crystals || 0)
+  const [playerCrystals, setPlayerCrystals] = useState(50) // Кристаллы игрока
   const [showBestPlace, setShowBestPlace] = useState(guildConfig.speedrun?.showBestPlace ?? true)
   
   // Генерируем игроков согласно конфигурации гильдии
@@ -74,6 +75,8 @@ function App() {
                 expToNextLevel={guildConfig.guild.expToNextLevel}
                 guildPoints={guildConfig.guild.points}
                 guildDescription={guildConfig.guild.description}
+                playerCrystals={playerCrystals}
+                onPlayerCrystalsChange={setPlayerCrystals}
               />
               {(() => {
                 const myPlayer = players.find(p => p.name === guildConfig.myName) || players[0]

@@ -4,15 +4,65 @@ import './GuildPanel.css'
 import GuildSettingsModal from './GuildSettingsModal'
 import MembersModal from './MembersModal'
 import RequestsModal from './RequestsModal'
+import GuildListModal from './GuildListModal'
+import GuildHistoryModal from './GuildHistoryModal'
 
-function GuildPanel({ guildName = "Guild Name", guildLevel = 76, displayedCount = 0, totalCount = 0, pendingRequests = 0, onGuildUpdate, players = [], currentExp = 0, expToNextLevel = 1000, guildPoints = 0, guildDescription = '' }) {
+function GuildPanel({ guildName = "Guild Name", guildLevel = 76, displayedCount = 0, totalCount = 0, pendingRequests = 0, onGuildUpdate, players = [], currentExp = 0, expToNextLevel = 1000, guildPoints = 0, guildDescription = '', playerCrystals = 0, onPlayerCrystalsChange }) {
   const [showConfirm, setShowConfirm] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
   const [showMembers, setShowMembers] = useState(false)
   const [showRequests, setShowRequests] = useState(false)
+  const [showGuildList, setShowGuildList] = useState(false)
+  const [showHistory, setShowHistory] = useState(false)
   const [currentGuildName, setCurrentGuildName] = useState(guildName)
   const [description, setDescription] = useState(guildDescription || 'Добро пожаловать в нашу гильдию! Мы активное сообщество игроков, стремящихся к достижению великих целей вместе. Присоединяйтесь к нам и станьте частью легендарной команды!')
   const [membersList, setMembersList] = useState(players)
+  const [showLeaderInList, setShowLeaderInList] = useState(false)
+  const [isClosed, setIsClosed] = useState(false)
+  const [lastViewedAdminActionTime, setLastViewedAdminActionTime] = useState(Date.now() - 7 * 24 * 60 * 60 * 1000) // 7 дней назад по умолчанию
+
+  // Моковые данные истории для подсчета новых действий администрации
+  const adminActions = useMemo(() => {
+    return [
+      {
+        id: 1,
+        type: 'currency_spent',
+        timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 часа назад
+      },
+      {
+        id: 2,
+        type: 'role_changed',
+        timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000), // 5 часов назад
+      },
+      {
+        id: 3,
+        type: 'member_added',
+        timestamp: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000), // 1 день назад
+      },
+      {
+        id: 4,
+        type: 'currency_spent',
+        timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), // 2 дня назад
+      },
+      {
+        id: 5,
+        type: 'member_removed',
+        timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000), // 3 дня назад
+      },
+      {
+        id: 6,
+        type: 'role_changed',
+        timestamp: new Date(Date.now() - 6 * 24 * 60 * 60 * 1000), // 6 дней назад
+      },
+    ]
+  }, [])
+
+  // Подсчет новых действий администрации
+  const newAdminActionsCount = useMemo(() => {
+    return adminActions.filter(action => 
+      action.timestamp.getTime() > lastViewedAdminActionTime
+    ).length
+  }, [adminActions, lastViewedAdminActionTime])
 
   // Вычисляем статистику гильдии
   const guildStats = useMemo(() => {
@@ -21,12 +71,16 @@ function GuildPanel({ guildName = "Guild Name", guildLevel = 76, displayedCount 
     // Общие заслуги = сумма всех заслуг всех игроков (опыт + GP, которые они принесли)
     const totalMerits = players.reduce((sum, p) => sum + (p.points || 0), 0)
     const avgMerits = players.length > 0 ? Math.round(totalMerits / players.length) : 0
+    // Заслуги за последние 24 часа (примерное вычисление: активные игроки * средние заслуги * коэффициент)
+    // Можно использовать более точную логику, если есть данные о времени получения заслуг
+    const meritsLast24h = Math.round(activeLast24h * avgMerits * 0.3) // Примерное значение
     
     return {
       onlineCount,
       activeLast24h,
       totalMerits,
-      avgMerits
+      avgMerits,
+      meritsLast24h
     }
   }, [players])
 
@@ -49,8 +103,11 @@ function GuildPanel({ guildName = "Guild Name", guildLevel = 76, displayedCount 
   }
 
   const handleViewGuildsList = () => {
-    // Здесь будет логика открытия списка гильдий
-    alert('Открыть список гильдий')
+    setShowGuildList(true)
+  }
+
+  const handleCloseGuildList = () => {
+    setShowGuildList(false)
   }
 
   const handleAcceptMembers = () => {
@@ -92,6 +149,12 @@ function GuildPanel({ guildName = "Guild Name", guildLevel = 76, displayedCount 
   const handleSaveSettings = (settings) => {
     setCurrentGuildName(settings.name)
     setDescription(settings.description || '')
+    if (settings.showLeaderInList !== undefined) {
+      setShowLeaderInList(settings.showLeaderInList)
+    }
+    if (settings.isClosed !== undefined) {
+      setIsClosed(settings.isClosed)
+    }
     if (onGuildUpdate) {
       onGuildUpdate(settings)
     }
@@ -199,9 +262,9 @@ function GuildPanel({ guildName = "Guild Name", guildLevel = 76, displayedCount 
             <div className="stat-icon-glow stat-glow-gold"></div>
           </div>
           <div className="stat-content">
-            <div className="stat-value">{guildStats.avgMerits.toLocaleString()}</div>
-            <div className="stat-label">СРЕД. ЗАСЛУГИ</div>
-            <div className="stat-hint">на участника</div>
+            <div className="stat-value">{guildStats.meritsLast24h.toLocaleString()}</div>
+            <div className="stat-label">ЗАРАБОТАНО ЗАСЛУГ</div>
+            <div className="stat-hint">за последние 24 часа</div>
           </div>
         </div>
       </div>
@@ -221,6 +284,13 @@ function GuildPanel({ guildName = "Guild Name", guildLevel = 76, displayedCount 
         <button className="guild-action-button guild-settings-button" onClick={handleGuildSettings}>
           <span className="button-icon">⚙️</span>
           <span className="button-text">Настройки</span>
+        </button>
+        <button className={`guild-action-button guild-history-button ${newAdminActionsCount > 0 ? 'has-admin-actions' : ''}`} onClick={() => setShowHistory(true)}>
+          <span className="button-icon">📚</span>
+          <span className="button-text">История гильдии</span>
+          {newAdminActionsCount > 0 && (
+            <span className="admin-actions-indicator">{newAdminActionsCount}</span>
+          )}
         </button>
         {!showConfirm ? (
           <button className="guild-action-button leave-guild-button" onClick={handleLeaveGuild}>
@@ -259,6 +329,23 @@ function GuildPanel({ guildName = "Guild Name", guildLevel = 76, displayedCount 
         isOpen={showRequests}
         onClose={handleCloseRequests}
         requests={[]}
+      />
+      <GuildListModal
+        isOpen={showGuildList}
+        onClose={handleCloseGuildList}
+        currentGuildName={currentGuildName}
+        showLeaderInList={showLeaderInList}
+        players={players}
+        playerCrystals={playerCrystals}
+        onPlayerCrystalsChange={onPlayerCrystalsChange}
+      />
+      <GuildHistoryModal
+        isOpen={showHistory}
+        onClose={() => {
+          setShowHistory(false)
+          // Обновляем время последнего просмотра при закрытии истории
+          setLastViewedAdminActionTime(Date.now())
+        }}
       />
     </div>
   )

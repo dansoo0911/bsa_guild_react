@@ -248,17 +248,35 @@
 /* Сетка товаров */
 .shop-items-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
   margin-bottom: 20px;
+}
+
+@media (max-width: 1400px) {
+  .shop-items-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .shop-items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .shop-items-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Карточка товара */
 .shop-item-card {
   background: linear-gradient(135deg, rgba(20, 30, 45, 0.95) 0%, rgba(15, 22, 35, 0.95) 100%);
   border: 2px solid rgba(60, 80, 110, 0.4);
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 10px;
+  padding: 12px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -266,6 +284,7 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  min-height: 0;
 }
 
 .shop-item-card::before {
@@ -364,14 +383,14 @@
 /* Бейдж скидки */
 .item-discount-badge {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 8px;
+  right: 8px;
   background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
   color: #ffffff;
-  padding: 4px 10px;
-  border-radius: 6px;
+  padding: 3px 8px;
+  border-radius: 4px;
   font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: bold;
   z-index: 10;
   box-shadow: 0 2px 8px rgba(244, 67, 54, 0.6);
@@ -389,10 +408,10 @@
 
 /* Иконка товара */
 .item-icon {
-  font-size: 64px;
+  font-size: 40px;
   text-align: center;
-  margin-bottom: 12px;
-  filter: drop-shadow(0 0 8px rgba(100, 181, 246, 0.6));
+  margin-bottom: 8px;
+  filter: drop-shadow(0 0 6px rgba(100, 181, 246, 0.6));
   animation: item-icon-float 3s ease-in-out infinite;
 }
 
@@ -422,25 +441,32 @@
 /* Информация о товаре */
 .item-info {
   flex: 1;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
+  min-height: 0;
 }
 
 .item-name {
   font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   color: #E5E0C5;
-  margin: 0 0 8px 0;
+  margin: 0 0 6px 0;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  line-height: 1.3;
 }
 
 .item-description {
   font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 13px;
+  font-size: 11px;
   color: #8A9BA8;
-  margin: 0 0 12px 0;
-  line-height: 1.4;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
   opacity: 0.9;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .item-rarity {
@@ -464,9 +490,10 @@
 .item-footer {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding-top: 12px;
+  gap: 6px;
+  padding-top: 8px;
   border-top: 1px solid rgba(60, 80, 110, 0.3);
+  margin-top: auto;
 }
 
 .item-price-section {
@@ -486,18 +513,18 @@
 
 .item-price {
   font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
   color: #FFD700;
   text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
 }
 
 .price-crystal-icon {
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   object-fit: contain;
   filter: drop-shadow(0 0 6px rgba(100, 181, 246, 0.8));
 }
@@ -512,9 +539,9 @@
 .item-price-option {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   color: #FFD700;
   text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
@@ -529,33 +556,34 @@
 
 .item-level-requirement {
   font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 11px;
+  font-size: 9px;
   color: #FF6B6B;
   font-weight: bold;
   margin-top: 2px;
+  line-height: 1.2;
 }
 
 .item-stock {
   font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 12px;
+  font-size: 10px;
   color: #64B5F6;
   font-weight: bold;
 }
 
 .item-buy-button {
   width: 100%;
-  padding: 12px;
+  padding: 8px;
   background: linear-gradient(135deg, rgba(100, 181, 246, 0.3) 0%, rgba(74, 144, 226, 0.2) 100%);
   border: 2px solid rgba(100, 181, 246, 0.6);
-  border-radius: 8px;
+  border-radius: 6px;
   color: #64B5F6;
   font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 14px;
+  font-size: 11px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .item-buy-button:hover:not(.disabled) {
@@ -859,10 +887,6 @@
   .shop-header {
     flex-direction: column;
     gap: 16px;
-  }
-
-  .shop-items-grid {
-    grid-template-columns: 1fr;
   }
 
   .shop-categories {

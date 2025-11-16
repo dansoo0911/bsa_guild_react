@@ -1,0 +1,497 @@
+/* Модальное окно создания гильдии */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  width: 600px;
+  max-width: 90vw;
+  max-height: 80vh;
+  background: linear-gradient(to bottom, #1a2a3a, #0f1a2a);
+  border: 3px solid #4a5a7a;
+  border-radius: 12px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8),
+              0 0 100px rgba(74, 90, 122, 0.2),
+              inset 0 0 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Radiance', 'Trajan Pro', 'Georgia', serif;
+  animation: slideDown 0.3s ease;
+  overflow: hidden;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.create-guild-modal-content {
+  width: 500px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 25px;
+  background: linear-gradient(to bottom, #3a4a6a, #2a3a5a);
+  border-bottom: 2px solid #4a5a7a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.27);
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #E5E0C5;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.67);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.modal-close-button {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(to bottom, #6f2b2b, #4a1e1e);
+  border: 2px solid #8a4a4a;
+  border-radius: 6px;
+  color: #E5E0C5;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  line-height: 1;
+  padding: 0;
+}
+
+.modal-close-button:hover {
+  background: linear-gradient(to bottom, #8f3b3b, #6a2e2e);
+  border-color: #9a5a5a;
+  transform: scale(1.1);
+}
+
+.modal-close-button:active {
+  transform: scale(0.95);
+}
+
+.modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 25px;
+}
+
+.modal-body::-webkit-scrollbar {
+  width: 10px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: rgba(15, 26, 42, 0.4);
+  border-radius: 5px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, rgba(100, 120, 150, 0.6), rgba(74, 90, 122, 0.6));
+  border-radius: 5px;
+}
+
+.modal-footer {
+  display: flex;
+  gap: 15px;
+  padding: 20px 25px;
+  background: linear-gradient(to bottom, #2a3a5a, #1a2a4a);
+  border-top: 2px solid #4a5a7a;
+  justify-content: flex-end;
+}
+
+.modal-button {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 24px;
+  border: 2px solid;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.modal-button-cancel {
+  background: linear-gradient(to bottom, #4a4a4a, #2a2a2a);
+  border-color: #6a6a6a;
+  color: #E5E0C5;
+}
+
+.modal-button-cancel:hover {
+  background: linear-gradient(to bottom, #5a5a5a, #3a3a3a);
+  border-color: #7a7a7a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.modal-button-create {
+  background: linear-gradient(to bottom, #4a7a4a, #2a5a2a);
+  border-color: #6a9a6a;
+  color: #E5E0C5;
+}
+
+.modal-button-create:hover {
+  background: linear-gradient(to bottom, #5a8a5a, #3a6a3a);
+  border-color: #7aaa7a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.modal-button-create:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.modal-button-create:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.modal-button-save {
+  background: linear-gradient(to bottom, #4a7a4a, #2a5a2a);
+  border-color: #6a9a6a;
+  color: #E5E0C5;
+}
+
+.modal-button-save:hover {
+  background: linear-gradient(to bottom, #5a8a5a, #3a6a3a);
+  border-color: #7aaa7a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.create-guild-section {
+  margin-bottom: 24px;
+}
+
+.create-guild-label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  color: #B8C5D1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.create-guild-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, 
+    rgba(26, 42, 58, 0.8) 0%, 
+    rgba(20, 35, 50, 0.7) 100%);
+  border: 2px solid rgba(60, 80, 110, 0.5);
+  border-radius: 8px;
+  color: #E5E0C5;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.create-guild-input:focus {
+  outline: none;
+  border-color: rgba(100, 181, 246, 0.6);
+  box-shadow: 0 0 12px rgba(100, 181, 246, 0.3);
+}
+
+.create-guild-hint {
+  font-size: 12px;
+  color: #8A9BA8;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+.create-guild-cost-section {
+  padding: 20px;
+  background: linear-gradient(135deg, 
+    rgba(26, 42, 58, 0.6) 0%, 
+    rgba(20, 35, 50, 0.5) 100%);
+  border: 2px solid rgba(100, 181, 246, 0.3);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.cost-label {
+  font-size: 14px;
+  color: #8A9BA8;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cost-amount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.cost-icon {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 0 8px rgba(255, 107, 107, 0.6));
+}
+
+.cost-value {
+  font-size: 28px;
+  font-weight: bold;
+  color: #FF6B6B;
+  text-shadow: 
+    0 0 10px rgba(255, 107, 107, 0.6),
+    0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.payment-modal {
+  width: 500px;
+}
+
+.payment-info {
+  text-align: center;
+  padding: 20px;
+}
+
+.payment-text {
+  font-size: 16px;
+  color: #B8C5D1;
+  margin-bottom: 20px;
+}
+
+.payment-amount-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.currency-icon-large {
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 0 12px rgba(255, 107, 107, 0.6));
+}
+
+.payment-amount {
+  font-size: 36px;
+  font-weight: bold;
+  color: #FF6B6B;
+  text-shadow: 
+    0 0 15px rgba(255, 107, 107, 0.6),
+    0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.payment-text-small {
+  font-size: 14px;
+  color: #8A9BA8;
+  margin-top: 16px;
+}
+
+.payment-text-small strong {
+  color: #64B5F6;
+  font-weight: bold;
+}
+
+/* Валидация и предупреждения */
+.validation-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, 
+    rgba(139, 69, 19, 0.3) 0%, 
+    rgba(101, 50, 15, 0.2) 100%);
+  border: 2px solid rgba(255, 107, 107, 0.5);
+  border-radius: 8px;
+  margin-top: 16px;
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.error-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.error-text {
+  color: #FF6B6B;
+  font-size: 14px;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.validation-warning {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, 
+    rgba(74, 90, 122, 0.3) 0%, 
+    rgba(60, 75, 100, 0.2) 100%);
+  border: 2px solid rgba(100, 181, 246, 0.5);
+  border-radius: 8px;
+  margin-top: 16px;
+}
+
+.warning-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.warning-text {
+  color: #64B5F6;
+  font-size: 14px;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Баланс кристаллов */
+.cost-balance {
+  margin-top: 16px;
+  padding: 12px;
+  background: rgba(15, 26, 42, 0.4);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.cost-balance.sufficient {
+  border: 2px solid rgba(76, 175, 80, 0.5);
+  background: linear-gradient(135deg, 
+    rgba(27, 94, 32, 0.2) 0%, 
+    rgba(20, 70, 24, 0.15) 100%);
+}
+
+.cost-balance.insufficient {
+  border: 2px solid rgba(255, 107, 107, 0.5);
+  background: linear-gradient(135deg, 
+    rgba(139, 69, 19, 0.2) 0%, 
+    rgba(101, 50, 15, 0.15) 100%);
+}
+
+.balance-label {
+  font-size: 12px;
+  color: #8A9BA8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.balance-value {
+  font-size: 20px;
+  font-weight: bold;
+  color: #E5E0C5;
+  text-shadow: 0 0 8px rgba(229, 224, 197, 0.3);
+}
+
+.cost-balance.insufficient .balance-value {
+  color: #FF6B6B;
+  text-shadow: 0 0 8px rgba(255, 107, 107, 0.4);
+}
+
+.balance-warning {
+  font-size: 11px;
+  color: #FF6B6B;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* Счетчик символов */
+.create-guild-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #8A9BA8;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+.hint-valid {
+  color: #4CAF50;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Информация о балансе при оплате */
+.payment-balance-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 20px 0;
+  padding: 16px;
+  background: rgba(15, 26, 42, 0.4);
+  border-radius: 10px;
+  border: 1px solid rgba(74, 90, 122, 0.3);
+}
+
+.balance-before,
+.balance-after {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.balance-before span:first-child,
+.balance-after span:first-child {
+  font-size: 12px;
+  color: #8A9BA8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.balance-number {
+  font-size: 24px;
+  font-weight: bold;
+  color: #E5E0C5;
+  text-shadow: 0 0 8px rgba(229, 224, 197, 0.3);
+}
+
+.balance-arrow {
+  font-size: 24px;
+  color: #64B5F6;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(100, 181, 246, 0.4);
+}
+

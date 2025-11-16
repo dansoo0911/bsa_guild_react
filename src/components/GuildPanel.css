@@ -507,7 +507,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 4px;
+  gap: 8px;
   margin-bottom: 3px;
   padding-bottom: 2px;
   border-bottom: 1px solid rgba(74, 90, 122, 0.4);
@@ -556,6 +556,45 @@
   white-space: nowrap;
 }
 
+.history-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: linear-gradient(135deg, rgba(26, 42, 58, 0.6) 0%, rgba(15, 26, 42, 0.6) 100%);
+  border: 1px solid rgba(74, 90, 122, 0.4);
+  border-radius: 6px;
+  color: #E5E0C5;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+}
+
+.history-button:hover {
+  background: linear-gradient(135deg, rgba(26, 42, 58, 0.8) 0%, rgba(15, 26, 42, 0.8) 100%);
+  border-color: rgba(100, 181, 246, 0.6);
+  box-shadow: 0 2px 8px rgba(100, 181, 246, 0.3);
+  transform: translateY(-1px);
+}
+
+.history-button:active {
+  transform: translateY(0);
+}
+
+.history-button-icon {
+  font-size: 12px;
+  filter: drop-shadow(0 0 4px rgba(100, 181, 246, 0.4));
+}
+
+.history-button-text {
+  font-size: 10px;
+}
+
 .guild-description-text {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
@@ -594,8 +633,8 @@
 /* Статистика гильдии */
 .guild-stats {
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 6px;
   margin-top: 6px;
   padding: 8px;
@@ -609,17 +648,18 @@
 
 .stat-item {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 6px;
-  padding: 10px 8px;
+  gap: 8px;
+  padding: 8px 10px;
   background: linear-gradient(135deg, rgba(26, 42, 58, 0.6) 0%, rgba(20, 35, 50, 0.5) 100%);
   border: 2px solid;
   border-radius: 8px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  min-height: 70px;
+  width: 100%;
+  min-width: 0;
 }
 
 .stat-item::before {
@@ -683,8 +723,8 @@
 .stat-icon-wrapper {
   position: relative;
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -768,16 +808,16 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 4px;
+  align-items: flex-start;
+  gap: 2px;
   min-width: 0;
   width: 100%;
-  text-align: center;
+  text-align: left;
 }
 
 .stat-value {
   font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   color: #FFD700;
   text-shadow: 
@@ -810,19 +850,21 @@
   font-size: 8px;
   color: #C8D5E1;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   line-height: 1.2;
-  white-space: nowrap;
+  white-space: normal;
+  word-wrap: break-word;
   font-weight: 600;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .stat-hint {
   font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 8px;
+  font-size: 7px;
   color: #8A9BA8;
   line-height: 1.2;
-  white-space: nowrap;
+  white-space: normal;
+  word-wrap: break-word;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
@@ -952,6 +994,39 @@
   white-space: nowrap;
   overflow: visible;
   box-sizing: border-box;
+}
+
+.admin-actions-indicator {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  min-width: 18px;
+  height: 18px;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  border: 1px solid rgba(26, 42, 58, 0.8);
+  border-radius: 9px;
+  color: #1a2a3a;
+  font-size: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+  box-shadow: 
+    0 2px 6px rgba(255, 215, 0, 0.5),
+    0 0 10px rgba(255, 215, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+  line-height: 1;
+  z-index: 10;
+  animation: badge-bounce 2s ease-in-out infinite;
+  white-space: nowrap;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.guild-history-button.has-admin-actions {
+  position: relative;
 }
 
 @keyframes badge-bounce {

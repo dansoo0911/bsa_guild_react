@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './GuildHistoryModal.css'
 
 function GuildHistoryModal({ isOpen, onClose }) {
-  // История гильдии (публичные данные)
+  // История гильдии (моковые данные)
   const [guildHistory] = useState([
     {
       id: 1,
@@ -66,25 +66,20 @@ function GuildHistoryModal({ isOpen, onClose }) {
   ])
 
   const formatHistoryTime = (timestamp) => {
-    if (!timestamp) return 'Неизвестно'
-    
     const now = new Date()
-    const time = new Date(timestamp)
-    const diffMs = now - time
-    const diffMins = Math.floor(diffMs / 60000)
-    const diffHours = Math.floor(diffMs / 3600000)
-    const diffDays = Math.floor(diffMs / 86400000)
+    const diff = now - timestamp
+    const minutes = Math.floor(diff / 60000)
+    const hours = Math.floor(diff / 3600000)
+    const days = Math.floor(diff / 86400000)
 
-    if (diffMins < 1) {
-      return 'Только что'
-    } else if (diffMins < 60) {
-      return `${diffMins} ${diffMins === 1 ? 'минуту' : diffMins < 5 ? 'минуты' : 'минут'} назад`
-    } else if (diffHours < 24) {
-      return `${diffHours} ${diffHours === 1 ? 'час' : diffHours < 5 ? 'часа' : 'часов'} назад`
-    } else if (diffDays < 7) {
-      return `${diffDays} ${diffDays === 1 ? 'день' : diffDays < 5 ? 'дня' : 'дней'} назад`
+    if (minutes < 60) {
+      return `${minutes} мин. назад`
+    } else if (hours < 24) {
+      return `${hours} ч. назад`
+    } else if (days < 7) {
+      return `${days} дн. назад`
     } else {
-      return time.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })
+      return timestamp.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', year: 'numeric' })
     }
   }
 
@@ -92,14 +87,15 @@ function GuildHistoryModal({ isOpen, onClose }) {
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content guild-history-modal" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-content history-modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <h2 className="modal-title">История гильдии</h2>
           <button className="modal-close-button" onClick={onClose}>×</button>
         </div>
+        
         <div className="modal-body">
-          <div className="history-section">
-            <h3 className="history-section-title">История действий</h3>
+          <div className="settings-section">
+            <h3 className="settings-section-title">История действий</h3>
             <div className="history-list">
               {guildHistory.length === 0 ? (
                 <div className="history-empty">
@@ -140,13 +136,13 @@ function GuildHistoryModal({ isOpen, onClose }) {
                               {event.reason && ` (${event.reason})`}
                             </>
                           )}
-                              {event.type === 'member_updated' && (
-                                <>
-                                  <strong>{event.player}</strong> обновлен{' '}
-                                  {event.updatedBy !== 'System' && `(${event.updatedBy})`}
-                                </>
-                              )}
-                            </span>
+                          {event.type === 'member_updated' && (
+                            <>
+                              <strong>{event.player}</strong> обновлен{' '}
+                              {event.updatedBy !== 'System' && `(${event.updatedBy})`}
+                            </>
+                          )}
+                        </span>
                         <span className="history-item-time">
                           {formatHistoryTime(event.timestamp)}
                         </span>
@@ -165,10 +161,15 @@ function GuildHistoryModal({ isOpen, onClose }) {
             </div>
           </div>
         </div>
+        
+        <div className="modal-footer">
+          <button className="modal-button modal-button-cancel" onClick={onClose}>
+            Закрыть
+          </button>
+        </div>
       </div>
     </div>
   )
 }
 
 export default GuildHistoryModal
-

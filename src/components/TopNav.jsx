@@ -2,39 +2,28 @@ import DevSettingsPanel from './DevSettingsPanel'
 import './TopNav.css'
 
 function TopNav({ activeTab, onTabChange, chatVisible, onToggleChat, unreadMessages, onRoleChange, onCrystalsChange, guildCrystals, onSpeedrunActiveChange, onShowBestPlaceChange }) {
+  const tabs = [
+    { id: 'main', label: 'Main', icon: '🏠' },
+    { id: 'talents', label: 'Таланты', icon: '⭐' },
+    { id: 'speedrun', label: 'Спидран', icon: '⚡' },
+    { id: 'quests', label: 'Задания', icon: '📋' },
+    { id: 'shop', label: 'Магазин', icon: '🏪' }
+  ]
+
   return (
     <div className="top-nav">
       <div className="nav-tabs">
-        <button 
-          className={`nav-tab ${activeTab === 'main' ? 'active' : ''}`}
-          onClick={() => onTabChange('main')}
-        >
-          Main
-        </button>
-        <button 
-          className={`nav-tab ${activeTab === 'talents' ? 'active' : ''}`}
-          onClick={() => onTabChange('talents')}
-        >
-          Таланты
-        </button>
-        <button 
-          className={`nav-tab ${activeTab === 'speedrun' ? 'active' : ''}`}
-          onClick={() => onTabChange('speedrun')}
-        >
-          Спидран
-        </button>
-        <button 
-          className={`nav-tab ${activeTab === 'quests' ? 'active' : ''}`}
-          onClick={() => onTabChange('quests')}
-        >
-          Задания
-        </button>
-        <button 
-          className={`nav-tab ${activeTab === 'shop' ? 'active' : ''}`}
-          onClick={() => onTabChange('shop')}
-        >
-          Магазин
-        </button>
+        {tabs.map((tab) => (
+          <button 
+            key={tab.id}
+            className={`nav-tab ${activeTab === tab.id ? 'active' : ''}`}
+            onClick={() => onTabChange(tab.id)}
+          >
+            <span className="nav-tab-icon">{tab.icon}</span>
+            <span className="nav-tab-label">{tab.label}</span>
+            <span className="nav-tab-indicator"></span>
+          </button>
+        ))}
       </div>
       <div className="top-nav-right">
           <DevSettingsPanel 
