@@ -1,3 +1,36 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.15s ease;
+  isolation: isolate;
+}
+
+.modal-content {
+     display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-image:
+    linear-gradient(145deg, rgba(10, 16, 26, 0.96), rgba(4, 7, 12, 0.96)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  border: 1px solid rgba(42, 58, 86, 0.85);
+  border-radius: 16px;
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.85),
+    0 0 45px rgba(66, 103, 161, 0.25),
+    inset 0 0 35px rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  animation: slideDown 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
 .members-modal-content {
   width: 900px;
   max-width: 95vw;
@@ -55,7 +88,7 @@
   text-align: left;
   font-size: 14px;
   font-weight: bold;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
   text-transform: uppercase;
   border-right: 1px solid #3a4a5a;
@@ -68,17 +101,22 @@
 
 .members-table tbody tr {
   border-bottom: 1px solid #2a3a4a;
-  transition: background-color 0.2s ease;
+  transition:
+    background-color var(--dota-hover-speed, 0.25s) ease,
+    filter var(--dota-hover-speed, 0.25s) ease,
+    transform var(--dota-hover-speed, 0.25s) ease;
 }
 
 .members-table tbody tr:hover {
   background: rgba(74, 90, 122, 0.15);
+  filter: brightness(var(--dota-hover-bright, 1.08));
+  transform: translateY(var(--dota-hover-lift, -2px));
 }
 
 .members-table td {
   padding: 12px 15px;
   font-size: 14px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
   border-right: 1px solid #2a3a4a;
   text-align: left;
@@ -100,7 +138,7 @@
   background: linear-gradient(to bottom, #2a3a5a, #1a2a4a);
   font-size: 16px;
   font-weight: bold;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
   box-shadow: 0 0 4px rgba(74, 90, 122, 0.3);
 }
@@ -139,7 +177,7 @@
 }
 
 .members-table .status-offline {
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
 }
 
@@ -155,13 +193,17 @@
   background: linear-gradient(to bottom, #2b4f6f, #1e3a4b);
   border: 1px solid #4a5a7a;
   border-radius: 4px;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   font-size: 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  transition:
+    transform var(--dota-hover-speed, 0.25s) ease,
+    filter var(--dota-hover-speed, 0.25s) ease,
+    border-color var(--dota-hover-speed, 0.25s) ease,
+    box-shadow var(--dota-hover-speed, 0.25s) ease;
   padding: 0;
   line-height: 1;
 }
@@ -169,7 +211,13 @@
 .role-edit-button:hover {
   background: linear-gradient(to bottom, #3b5f7f, #2e4a5b);
   border-color: #5a6a8a;
-  transform: scale(1.1);
+  filter: brightness(var(--dota-hover-bright, 1.08));
+  transform: translateY(var(--dota-hover-lift, -2px));
+}
+
+.role-edit-button:focus-visible {
+  outline: 2px solid var(--dota-focus-outline, rgba(113, 180, 255, 0.65));
+  outline-offset: 2px;
 }
 
 .role-edit-container {
@@ -183,22 +231,31 @@
   background: linear-gradient(to bottom, #1a2a3a, #0f1a2a);
   border: 2px solid #3a4a5a;
   border-radius: 4px;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 12px;
   outline: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition:
+    border-color var(--dota-hover-speed, 0.25s) ease,
+    box-shadow var(--dota-hover-speed, 0.25s) ease,
+    filter var(--dota-hover-speed, 0.25s) ease;
 }
 
 .role-select:focus {
   border-color: #4a5a7a;
   box-shadow: 0 0 6px rgba(74, 90, 122, 0.5);
+  filter: brightness(var(--dota-hover-bright, 1.08));
+}
+
+.role-select:focus-visible {
+  outline: 2px solid var(--dota-focus-outline, rgba(113, 180, 255, 0.65));
+  outline-offset: 2px;
 }
 
 .role-select option {
   background: #1a2a3a;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
 }
 
 .role-save-button,
@@ -213,7 +270,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  transition:
+    transform var(--dota-hover-speed, 0.25s) ease,
+    filter var(--dota-hover-speed, 0.25s) ease,
+    border-color var(--dota-hover-speed, 0.25s) ease,
+    box-shadow var(--dota-hover-speed, 0.25s) ease;
   padding: 0;
   line-height: 1;
 }
@@ -221,25 +282,33 @@
 .role-save-button {
   background: linear-gradient(to bottom, #2b6f4f, #1e4a3b);
   border-color: #4a8a6a;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
 }
 
 .role-save-button:hover {
   background: linear-gradient(to bottom, #3b8f6f, #2e6a5b);
   border-color: #5a9a7a;
-  transform: scale(1.1);
+  filter: brightness(var(--dota-hover-bright, 1.08));
+  transform: translateY(var(--dota-hover-lift, -2px));
 }
 
 .role-cancel-button {
   background: linear-gradient(to bottom, #6f2b2b, #4a1e1e);
   border-color: #8a4a4a;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
 }
 
 .role-cancel-button:hover {
   background: linear-gradient(to bottom, #8f3b3b, #6a2e2e);
   border-color: #9a5a5a;
-  transform: scale(1.1);
+  filter: brightness(var(--dota-hover-bright, 1.08));
+  transform: translateY(var(--dota-hover-lift, -2px));
+}
+
+.role-save-button:focus-visible,
+.role-cancel-button:focus-visible {
+  outline: 2px solid var(--dota-focus-outline, rgba(113, 180, 255, 0.65));
+  outline-offset: 2px;
 }
 
 .kick-button {
@@ -247,13 +316,17 @@
   background: linear-gradient(to bottom, #6f2b2b, #4a1e1e);
   border: 2px solid #8a4a4a;
   border-radius: 6px;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 11px;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.67);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition:
+    transform var(--dota-hover-speed, 0.25s) ease,
+    filter var(--dota-hover-speed, 0.25s) ease,
+    border-color var(--dota-hover-speed, 0.25s) ease,
+    box-shadow var(--dota-hover-speed, 0.25s) ease;
   text-transform: uppercase;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4),
               inset 0 1px 0px #8a4a4a;
@@ -264,11 +337,17 @@
   border-color: #9a5a5a;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5),
               inset 0 1px 0px #9a5a5a;
-  transform: scale(1.05);
+  filter: brightness(var(--dota-hover-bright, 1.08));
+  transform: translateY(var(--dota-hover-lift, -2px));
 }
 
 .kick-button:active {
   transform: scale(0.95);
+}
+
+.kick-button:focus-visible {
+  outline: 2px solid var(--dota-focus-outline, rgba(113, 180, 255, 0.65));
+  outline-offset: 2px;
 }
 
 

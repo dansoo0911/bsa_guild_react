@@ -59,7 +59,7 @@
 .guild-gp-label-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 12px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
 }
 
@@ -67,7 +67,7 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 16px;
   font-weight: bold;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-shadow: 
     0 0 6px rgba(229, 224, 197, 0.3),
     1px 1px 2px rgba(0, 0, 0, 0.8);
@@ -76,7 +76,7 @@
 .guild-level-hint-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   opacity: 0.8;
   cursor: help;
 }
@@ -133,11 +133,11 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 14px;
   font-weight: bold;
-  color: #E5E0C5;
-  text-shadow: 
-    0 0 4px rgba(255, 215, 0, 0.3),
-    0 0 8px rgba(255, 215, 0, 0.15),
-    2px 2px 4px rgba(0, 0, 0, 0.8);
+  color: var(--dota-text-header, #f4e1c1);
+  text-shadow:
+    0 0 6px rgba(255, 215, 0, 0.35),
+    0 0 10px rgba(255, 215, 0, 0.2),
+    2px 2px 4px rgba(0, 0, 0, 0.85);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -178,8 +178,9 @@
 .guild-info-label-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
-  color: #B8C5D1;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
+  color: var(--dota-text-muted, #8aa0c8);
+  letter-spacing: 0.4px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
   white-space: nowrap;
 }
 
@@ -187,7 +188,7 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 12px;
   font-weight: bold;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-shadow: 
     0 0 6px rgba(229, 224, 197, 0.3),
     1px 1px 2px rgba(0, 0, 0, 0.8);
@@ -285,7 +286,7 @@
 .guild-exp-text-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
   text-align: center;
 }
@@ -338,7 +339,10 @@
     inset 0 -2px 3px rgba(0, 0, 0, 0.3),
     0 1px 3px rgba(0, 0, 0, 0.2);
   flex-shrink: 0;
-  transition: all 0.3s ease;
+  transition:
+    border-color var(--dota-hover-speed, 0.25s) ease,
+    box-shadow var(--dota-hover-speed, 0.25s) ease,
+    filter var(--dota-hover-speed, 0.25s) ease;
 }
 
 .talent-filters-container-aaa {
@@ -361,7 +365,7 @@
 .filter-label-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 9px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   white-space: nowrap;
 }
 
@@ -373,20 +377,30 @@
   border-radius: 4px;
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 9px;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   cursor: pointer;
   outline: none;
-  transition: all 0.2s ease;
+  transition:
+    border-color var(--dota-hover-speed, 0.25s) ease,
+    box-shadow var(--dota-hover-speed, 0.25s) ease,
+    filter var(--dota-hover-speed, 0.25s) ease;
 }
 
 .filter-select-aaa:hover {
   border-color: #5a6a7a;
   box-shadow: 0 0 8px rgba(74, 90, 122, 0.3);
+  filter: brightness(var(--dota-hover-bright, 1.08));
 }
 
 .filter-select-aaa:focus {
   border-color: #6a7a8a;
   box-shadow: 0 0 12px rgba(74, 90, 122, 0.5);
+  filter: brightness(var(--dota-hover-bright, 1.08));
+}
+
+.filter-select-aaa:focus-visible {
+  outline: 1px solid var(--dota-focus-outline, rgba(113, 180, 255, 0.65));
+  outline-offset: 1px;
 }
 
 .talent-search-container-aaa:focus-within {
@@ -399,7 +413,7 @@
 
 .search-icon-aaa {
   font-size: 18px;
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   flex-shrink: 0;
   filter: drop-shadow(0 0 4px rgba(138, 155, 168, 0.5));
 }
@@ -411,7 +425,7 @@
   outline: none;
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 13px;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
 }
 
@@ -465,7 +479,11 @@
   border-left: 3px solid #3a4a5a;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    transform var(--dota-hover-speed, 0.25s) cubic-bezier(0.4, 0, 0.2, 1),
+    filter var(--dota-hover-speed, 0.25s) cubic-bezier(0.4, 0, 0.2, 1),
+    border-color var(--dota-hover-speed, 0.25s) cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow var(--dota-hover-speed, 0.25s) cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   box-shadow: 
     0 2px 6px rgba(0, 0, 0, 0.3),
@@ -573,6 +591,7 @@
   border-color: #5a6a7a;
   border-left-color: #6a7a8a;
   transform: translateX(3px) scale(1.01);
+  filter: brightness(var(--dota-hover-bright, 1.08));
   box-shadow: 
     0 4px 12px rgba(0, 0, 0, 0.4),
     0 0 20px rgba(90, 106, 122, 0.2),
@@ -580,9 +599,20 @@
     inset 0 -1px 2px rgba(0, 0, 0, 0.2);
 }
 
+.talent-card-aaa:focus-visible {
+  outline: 2px solid var(--dota-focus-outline, rgba(113, 180, 255, 0.65));
+  outline-offset: 4px;
+}
+
 .talent-card-aaa.can-upgrade:hover {
   transform: translateX(3px) scale(1.02);
   border-left-color: #66BB6A;
+  filter: brightness(var(--dota-hover-bright, 1.08));
+}
+
+.talent-card-aaa:focus-visible {
+  outline: 2px solid var(--dota-focus-outline, rgba(113, 180, 255, 0.65));
+  outline-offset: 3px;
 }
 
 .talent-card-aaa.selected {
@@ -786,7 +816,7 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 13px;
   font-weight: bold;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-shadow: 
     0 0 4px rgba(229, 224, 197, 0.2),
     1px 1px 2px rgba(0, 0, 0, 0.8);
@@ -817,7 +847,7 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 11px;
   font-weight: bold;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
   white-space: nowrap;
   padding: 4px 8px;
@@ -861,7 +891,7 @@
 }
 
 .bonus-label-aaa {
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   font-size: 9px;
 }
 
@@ -920,7 +950,7 @@
 .progress-text-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 9px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   min-width: 32px;
   text-align: right;
 }
@@ -1014,7 +1044,7 @@
   gap: 3px;
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 8px;
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   padding: 3px 5px;
   background: rgba(26, 42, 58, 0.4);
   border: 1px solid rgba(74, 90, 122, 0.3);
@@ -1024,7 +1054,7 @@
 }
 
 .efficiency-label-mini {
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
 }
 
 .efficiency-value-mini {
@@ -1044,7 +1074,7 @@
 .talent-card-level-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
 }
 
@@ -1122,7 +1152,7 @@
 .tooltip-description {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 12px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
   line-height: 1.5;
 }
@@ -1235,15 +1265,15 @@
 
 .talent-detail-name-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
-  color: #E5E0C5;
-  text-shadow: 
-    0 0 4px rgba(255, 215, 0, 0.2),
-    0 0 8px rgba(255, 215, 0, 0.1),
-    1px 1px 2px rgba(0, 0, 0, 0.8);
+  color: var(--dota-text-header, #f4e1c1);
+  text-shadow:
+    0 0 6px rgba(255, 215, 0, 0.25),
+    0 0 10px rgba(255, 215, 0, 0.15),
+    1px 1px 2px rgba(0, 0, 0, 0.85);
   line-height: 1.3;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1256,8 +1286,11 @@
 .talent-detail-description-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 11px;
-  color: #B8C5D1;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
+  color: var(--dota-text-body, #d5d9e8);
+  letter-spacing: 0.3px;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.6),
+    0 0 6px rgba(0, 0, 0, 0.4);
   line-height: 1.5;
   flex-shrink: 0;
   overflow: hidden;
@@ -1354,7 +1387,7 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 11px;
   font-weight: bold;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -1405,7 +1438,7 @@
 .comparison-label-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 9px;
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 4px;
@@ -1414,7 +1447,7 @@
 .comparison-level-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 11px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   font-weight: bold;
 }
 
@@ -1484,20 +1517,20 @@
 }
 
 .progress-current-aaa {
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   font-weight: bold;
 }
 
 .progress-separator-aaa {
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
 }
 
 .progress-max-aaa {
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
 }
 
 .progress-percent-aaa {
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   margin-left: 4px;
 }
 
@@ -1586,7 +1619,7 @@
 .requirement-label-compact-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 9px;
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   text-transform: uppercase;
 }
 
@@ -1633,7 +1666,7 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 11px;
   font-weight: bold;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -1641,7 +1674,7 @@
 .cost-compact-hint-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 9px;
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   font-style: italic;
   opacity: 0.7;
   cursor: help;
@@ -1713,7 +1746,7 @@
 .cost-gp-label-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   line-height: 1.3;
 }
 
@@ -1795,7 +1828,7 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 12px;
   font-weight: bold;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   cursor: pointer;
@@ -1933,7 +1966,7 @@
 .cost-option-label-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 9px;
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   text-transform: uppercase;
   margin-top: 2px;
 }
@@ -2038,7 +2071,7 @@
   border-radius: 4px;
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
 }
 
 .time-icon-compact-aaa {
@@ -2096,7 +2129,7 @@
 }
 
 .will-use-hint-aaa {
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   font-size: 10px;
   margin-left: 4px;
   font-weight: normal;
@@ -2113,7 +2146,7 @@
   border-radius: 4px;
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
 }
 
 .endless-hint-compact-aaa {
@@ -2193,8 +2226,12 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 13px;
   font-weight: bold;
-  color: #E5E0C5;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  color: var(--dota-text-header, #f4e1c1);
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 8px rgba(0, 0, 0, 0.75),
+    0 0 14px rgba(113, 180, 255, 0.25);
 }
 
 .talent-detail-info-row-aaa {
@@ -2208,18 +2245,24 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 11px;
   font-weight: bold;
-  color: #B8C5D1;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
+  color: var(--dota-text-muted, #8aa0c8);
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.67),
+    0 0 8px rgba(0, 0, 0, 0.4);
   text-transform: uppercase;
   margin-bottom: 4px;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
 }
 
 .talent-detail-value-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 13px;
   font-weight: bold;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  color: var(--dota-text-body, #d5d9e8);
+  letter-spacing: 0.4px;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.8),
+    0 0 10px rgba(0, 0, 0, 0.45);
 }
 
 .talent-level-display-wrapper-aaa {
@@ -2258,10 +2301,14 @@
 .talent-level-progress-text-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
-  color: #B8C5D1;
+  color: var(--dota-text-muted, #8aa0c8);
   min-width: 40px;
   text-align: right;
   font-weight: bold;
+  letter-spacing: 0.4px;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.6),
+    0 0 6px rgba(0, 0, 0, 0.35);
 }
 
 .talent-current-bonus-display-aaa {
@@ -2278,15 +2325,23 @@
 .current-bonus-label-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.6),
+    0 0 6px rgba(0, 0, 0, 0.35);
 }
 
 .current-bonus-value-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 12px;
   font-weight: bold;
-  color: #6BB86B;
-  text-shadow: 0 0 4px rgba(107, 184, 107, 0.3);
+  color: #74f2b5;
+  letter-spacing: 0.4px;
+  text-shadow:
+    0 0 6px rgba(116, 242, 181, 0.45),
+    0 0 12px rgba(116, 242, 181, 0.25);
 }
 
 .next-level-content-aaa {
@@ -2322,7 +2377,7 @@
 }
 
 .talent-detail-value-aaa.level-display {
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-shadow: 
     0 0 8px rgba(229, 224, 197, 0.4),
     1px 1px 2px rgba(0, 0, 0, 0.8);
@@ -2347,7 +2402,7 @@
 }
 
 .talent-detail-value-aaa.max-level-text-aaa {
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   font-style: italic;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
 }
@@ -2395,18 +2450,20 @@
 .talent-detail-warning-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 11px;
-  color: #f44336;
-  text-shadow: 
-    0 0 6px rgba(244, 67, 54, 0.4),
-    1px 1px 2px rgba(0, 0, 0, 0.8);
-  padding: 6px 10px;
+  color: var(--dota-text-header, #f4e1c1);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 8px rgba(244, 67, 54, 0.35),
+    1px 1px 2px rgba(0, 0, 0, 0.75);
+  padding: 8px 12px;
   background: rgba(244, 67, 54, 0.15);
-  border: 1px solid rgba(244, 67, 54, 0.3);
-  border-radius: 4px;
-  margin-top: 4px;
-  box-shadow: 
-    inset 0 1px 3px rgba(0, 0, 0, 0.2),
-    0 0 8px rgba(244, 67, 54, 0.15);
+  border: 1px solid rgba(244, 67, 54, 0.35);
+  border-radius: 6px;
+  margin-top: 6px;
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.4),
+    0 0 12px rgba(244, 67, 54, 0.25);
 }
 
 /* Стоимость улучшения - AAA */
@@ -2607,7 +2664,7 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 14px;
   font-weight: bold;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-shadow: 
     0 0 4px rgba(229, 224, 197, 0.25),
     1px 1px 2px rgba(0, 0, 0, 0.8);
@@ -2616,7 +2673,11 @@
   border: 2px solid;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    transform var(--dota-hover-speed, 0.25s) cubic-bezier(0.4, 0, 0.2, 1),
+    filter var(--dota-hover-speed, 0.25s) cubic-bezier(0.4, 0, 0.2, 1),
+    border-color var(--dota-hover-speed, 0.25s) cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow var(--dota-hover-speed, 0.25s) cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -2662,7 +2723,8 @@
 
 .talent-upgrade-button-aaa:hover:not(.disabled) {
   background-position: 100% 0;
-  transform: translateY(-2px) scale(1.02);
+  transform: translateY(var(--dota-hover-lift, -2px)) scale(1.02);
+  filter: brightness(var(--dota-hover-bright, 1.08));
   box-shadow: 
     0 6px 25px rgba(0, 0, 0, 0.6),
     0 0 40px rgba(90, 122, 106, 0.3),
@@ -2679,6 +2741,11 @@
     inset 0 2px 6px rgba(255, 255, 255, 0.15),
     inset 0 -2px 6px rgba(0, 0, 0, 0.2),
     0 0 0 1px rgba(106, 122, 138, 0.4);
+  filter: brightness(var(--dota-hover-bright, 1.08));
+}
+.talent-upgrade-button-aaa:focus-visible {
+  outline: 2px solid var(--dota-focus-outline, rgba(113, 180, 255, 0.65));
+  outline-offset: 4px;
 }
 
 .talent-upgrade-button-aaa:active:not(.disabled) {
@@ -2754,7 +2821,7 @@
 .guild-info-hint-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   margin-left: 6px;
   opacity: 0.8;
   cursor: help;
@@ -2824,7 +2891,7 @@
 .progress-label-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 9px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
   margin-bottom: 4px;
 }
@@ -2848,7 +2915,7 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 8px;
   font-weight: bold;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-shadow: 
     0 0 4px rgba(0, 0, 0, 0.8),
     1px 1px 2px rgba(0, 0, 0, 0.8);
@@ -2973,11 +3040,11 @@
   align-items: center;
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
 }
 
 .tooltip-stat-value {
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   font-weight: bold;
 }
 
@@ -2995,7 +3062,7 @@
 .cost-source-hint {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   margin-left: 6px;
   opacity: 0.7;
   cursor: help;
@@ -3004,7 +3071,7 @@
 .talent-detail-hint-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   margin-top: 4px;
   font-style: italic;
 }
@@ -3039,7 +3106,7 @@
 .gp-weekly-info {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   margin-left: 6px;
   opacity: 0.7;
 }
@@ -3058,7 +3125,7 @@
 }
 
 .time-label {
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
 }
 
 .time-value {
@@ -3088,7 +3155,7 @@
 }
 
 .efficiency-label {
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
 }
 
 .efficiency-value {
@@ -3165,11 +3232,11 @@
 }
 
 .stats-label-aaa {
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
 }
 
 .stats-value-aaa {
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   font-weight: bold;
 }
 
@@ -3214,7 +3281,7 @@
   margin-bottom: 4px;
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 11px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
 }
 
 .preview-row:last-child {
@@ -3222,7 +3289,7 @@
 }
 
 .preview-value {
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   font-weight: bold;
 }
 
@@ -3244,7 +3311,347 @@
   border-radius: 4px;
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   font-style: italic;
   text-align: center;
+}
+/* === Dark fantasy overrides === */
+.talents-tab-container {
+  padding: 16px;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(42, 58, 90, 0.35), transparent 60%),
+    radial-gradient(circle at 80% 0%, rgba(86, 69, 119, 0.3), transparent 45%),
+    linear-gradient(140deg, #050a12 0%, #05070f 55%, #0c1626 100%),
+    url('../assets/images/ui_style_reference/back_item.png');
+  background-size: cover;
+  border-radius: 12px;
+  box-shadow: inset 0 0 45px rgba(0, 0, 0, 0.85);
+}
+
+.guild-info-panel-aaa,
+.talents-left-column-aaa,
+.talents-right-column-aaa {
+  background-image:
+    linear-gradient(145deg, rgba(12, 19, 33, 0.95), rgba(5, 8, 14, 0.9)),
+    url('../assets/images/ui_style_reference/back_item22.png');
+  border: 1px solid rgba(63, 101, 156, 0.5);
+  border-radius: 10px;
+  box-shadow:
+    0 20px 35px rgba(0, 0, 0, 0.75),
+    inset 0 0 25px rgba(0, 0, 0, 0.85);
+}
+
+.talent-card-aaa {
+  background-image:
+    linear-gradient(150deg, rgba(15, 20, 30, 0.95), rgba(7, 10, 18, 0.9)),
+    url('../assets/images/ui_style_reference/back_item22.png');
+  border: 1px solid rgba(63, 101, 156, 0.45);
+  border-left-width: 4px;
+  border-radius: 12px;
+  box-shadow:
+    0 18px 35px rgba(0, 0, 0, 0.75),
+    inset 0 0 25px rgba(0, 0, 0, 0.85);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.talent-card-aaa:hover {
+  transform: translateX(3px) scale(1.01);
+  filter: brightness(1.05);
+}
+
+.talent-card-icon-aaa {
+  background-image:
+    linear-gradient(145deg, rgba(12, 18, 31, 0.95), rgba(5, 8, 14, 0.95)),
+    url('../assets/images/ui_style_reference/player_back.png');
+  border: 2px solid rgba(113, 180, 255, 0.4);
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.6),
+    inset 0 0 12px rgba(0, 0, 0, 0.75);
+}
+
+.talent-detail-block-aaa,
+.talent-progression-block-aaa,
+.talent-cost-compact-block-aaa {
+  background-image:
+    linear-gradient(135deg, rgba(15, 20, 30, 0.95), rgba(7, 10, 18, 0.92)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  border: 1px solid rgba(63, 101, 156, 0.45);
+  border-radius: 10px;
+  box-shadow:
+    0 15px 25px rgba(0, 0, 0, 0.7),
+    inset 0 0 18px rgba(0, 0, 0, 0.8);
+}
+
+.talent-upgrade-button-aaa {
+  background-image:
+    linear-gradient(135deg, rgba(24, 36, 58, 0.95), rgba(10, 16, 26, 0.95)),
+    url('../assets/images/ui_style_reference/bp_button_simple.png');
+  border: 1px solid rgba(75, 117, 176, 0.6);
+  color: #f4e1c1;
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.55),
+    inset 0 0 10px rgba(0, 0, 0, 0.7);
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.talent-upgrade-button-aaa:hover:not(.disabled) {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+}
+
+.talent-upgrade-button-aaa.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ==========================================================
+   Stage 5 — Slot & grid detailing for talents interface
+   ========================================================== */
+
+.talents-left-column-aaa,
+.talents-right-column-aaa {
+  position: relative;
+  isolation: isolate;
+}
+
+.talents-left-column-aaa::before,
+.talents-right-column-aaa::before {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(113, 180, 255, 0.12);
+  pointer-events: none;
+}
+
+.talents-left-column-aaa::after,
+.talents-right-column-aaa::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  border: 1px solid rgba(10, 14, 22, 0.95);
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+}
+
+.talents-list-container-aaa {
+  background-image:
+    linear-gradient(130deg, rgba(9, 14, 23, 0.85), rgba(4, 7, 13, 0.92)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  border: 1px solid rgba(33, 48, 72, 0.75);
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow:
+    inset 0 0 25px rgba(0, 0, 0, 0.85),
+    0 18px 35px rgba(0, 0, 0, 0.7);
+}
+
+.talents-list-container-aaa::-webkit-scrollbar-track {
+  background: rgba(6, 10, 18, 0.9);
+  border-radius: 6px;
+  border: 1px solid rgba(25, 36, 57, 0.8);
+}
+
+.talents-list-container-aaa::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(180deg, rgba(63, 101, 156, 0.85), rgba(29, 47, 73, 0.85));
+  border-radius: 6px;
+  border: 2px solid rgba(4, 7, 12, 0.95);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.75);
+}
+
+.talent-search-container-aaa,
+.talent-filters-container-aaa {
+  background-image:
+    linear-gradient(145deg, rgba(12, 18, 30, 0.9), rgba(4, 7, 12, 0.92)),
+    url('../assets/images/ui_style_reference/back_item2.png');
+  border: 1px solid rgba(63, 101, 156, 0.45);
+  border-radius: 10px;
+  box-shadow:
+    inset 0 0 18px rgba(0, 0, 0, 0.85),
+    0 10px 18px rgba(0, 0, 0, 0.6);
+}
+
+.talent-search-container-aaa:focus-within,
+.talent-filters-container-aaa:focus-within {
+  border-color: rgba(113, 180, 255, 0.6);
+  box-shadow:
+    inset 0 0 18px rgba(0, 0, 0, 0.85),
+    0 0 25px rgba(113, 180, 255, 0.25);
+}
+
+.filter-select-aaa {
+  background-image:
+    linear-gradient(145deg, rgba(10, 16, 26, 0.95), rgba(4, 7, 12, 0.95)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  border: 1px solid rgba(48, 72, 110, 0.55);
+  border-radius: 6px;
+  box-shadow:
+    inset 0 0 10px rgba(0, 0, 0, 0.85),
+    0 6px 12px rgba(0, 0, 0, 0.45);
+  transition: filter 0.2s ease, border-color 0.2s ease;
+}
+
+.filter-select-aaa:hover,
+.filter-select-aaa:focus {
+  filter: brightness(1.05);
+  border-color: rgba(113, 180, 255, 0.65);
+}
+
+.talent-card-aaa {
+  position: relative;
+  overflow: hidden;
+}
+
+.talent-card-aaa::before {
+  background:
+    radial-gradient(circle at 85% 0%, rgba(113, 180, 255, 0.15), transparent 55%),
+    linear-gradient(120deg, rgba(15, 21, 34, 0.4), rgba(5, 8, 14, 0.4));
+}
+
+.talent-card-aaa::after {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(113, 180, 255, 0.25), rgba(207, 169, 107, 0.3), rgba(113, 180, 255, 0.25));
+}
+
+.talent-card-aaa.can-upgrade {
+  border-left-color: rgba(107, 184, 107, 0.9);
+  box-shadow:
+    0 18px 45px rgba(20, 40, 26, 0.85),
+    0 0 25px rgba(76, 175, 80, 0.2),
+    inset 0 0 25px rgba(0, 0, 0, 0.9);
+}
+
+.talent-card-aaa.locked {
+  filter: grayscale(0.05) brightness(0.95);
+  border-left-color: rgba(173, 76, 76, 0.8);
+}
+
+.talent-card-aaa.maxed {
+  border-left-color: rgba(207, 169, 107, 0.85);
+  box-shadow:
+    0 18px 40px rgba(52, 40, 20, 0.8),
+    0 0 30px rgba(207, 169, 107, 0.2),
+    inset 0 0 25px rgba(0, 0, 0, 0.9);
+}
+
+.talent-card-level-badge-aaa,
+.talent-card-level-badge-aaa::before {
+  background-image:
+    linear-gradient(145deg, rgba(12, 18, 30, 0.95), rgba(4, 7, 12, 0.95)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  border: 1px solid rgba(63, 101, 156, 0.45);
+  box-shadow:
+    inset 0 0 10px rgba(0, 0, 0, 0.85),
+    0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.talent-card-level-badge-aaa::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.talent-progress-bar-aaa,
+.talent-mini-progress,
+.talent-level-progress-bar-aaa {
+  background-image:
+    linear-gradient(145deg, rgba(4, 7, 13, 0.9), rgba(10, 16, 26, 0.9)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  border: 1px solid rgba(25, 36, 57, 0.8);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.85);
+}
+
+.talent-progress-fill-aaa,
+.talent-mini-progress-fill,
+.talent-level-progress-fill-aaa {
+  background-image: linear-gradient(90deg, rgba(107, 184, 107, 0.95), rgba(57, 117, 74, 0.95));
+  box-shadow:
+    0 0 12px rgba(107, 184, 107, 0.6),
+    inset 0 0 8px rgba(0, 0, 0, 0.45);
+}
+
+.talent-cost-info-aaa,
+.talent-cost-card-aaa,
+.cost-option-card-aaa {
+  background-image:
+    linear-gradient(140deg, rgba(9, 14, 23, 0.92), rgba(3, 5, 10, 0.92)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  border: 1px solid rgba(38, 59, 90, 0.5);
+  box-shadow:
+    inset 0 0 12px rgba(0, 0, 0, 0.8),
+    0 10px 20px rgba(0, 0, 0, 0.55);
+  transition: filter 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.talent-cost-info-aaa:hover,
+.cost-option-card-aaa:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+  border-color: rgba(113, 180, 255, 0.5);
+}
+
+.talent-cost-info-aaa.available,
+.cost-option-card-aaa.available {
+  border-color: rgba(107, 184, 107, 0.5);
+  box-shadow:
+    inset 0 0 12px rgba(0, 0, 0, 0.8),
+    0 0 18px rgba(107, 184, 107, 0.25);
+}
+
+.talent-cost-info-aaa.insufficient,
+.cost-option-card-aaa.insufficient {
+  border-color: rgba(173, 76, 76, 0.5);
+  box-shadow:
+    inset 0 0 12px rgba(0, 0, 0, 0.85),
+    0 0 18px rgba(173, 76, 76, 0.2);
+}
+
+.talent-card-bonus-aaa,
+.talent-card-next-bonus-aaa,
+.talent-efficiency-mini-aaa {
+  background-image:
+    linear-gradient(135deg, rgba(8, 12, 20, 0.9), rgba(3, 5, 10, 0.9)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  border: 1px solid rgba(33, 48, 72, 0.65);
+  border-radius: 6px;
+  padding: 4px 8px;
+  box-shadow:
+    inset 0 0 10px rgba(0, 0, 0, 0.85),
+    0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.talent-detail-block-aaa:hover,
+.talent-progression-block-aaa:hover,
+.talent-cost-compact-block-aaa:hover {
+  filter: brightness(1.03);
+  border-color: rgba(113, 180, 255, 0.45);
+}
+
+.talent-detail-icon-large-aaa {
+  background-image:
+    radial-gradient(circle at 20% 0%, rgba(113, 180, 255, 0.2), transparent 60%),
+    linear-gradient(145deg, rgba(9, 14, 23, 0.95), rgba(3, 5, 10, 0.95)),
+    url('../assets/images/ui_style_reference/player_back.png');
+  border: 2px solid rgba(113, 180, 255, 0.45);
+}
+
+.talent-detail-header-aaa {
+  background-image:
+    linear-gradient(135deg, rgba(9, 14, 23, 0.92), rgba(3, 5, 10, 0.92)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  border: 1px solid rgba(33, 48, 72, 0.7);
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.65),
+    inset 0 0 18px rgba(0, 0, 0, 0.8);
+}
+
+.talent-card-aaa:hover .talent-icon-symbol-aaa,
+.talent-card-aaa:hover .talent-cost-info-aaa {
+  filter: brightness(1.08);
 }

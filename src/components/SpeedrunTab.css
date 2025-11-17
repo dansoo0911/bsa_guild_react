@@ -39,14 +39,19 @@
   border: 1px solid rgba(60, 80, 110, 0.4);
   border-radius: 4px;
   overflow: hidden;
-  transition: all 0.2s ease;
+  transition:
+    transform var(--dota-hover-speed, 0.25s) ease,
+    filter var(--dota-hover-speed, 0.25s) ease,
+    border-color var(--dota-hover-speed, 0.25s) ease,
+    box-shadow var(--dota-hover-speed, 0.25s) ease;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .difficulty-card-aaa:hover {
   border-color: rgba(100, 181, 246, 0.5);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-  transform: translateY(-1px);
+  transform: translateY(var(--dota-hover-lift, -2px));
+  filter: brightness(var(--dota-hover-bright, 1.08));
 }
 
 
@@ -65,12 +70,21 @@
   background: linear-gradient(135deg, rgba(30, 40, 55, 0.9) 0%, rgba(20, 28, 42, 0.9) 100%);
   border-bottom: 1px solid rgba(60, 80, 110, 0.3);
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition:
+    background var(--dota-hover-speed, 0.25s) ease,
+    border-color var(--dota-hover-speed, 0.25s) ease,
+    filter var(--dota-hover-speed, 0.25s) ease;
   user-select: none;
 }
 
 .difficulty-header-aaa:hover {
   background: linear-gradient(135deg, rgba(40, 50, 65, 0.95) 0%, rgba(30, 38, 52, 0.95) 100%);
+  filter: brightness(var(--dota-hover-bright, 1.08));
+}
+
+.difficulty-header-aaa:focus-visible {
+  outline: 2px solid var(--dota-focus-outline, rgba(113, 180, 255, 0.65));
+  outline-offset: 2px;
 }
 
 
@@ -121,13 +135,18 @@
   border: 1px solid rgba(100, 181, 246, 0.3);
   object-fit: cover;
   flex-shrink: 0;
-  transition: all 0.2s ease;
+  transition:
+    transform var(--dota-hover-speed, 0.25s) ease,
+    filter var(--dota-hover-speed, 0.25s) ease,
+    border-color var(--dota-hover-speed, 0.25s) ease,
+    box-shadow var(--dota-hover-speed, 0.25s) ease;
 }
 
 .difficulty-guild-image-aaa:hover {
   border-color: rgba(100, 181, 246, 0.6);
-  transform: scale(1.1);
+  transform: scale(1.08);
   box-shadow: 0 0 8px rgba(100, 181, 246, 0.4);
+  filter: brightness(var(--dota-hover-bright, 1.08));
 }
 
 .rewards-indicators-aaa {
@@ -180,12 +199,22 @@
   border: 1px solid rgba(100, 181, 246, 0.4);
   border-radius: 6px;
   flex-shrink: 0;
-  transition: all 0.2s ease;
+  transition:
+    background var(--dota-hover-speed, 0.25s) ease,
+    border-color var(--dota-hover-speed, 0.25s) ease,
+    filter var(--dota-hover-speed, 0.25s) ease,
+    box-shadow var(--dota-hover-speed, 0.25s) ease;
 }
 
 .guild-position-aaa:hover {
   background: linear-gradient(135deg, rgba(100, 181, 246, 0.3) 0%, rgba(66, 165, 245, 0.25) 100%);
   border-color: rgba(100, 181, 246, 0.6);
+  filter: brightness(var(--dota-hover-bright, 1.08));
+}
+
+.guild-position-aaa:focus-visible {
+  outline: 2px solid var(--dota-focus-outline, rgba(113, 180, 255, 0.65));
+  outline-offset: 2px;
 }
 
 .guild-position-aaa.top-three-aaa {
@@ -237,18 +266,28 @@
   border: 1px solid rgba(100, 181, 246, 0.3);
   border-radius: 4px;
   flex-shrink: 0;
-  transition: all 0.2s ease;
+  transition:
+    transform var(--dota-hover-speed, 0.25s) ease,
+    background var(--dota-hover-speed, 0.25s) ease,
+    border-color var(--dota-hover-speed, 0.25s) ease,
+    filter var(--dota-hover-speed, 0.25s) ease;
 }
 
 .expand-icon-aaa:hover {
   background: rgba(100, 181, 246, 0.2);
   border-color: rgba(100, 181, 246, 0.5);
+  filter: brightness(var(--dota-hover-bright, 1.08));
 }
 
 .expand-icon-aaa.expanded-aaa {
   transform: rotate(180deg);
   background: rgba(100, 181, 246, 0.25);
   border-color: rgba(100, 181, 246, 0.6);
+}
+
+.expand-icon-aaa:focus-visible {
+  outline: 2px solid var(--dota-focus-outline, rgba(113, 180, 255, 0.65));
+  outline-offset: 2px;
 }
 
 /* Содержимое сложности */
@@ -277,7 +316,11 @@
   border-radius: 6px;
   border: 1px solid;
   padding: 10px;
-  transition: all 0.2s ease;
+  transition:
+    border-color var(--dota-hover-speed, 0.25s) ease,
+    box-shadow var(--dota-hover-speed, 0.25s) ease,
+    transform var(--dota-hover-speed, 0.25s) ease,
+    filter var(--dota-hover-speed, 0.25s) ease;
 }
 
 .prize-gold-aaa {
@@ -333,7 +376,7 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 14px;
   font-weight: bold;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
   white-space: nowrap;
 }
@@ -356,7 +399,7 @@
 .prize-guild-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 12px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
   white-space: nowrap;
   overflow: hidden;
@@ -462,7 +505,7 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 12px;
   font-weight: bold;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
   white-space: nowrap;
   overflow: hidden;
@@ -526,7 +569,7 @@
 .no-prizes-text-aaa {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   opacity: 0.8;
   font-style: italic;
 }
@@ -671,7 +714,7 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 16px;
   font-weight: bold;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
   margin-bottom: 12px;
   text-align: center;
@@ -746,7 +789,7 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 13px;
   font-weight: bold;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
@@ -796,13 +839,13 @@
 }
 
 .detail-label {
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   opacity: 0.8;
 }
 
 .detail-value {
   font-weight: bold;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
@@ -1013,14 +1056,14 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 16px;
   font-weight: bold;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
 .top-team-rank-text {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 12px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   opacity: 0.8;
 }
 
@@ -1055,7 +1098,7 @@
 .top-team-stat-label {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 11px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   opacity: 0.7;
 }
 
@@ -1069,7 +1112,7 @@
 .top-team-members-label {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 11px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   margin-bottom: 8px;
   opacity: 0.8;
 }
@@ -1114,7 +1157,7 @@
 .top-team-members-more {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 11px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   opacity: 0.7;
   padding: 4px 8px;
 }
@@ -1221,7 +1264,7 @@
 .current-top-place-label {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 11px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   opacity: 0.9;
@@ -1231,7 +1274,7 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 18px;
   font-weight: bold;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
@@ -1390,7 +1433,7 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 13px;
   font-weight: bold;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
@@ -1450,7 +1493,7 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 11px;
   font-weight: bold;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
   white-space: nowrap;
 }
@@ -1502,7 +1545,7 @@
 .current-top-place-empty-hint {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 12px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   opacity: 0.8;
   font-style: italic;
   max-width: 400px;
@@ -1599,4 +1642,570 @@
   text-shadow: 
     0 0 8px rgba(255, 215, 0, 0.8),
     0 0 16px rgba(255, 215, 0, 0.4);
+}
+
+/* ==========================================================
+   Dark fantasy overrides — slots, grids, timers (Level I/Stage 5)
+   ========================================================== */
+
+.speedrun-content {
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(50, 70, 110, 0.25), transparent 55%),
+    radial-gradient(circle at 80% 0%, rgba(92, 70, 124, 0.2), transparent 45%),
+    linear-gradient(145deg, rgba(6, 10, 18, 0.95), rgba(3, 5, 10, 0.95)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  background-size: 200% 200%, 180% 180%, cover, cover;
+  border: 1px solid rgba(40, 56, 86, 0.8);
+  border-radius: 12px;
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.8),
+    inset 0 0 35px rgba(3, 6, 12, 0.85);
+  padding: 18px;
+  isolation: isolate;
+}
+
+.difficulties-section {
+  background-image:
+    linear-gradient(135deg, rgba(10, 16, 26, 0.92), rgba(4, 7, 12, 0.92)),
+    url('../assets/images/ui_style_reference/back_item22.png');
+  background-size: cover;
+  border: 1px solid rgba(63, 101, 156, 0.5);
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.75),
+    inset 0 0 25px rgba(0, 0, 0, 0.8);
+}
+
+.difficulty-card-aaa {
+  position: relative;
+  background-image:
+    linear-gradient(140deg, rgba(12, 19, 32, 0.97), rgba(6, 10, 18, 0.95)),
+    url('../assets/images/ui_style_reference/player_back.png');
+  background-size: cover;
+  border: 1px solid rgba(63, 101, 156, 0.6);
+  border-radius: 8px;
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.75),
+    inset 0 0 20px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+  transition: transform 0.25s ease, filter 0.25s ease, border-color 0.25s ease;
+}
+
+.difficulty-card-aaa::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 0%, rgba(98, 157, 222, 0.18), transparent 55%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.difficulty-card-aaa:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.06);
+  border-color: rgba(113, 180, 255, 0.65);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.85),
+    0 0 20px rgba(113, 180, 255, 0.25),
+    inset 0 0 24px rgba(0, 0, 0, 0.85);
+}
+
+.difficulty-card-aaa.is-expanded-aaa {
+  border-color: rgba(207, 169, 107, 0.65);
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.9),
+    0 0 40px rgba(207, 169, 107, 0.25),
+    inset 0 0 30px rgba(0, 0, 0, 0.85);
+}
+
+.difficulty-header-aaa {
+  background-image:
+    linear-gradient(120deg, rgba(15, 24, 39, 0.95), rgba(7, 11, 21, 0.95)),
+    url('../assets/images/ui_style_reference/back_item2.png');
+  border-bottom: 1px solid rgba(75, 117, 176, 0.45);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.6);
+  transition: filter 0.2s ease;
+}
+
+.difficulty-header-aaa:hover {
+  filter: brightness(1.05);
+}
+
+.difficulty-badge-aaa,
+.guild-position-aaa,
+.expand-icon-aaa {
+  background-image:
+    linear-gradient(140deg, rgba(48, 72, 110, 0.35), rgba(28, 42, 66, 0.45)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  background-size: cover;
+  border: 1px solid rgba(91, 132, 189, 0.5);
+  box-shadow:
+    inset 0 0 6px rgba(0, 0, 0, 0.75),
+    0 6px 12px rgba(0, 0, 0, 0.5);
+  transition: filter 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.difficulty-badge-aaa:hover,
+.guild-position-aaa:hover,
+.expand-icon-aaa:hover {
+  filter: brightness(1.08);
+  border-color: rgba(113, 180, 255, 0.7);
+  transform: translateY(-1px);
+}
+
+.difficulty-content-aaa {
+  background-image:
+    linear-gradient(135deg, rgba(8, 12, 20, 0.96), rgba(3, 6, 12, 0.96)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  border-top: 1px solid rgba(25, 36, 57, 0.8);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.9);
+}
+
+.prize-block-aaa {
+  background-image:
+    linear-gradient(140deg, rgba(12, 18, 30, 0.95), rgba(5, 8, 14, 0.92)),
+    url('../assets/images/ui_style_reference/back_item22.png');
+  border-radius: 8px;
+  border: 1px solid rgba(63, 101, 156, 0.5);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.65),
+    inset 0 0 20px rgba(0, 0, 0, 0.85);
+}
+
+.prize-gold-aaa,
+.prize-silver-aaa,
+.prize-bronze-aaa {
+  background-image:
+    linear-gradient(145deg, rgba(207, 169, 107, 0.12), rgba(82, 61, 34, 0.2)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  border-color: rgba(207, 169, 107, 0.45);
+}
+
+.prize-silver-aaa {
+  background-image:
+    linear-gradient(145deg, rgba(163, 178, 204, 0.15), rgba(53, 63, 82, 0.3)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  border-color: rgba(145, 164, 198, 0.45);
+}
+
+.prize-bronze-aaa {
+  background-image:
+    linear-gradient(145deg, rgba(173, 113, 63, 0.16), rgba(47, 26, 18, 0.35)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  border-color: rgba(173, 113, 63, 0.5);
+}
+
+.player-row-aaa {
+  background-image:
+    linear-gradient(120deg, rgba(10, 16, 26, 0.8), rgba(3, 6, 12, 0.85)),
+    url('../assets/images/ui_style_reference/back_item2.png');
+  border: 1px solid rgba(48, 72, 110, 0.45);
+  box-shadow:
+    inset 0 0 12px rgba(0, 0, 0, 0.8),
+    0 10px 20px rgba(0, 0, 0, 0.45);
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.player-row-aaa:hover {
+  filter: brightness(1.05);
+  transform: translateX(3px);
+}
+
+.player-hero-aaa,
+.item-mini-aaa {
+  background-image:
+    linear-gradient(135deg, rgba(15, 23, 36, 0.95), rgba(6, 10, 18, 0.92)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  border: 1px solid rgba(91, 132, 189, 0.45);
+  border-radius: 6px;
+  box-shadow:
+    inset 0 0 10px rgba(0, 0, 0, 0.8),
+    0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: filter 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.player-hero-aaa:hover,
+.item-mini-aaa:hover {
+  filter: brightness(1.08);
+  border-color: rgba(113, 180, 255, 0.65);
+  transform: translateY(-1px) scale(1.03);
+}
+
+.speedrun-timer {
+  background-image:
+    radial-gradient(circle at 70% 0%, rgba(207, 169, 107, 0.15), transparent 50%),
+    radial-gradient(circle at 20% 50%, rgba(84, 129, 194, 0.2), transparent 45%),
+    linear-gradient(140deg, rgba(8, 12, 20, 0.9), rgba(4, 7, 12, 0.95)),
+    url('../assets/images/ui_style_reference/back_item22.png');
+  border: 1px solid rgba(63, 101, 156, 0.55);
+  box-shadow:
+    0 25px 55px rgba(0, 0, 0, 0.85),
+    inset 0 0 35px rgba(0, 0, 0, 0.85);
+}
+
+.speedrun-timer::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(113, 180, 255, 0.2);
+  box-shadow:
+    inset 0 0 18px rgba(113, 180, 255, 0.08),
+    inset 0 0 35px rgba(4, 8, 16, 0.95);
+  pointer-events: none;
+}
+
+.prize-statistics-section {
+  background-image:
+    linear-gradient(145deg, rgba(12, 19, 32, 0.92), rgba(4, 7, 12, 0.92)),
+    url('../assets/images/ui_style_reference/back_item22.png');
+  border: 1px solid rgba(63, 101, 156, 0.5);
+  box-shadow:
+    0 18px 35px rgba(0, 0, 0, 0.75),
+    inset 0 0 25px rgba(0, 0, 0, 0.85);
+}
+
+.prize-stat-card {
+  border: 1px solid rgba(63, 101, 156, 0.45);
+  background-image:
+    linear-gradient(135deg, rgba(12, 18, 31, 0.95), rgba(5, 8, 14, 0.9)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.65),
+    inset 0 0 15px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+}
+
+.prize-stat-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 0%, rgba(113, 180, 255, 0.2), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.prize-stat-card:hover::after {
+  opacity: 1;
+}
+
+.speedrun-warning {
+  background-image:
+    linear-gradient(120deg, rgba(76, 60, 27, 0.65), rgba(41, 27, 15, 0.8)),
+    url('../assets/images/ui_style_reference/back_item2.png');
+  border: 1px solid rgba(207, 169, 107, 0.55);
+  border-left-width: 3px;
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.55),
+    inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.top-teams-grid,
+.prize-statistics-grid {
+  background-image:
+    linear-gradient(135deg, rgba(8, 13, 22, 0.95), rgba(3, 5, 10, 0.95)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  border: 1px solid rgba(33, 48, 72, 0.75);
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow:
+    inset 0 0 25px rgba(0, 0, 0, 0.9);
+}
+
+.top-team-card,
+.current-top-place-card {
+  background-image:
+    linear-gradient(145deg, rgba(10, 16, 26, 0.95), rgba(4, 7, 12, 0.95)),
+    url('../assets/images/ui_style_reference/back_item22.png');
+  border: 1px solid rgba(63, 101, 156, 0.5);
+  box-shadow:
+    0 18px 35px rgba(0, 0, 0, 0.8),
+    inset 0 0 25px rgba(0, 0, 0, 0.85);
+  transition: filter 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.top-team-card:hover,
+.current-top-place-card:hover {
+  filter: brightness(1.05);
+  transform: translateY(-3px);
+  border-color: rgba(207, 169, 107, 0.6);
+}
+
+.top-team-card.top-team-rank-1,
+.current-top-place-rank-1 {
+  border-color: rgba(207, 169, 107, 0.75);
+  box-shadow:
+    0 18px 45px rgba(207, 169, 107, 0.25),
+    inset 0 0 30px rgba(0, 0, 0, 0.85);
+}
+
+.top-team-card.top-team-rank-2,
+.current-top-place-rank-2 {
+  border-color: rgba(150, 170, 204, 0.65);
+}
+
+.top-team-card.top-team-rank-3,
+.current-top-place-rank-3 {
+  border-color: rgba(173, 113, 63, 0.7);
+}
+
+.top-team-stat,
+.current-top-place-team,
+.current-top-place-reward-item {
+  background-image:
+    linear-gradient(135deg, rgba(12, 18, 31, 0.92), rgba(5, 8, 14, 0.9)),
+    url('../assets/images/ui_style_reference/back_item2.png');
+  border: 1px solid rgba(63, 101, 156, 0.4);
+  border-radius: 8px;
+  box-shadow:
+    inset 0 0 15px rgba(0, 0, 0, 0.85),
+    0 10px 20px rgba(0, 0, 0, 0.55);
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.top-team-stat:hover,
+.current-top-place-team:hover,
+.current-top-place-reward-item:hover {
+  filter: brightness(1.06);
+  transform: translateY(-2px);
+}
+
+.top-team-member,
+.current-top-place-team-member,
+.top-team-members-list .top-team-member {
+  background-image:
+    linear-gradient(120deg, rgba(10, 16, 26, 0.85), rgba(3, 6, 12, 0.9)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  border: 1px solid rgba(48, 72, 110, 0.45);
+  border-radius: 6px;
+  box-shadow:
+    inset 0 0 10px rgba(0, 0, 0, 0.85),
+    0 6px 12px rgba(0, 0, 0, 0.5);
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.top-team-member:hover,
+.current-top-place-team-member:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.current-top-place-empty {
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(113, 180, 255, 0.15), transparent 60%),
+    linear-gradient(135deg, rgba(6, 10, 18, 0.95), rgba(3, 5, 10, 0.95)),
+    url('../assets/images/ui_style_reference/back_item22.png');
+  border: 2px dashed rgba(113, 180, 255, 0.45);
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.75),
+    inset 0 0 30px rgba(0, 0, 0, 0.85);
+  transition: filter 0.3s ease, border-color 0.3s ease;
+}
+
+.current-top-place-empty:hover {
+  filter: brightness(1.05);
+  border-color: rgba(207, 169, 107, 0.6);
+}
+
+.speedrun-container::-webkit-scrollbar-track {
+  background: rgba(6, 10, 18, 0.9);
+  border: 1px solid rgba(25, 36, 57, 0.8);
+  border-radius: 8px;
+}
+
+.speedrun-container::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(180deg, rgba(63, 101, 156, 0.9), rgba(25, 45, 74, 0.9));
+  border-radius: 8px;
+  border: 2px solid rgba(4, 7, 12, 0.95);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.75);
+}
+
+/* ==========================================================
+   Stage 7 — leaderboard neon & decorative accents
+   ========================================================== */
+
+.speedrun-content {
+  position: relative;
+  isolation: isolate;
+}
+
+.speedrun-content::after {
+  content: '';
+  position: absolute;
+  inset: 24px;
+  border: 1px solid rgba(113, 180, 255, 0.12);
+  border-radius: 12px;
+  pointer-events: none;
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.65);
+}
+
+.speedrun-timer {
+  position: relative;
+  overflow: hidden;
+}
+
+.speedrun-timer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(113, 180, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(113, 180, 255, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.top-teams-grid::before,
+.prize-statistics-grid::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(33, 48, 72, 0.75);
+  border-radius: 8px;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.top-team-card,
+.current-top-place-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.top-team-card::after,
+.current-top-place-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 0%, rgba(113, 180, 255, 0.15), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.top-team-card:hover::after,
+.current-top-place-card:hover::after {
+  opacity: 1;
+}
+
+.top-team-header,
+.current-top-place-header {
+  position: relative;
+}
+
+.top-team-header::after,
+.current-top-place-header::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(113, 180, 255, 0.45), transparent);
+  opacity: 0.7;
+}
+
+.top-team-stat,
+.current-top-place-team,
+.current-top-place-reward-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.top-team-stat::before,
+.current-top-place-team::before,
+.current-top-place-reward-item::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: 6px;
+  border: 1px solid rgba(33, 48, 72, 0.65);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.top-team-card.top-team-rank-1::before,
+.current-top-place-card.current-top-place-rank-1::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(207, 169, 107, 0.45);
+  pointer-events: none;
+}
+
+.top-team-card.top-team-rank-1 .top-team-medal,
+.current-top-place-card.current-top-place-rank-1 .current-top-place-medal {
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.7));
+}
+
+.top-team-card.top-team-rank-2 .top-team-medal,
+.current-top-place-card.current-top-place-rank-2 .current-top-place-medal {
+  filter: drop-shadow(0 0 12px rgba(192, 192, 192, 0.6));
+}
+
+.top-team-card.top-team-rank-3 .top-team-medal,
+.current-top-place-card.current-top-place-rank-3 .current-top-place-medal {
+  filter: drop-shadow(0 0 12px rgba(205, 127, 50, 0.5));
+}
+
+.top-team-members-list,
+.current-top-place-team-members {
+  border-top: 1px solid rgba(33, 48, 72, 0.45);
+  padding-top: 10px;
+}
+
+.top-team-member,
+.current-top-place-team-member {
+  background-image:
+    linear-gradient(145deg, rgba(9, 14, 23, 0.8), rgba(3, 5, 10, 0.85)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  border: 1px solid rgba(48, 72, 110, 0.45);
+  border-radius: 6px;
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.top-team-member:hover,
+.current-top-place-team-member:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+.prize-stat-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.prize-stat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(113, 180, 255, 0.12);
+  pointer-events: none;
+}
+
+.prize-stat-card:hover {
+  filter: brightness(1.05);
+}
+
+.difficulties-section-title,
+.top-teams-title,
+.current-top-place-title {
+  text-shadow:
+    0 0 8px rgba(0, 0, 0, 0.9),
+    0 0 20px rgba(113, 180, 255, 0.3);
+}
+
+.guild-position-number {
+  text-shadow:
+    0 0 12px rgba(113, 180, 255, 0.45),
+    0 0 24px rgba(113, 180, 255, 0.25);
+}
+
+.guild-position-aaa.top-three-aaa {
+  border-color: rgba(207, 169, 107, 0.55);
+  box-shadow: 0 0 18px rgba(207, 169, 107, 0.25);
 }

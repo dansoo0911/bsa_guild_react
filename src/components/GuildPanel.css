@@ -2,10 +2,17 @@
   width: 250px;
   min-height: auto;
   padding: 8px;
-  background: linear-gradient(to bottom, #1a2a3a, #0f1a2a);
-  border: 1px solid #3a4a5a;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.27);
+  background-image:
+    linear-gradient(155deg, rgba(9, 14, 23, 0.94), rgba(3, 6, 12, 0.92)),
+    url('../assets/images/ui_style_reference/guild_progress.png');
+  background-size: cover;
+  border: 1px solid rgba(42, 58, 86, 0.8);
+  border-top-color: rgba(124, 151, 198, 0.5);
+  border-left-color: rgba(69, 97, 138, 0.5);
+  border-radius: 10px;
+  box-shadow:
+    0 18px 35px rgba(0, 0, 0, 0.65),
+    inset 0 0 25px rgba(4, 7, 12, 0.9);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -14,27 +21,34 @@
   overflow-x: hidden;
   max-height: 100%;
   height: 100%;
+  position: relative;
+  isolation: isolate;
 }
 
-/* Скролл для всей панели гильдии */
+.guild-panel::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+}
+
 .guild-panel::-webkit-scrollbar {
   width: 6px;
 }
 
 .guild-panel::-webkit-scrollbar-track {
-  background: rgba(15, 26, 42, 0.4);
+  background: rgba(9, 15, 25, 0.4);
   border-radius: 3px;
   margin: 2px 0;
 }
 
 .guild-panel::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, rgba(100, 120, 150, 0.6), rgba(74, 90, 122, 0.6));
+  background-image: linear-gradient(to bottom, rgba(115, 150, 210, 0.7), rgba(54, 84, 130, 0.7));
   border-radius: 3px;
-  border: 1px solid rgba(15, 26, 42, 0.3);
-}
-
-.guild-panel::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, rgba(120, 140, 170, 0.8), rgba(90, 110, 140, 0.8));
+  border: 1px solid rgba(9, 15, 25, 0.4);
 }
 
 .guild-header {
@@ -54,47 +68,45 @@
 .guild-avatar {
   width: 56px;
   height: 56px;
-  border-radius: 8px;
-  border: 2px solid rgba(255, 215, 0, 0.4);
+  border-radius: 10px;
+  border: 1px solid rgba(207, 169, 107, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(212, 175, 55, 0.1) 100%);
-  box-shadow: 
-    0 0 12px rgba(255, 215, 0, 0.3),
-    inset 0 0 8px rgba(255, 215, 0, 0.1);
-  position: relative;
+  background-image:
+    linear-gradient(145deg, rgba(26, 20, 12, 0.95), rgba(68, 43, 21, 0.85)),
+    url('../assets/images/ui_style_reference/player_back.png');
+  background-size: cover;
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.65),
+    0 0 20px rgba(207, 169, 107, 0.35),
+    inset 0 0 18px rgba(0, 0, 0, 0.7);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .guild-avatar:hover {
-  border-color: rgba(255, 215, 0, 0.6);
-  box-shadow: 
-    0 0 20px rgba(255, 215, 0, 0.5),
-    inset 0 0 12px rgba(255, 215, 0, 0.2);
-  transform: scale(1.05);
+  filter: brightness(1.08);
+  transform: translateY(-2px);
 }
 
 .avatar-glow {
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+  inset: 0;
+  background: radial-gradient(circle, rgba(207, 169, 107, 0.25), transparent 70%);
+  mix-blend-mode: screen;
   animation: avatar-pulse 3s ease-in-out infinite;
   pointer-events: none;
 }
 
 @keyframes avatar-pulse {
   0%, 100% {
-    opacity: 0.5;
+    opacity: 0.4;
     transform: scale(1);
   }
   50% {
-    opacity: 0.8;
-    transform: scale(1.1);
+    opacity: 0.75;
+    transform: scale(1.05);
   }
 }
 
@@ -102,9 +114,9 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 11px;
   font-weight: bold;
-  color: #FFD700;
-  text-shadow: 
-    0 0 8px rgba(255, 215, 0, 0.6),
+  color: #f2d39a;
+  text-shadow:
+    0 0 8px rgba(207, 169, 107, 0.7),
     1px 1px 2px rgba(0, 0, 0, 0.8);
   z-index: 1;
   position: relative;
@@ -117,20 +129,18 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-  border: 2px solid rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, #f4d18a 0%, #c28b3d 100%);
+  border: 1px solid rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
   font-weight: bold;
-  color: #000;
+  color: #1a0e05;
   text-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
-  box-shadow: 
-    0 0 8px rgba(255, 215, 0, 0.6),
-    0 2px 4px rgba(0, 0, 0, 0.5);
-  z-index: 2;
+  box-shadow:
+    0 0 10px rgba(244, 209, 138, 0.65),
+    0 3px 9px rgba(0, 0, 0, 0.55);
 }
 
 .guild-info {
@@ -153,134 +163,120 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 15px;
   font-weight: bold;
-  color: #E5E0C5;
-  text-shadow: 
-    0 0 8px rgba(229, 224, 197, 0.3),
-    1px 1px 2px rgba(0, 0, 0, 0.8);
-  text-align: left;
+  color: var(--dota-text-header, #f4e1c1);
+  text-shadow:
+    0 0 10px rgba(244, 225, 193, 0.4),
+    1px 1px 2px rgba(0, 0, 0, 0.9);
   line-height: 1.2;
   letter-spacing: 0.3px;
 }
 
 .guild-level-badge {
-  font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
-  color: #FFD700;
-  text-shadow: 
-    0 0 6px rgba(255, 215, 0, 0.5),
+  color: #cfa96b;
+  text-shadow:
+    0 0 6px rgba(207, 169, 107, 0.5),
     1px 1px 2px rgba(0, 0, 0, 0.8);
-  text-align: left;
-  line-height: 1.2;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
 }
 
 .guild-exp-bar-container {
   width: 100%;
-  padding: 8px 10px;
-  background: linear-gradient(135deg, rgba(26, 42, 58, 0.5) 0%, rgba(15, 25, 35, 0.4) 100%);
-  border: 1px solid rgba(76, 175, 80, 0.2);
+  padding: 10px 12px;
+  background-image:
+    linear-gradient(145deg, rgba(10, 18, 32, 0.85), rgba(4, 7, 12, 0.85)),
+    url('../assets/images/ui_style_reference/guild_progress.png');
+  background-size: cover;
+  border: 1px solid rgba(70, 118, 170, 0.5);
   border-radius: 8px;
-  box-shadow: 
-    0 2px 8px rgba(0, 0, 0, 0.3),
-    inset 0 1px 2px rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.6),
+    inset 0 0 18px rgba(0, 0, 0, 0.65);
+  transition: filter 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .guild-exp-bar-container:hover {
-  border-color: rgba(76, 175, 80, 0.4);
-  box-shadow: 
-    0 4px 12px rgba(76, 175, 80, 0.2),
-    inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  border-color: rgba(118, 178, 237, 0.7);
+  filter: brightness(1.06);
 }
 
 .guild-exp-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .exp-label {
-  font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 9px;
-  color: #C8D5E1;
+  color: var(--dota-text-muted, #8aa0c8);
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.55);
 }
 
 .exp-percent {
-  font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 12px;
   font-weight: bold;
-  color: #4CAF50;
-  text-shadow: 
-    0 0 8px rgba(76, 175, 80, 0.6),
-    0 0 12px rgba(76, 175, 80, 0.3);
+  color: #74f2b5;
+  text-shadow:
+    0 0 10px rgba(116, 242, 181, 0.7),
+    0 0 14px rgba(116, 242, 181, 0.35);
+  letter-spacing: 0.3px;
 }
 
 .guild-exp-bar {
   width: 100%;
   height: 8px;
-  background: linear-gradient(to bottom, rgba(20, 30, 45, 0.8), rgba(15, 25, 35, 0.9));
-  border: 1px solid rgba(42, 58, 74, 0.5);
+  background: linear-gradient(to bottom, rgba(16, 25, 40, 0.9), rgba(7, 12, 22, 0.95));
+  border: 1px solid rgba(43, 61, 93, 0.6);
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 
-    inset 0 2px 4px rgba(0, 0, 0, 0.6),
-    0 0 4px rgba(76, 175, 80, 0.2);
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.8),
+    0 0 6px rgba(90, 146, 215, 0.3);
   margin-bottom: 6px;
   position: relative;
 }
 
 .guild-exp-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #4CAF50 0%, #66BB6A 50%, #4CAF50 100%);
+  background: linear-gradient(90deg, #4edb96 0%, #79ffe1 60%, #4edb96 100%);
   border-radius: 4px;
-  box-shadow: 
-    0 0 12px rgba(76, 175, 80, 0.8),
-    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 0 16px rgba(73, 212, 168, 0.9),
+    inset 0 1px 2px rgba(255, 255, 255, 0.35);
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  overflow: hidden;
 }
 
 .exp-bar-shine {
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
   animation: exp-shine 2.5s infinite;
 }
 
 @keyframes exp-shine {
   0% {
-    left: -100%;
+    transform: translateX(-100%);
   }
   100% {
-    left: 100%;
+    transform: translateX(100%);
   }
 }
 
 .exp-bar-particles {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.3), transparent),
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.35), transparent),
     radial-gradient(2px 2px at 60% 70%, rgba(255, 255, 255, 0.2), transparent),
-    radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.4), transparent);
+    radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.45), transparent);
   background-size: 200% 200%;
   animation: particles-float 4s ease-in-out infinite;
   pointer-events: none;
@@ -296,11 +292,9 @@
 }
 
 .guild-exp-text {
-  font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 9px;
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
-  text-align: left;
   line-height: 1.3;
   display: flex;
   align-items: center;
@@ -309,20 +303,21 @@
 }
 
 .exp-current {
-  color: #4CAF50;
+  color: #74f2b5;
   font-weight: bold;
+  letter-spacing: 0.3px;
 }
 
 .exp-separator {
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
 }
 
 .exp-required {
-  color: #B8C5D1;
+  color: var(--dota-text-body, #d5d9e8);
 }
 
 .exp-remaining {
-  color: #8A9BA8;
+  color: var(--dota-text-muted, #8aa0c8);
   font-size: 9px;
   margin-left: 4px;
   font-style: italic;
@@ -332,40 +327,32 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 12px;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(212, 175, 55, 0.1) 100%);
-  border: 1px solid rgba(255, 215, 0, 0.4);
+  padding: 12px 14px;
+  background-image:
+    linear-gradient(160deg, rgba(28, 20, 10, 0.92), rgba(54, 32, 15, 0.85)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  background-size: cover;
+  border: 1px solid rgba(207, 169, 107, 0.7);
   border-radius: 8px;
   width: 100%;
-  box-shadow: 
-    0 0 16px rgba(255, 215, 0, 0.2),
-    inset 0 1px 2px rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.6),
+    inset 0 0 20px rgba(0, 0, 0, 0.75);
   position: relative;
   overflow: hidden;
 }
 
 .guild-points::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
-  transition: left 0.5s ease;
-}
-
-.guild-points:hover {
-  border-color: rgba(255, 215, 0, 0.6);
-  box-shadow: 
-    0 0 24px rgba(255, 215, 0, 0.4),
-    inset 0 1px 3px rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
+  inset: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(255, 226, 182, 0.3), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .guild-points:hover::before {
-  left: 100%;
+  opacity: 1;
 }
 
 .guild-points-icon-wrapper {
@@ -373,46 +360,12 @@
   flex-shrink: 0;
 }
 
-.guild-points-icon {
-  font-size: 24px;
-  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
-  animation: coin-rotate 3s ease-in-out infinite;
-  position: relative;
-  z-index: 1;
-}
-
 .guild-points-icon-image {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   object-fit: contain;
-  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
-  position: relative;
-  z-index: 1;
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.7));
   animation: coin-rotate 3s ease-in-out infinite;
-}
-
-.points-icon-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
-  background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: icon-glow-pulse 2s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes icon-glow-pulse {
-  0%, 100% {
-    opacity: 0.6;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.2);
-  }
 }
 
 @keyframes coin-rotate {
@@ -420,7 +373,7 @@
     transform: rotateY(0deg) scale(1);
   }
   50% {
-    transform: rotateY(180deg) scale(1.1);
+    transform: rotateY(180deg) scale(1.08);
   }
 }
 
@@ -428,79 +381,49 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 2px;
   min-width: 0;
+  gap: 2px;
 }
 
 .guild-points-label {
-  font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 9px;
-  color: #C8D5E1;
+  color: var(--dota-text-muted, #8aa0c8);
   text-transform: uppercase;
   letter-spacing: 1px;
-  line-height: 1;
   font-weight: 600;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.55);
 }
 
 .guild-points-value {
-  font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 16px;
   font-weight: bold;
-  color: #FFD700;
-  text-shadow: 
-    0 0 10px rgba(255, 215, 0, 0.8),
-    0 0 16px rgba(255, 215, 0, 0.4),
-    1px 1px 2px rgba(0, 0, 0, 0.8);
-  line-height: 1.2;
+  color: var(--dota-text-header, #f4e1c1);
+  text-shadow:
+    0 0 12px rgba(244, 209, 138, 0.8),
+    0 0 20px rgba(244, 209, 138, 0.35),
+    1px 1px 2px rgba(0, 0, 0, 0.85);
   letter-spacing: 0.5px;
 }
 
-/* Блок описания гильдии */
 .guild-description-block {
   width: 100%;
   margin-top: 4px;
-  padding: 8px 10px;
-  background: linear-gradient(135deg, rgba(30, 50, 70, 0.6) 0%, rgba(20, 35, 50, 0.6) 100%);
-  border: 1px solid rgba(100, 120, 150, 0.3);
-  border-radius: 6px;
-  box-shadow: 
-    0 2px 8px rgba(0, 0, 0, 0.4),
-    inset 0 1px 2px rgba(255, 255, 255, 0.08),
-    0 0 15px rgba(100, 120, 150, 0.1);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow-y: auto;
+  padding: 10px 12px;
+  background-image:
+    linear-gradient(150deg, rgba(8, 14, 23, 0.92), rgba(5, 9, 16, 0.88)),
+    url('../assets/images/ui_style_reference/back_item22.png');
+  background-size: cover;
+  border: 1px solid rgba(58, 92, 130, 0.45);
+  border-radius: 8px;
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.6),
+    inset 0 0 18px rgba(0, 0, 0, 0.7);
   max-height: 120px;
   min-height: 70px;
   display: flex;
   flex-direction: column;
-  flex-shrink: 0;
-}
-
-.guild-description-block::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.guild-description-block:hover {
-  border-color: rgba(100, 120, 150, 0.5);
-  box-shadow: 
-    0 4px 12px rgba(0, 0, 0, 0.5),
-    inset 0 1px 2px rgba(255, 255, 255, 0.12),
-    0 0 20px rgba(100, 120, 150, 0.2);
-  transform: translateY(-1px);
-}
-
-.guild-description-block:hover::before {
-  opacity: 1;
+  overflow-y: auto;
+  position: relative;
 }
 
 .guild-description-header {
@@ -508,50 +431,36 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  margin-bottom: 3px;
-  padding-bottom: 2px;
-  border-bottom: 1px solid rgba(74, 90, 122, 0.4);
+  margin-bottom: 4px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(110, 149, 196, 0.35);
   position: relative;
-  flex-shrink: 0;
 }
 
 .guild-description-header::after {
-  content: '';
+  content: "";
   position: absolute;
-  bottom: -1px;
+  bottom: 0;
   left: 0;
   width: 40px;
   height: 2px;
-  background: linear-gradient(90deg, rgba(255, 215, 0, 0.6), transparent);
-  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(208, 231, 255, 0.8), transparent);
 }
 
 .description-icon {
   font-size: 10px;
-  filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.4));
-  animation: icon-glow 3s ease-in-out infinite;
-  flex-shrink: 0;
-}
-
-@keyframes icon-glow {
-  0%, 100% {
-    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.4));
-  }
-  50% {
-    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));
-  }
+  filter: drop-shadow(0 0 6px rgba(113, 180, 255, 0.5));
 }
 
 .description-title {
-  font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
   font-weight: bold;
-  color: #E5E0C5;
+  color: var(--dota-text-header, #f4e1c1);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  text-shadow: 
-    0 0 6px rgba(229, 224, 197, 0.3),
-    1px 1px 2px rgba(0, 0, 0, 0.8);
+  text-shadow:
+    0 0 6px rgba(244, 225, 193, 0.35),
+    1px 1px 2px rgba(0, 0, 0, 0.85);
   flex: 1;
   white-space: nowrap;
 }
@@ -561,89 +470,66 @@
   align-items: center;
   gap: 4px;
   padding: 4px 8px;
-  background: linear-gradient(135deg, rgba(26, 42, 58, 0.6) 0%, rgba(15, 26, 42, 0.6) 100%);
-  border: 1px solid rgba(74, 90, 122, 0.4);
+  background: linear-gradient(135deg, rgba(26, 42, 58, 0.75), rgba(12, 21, 35, 0.85));
+  border: 1px solid rgba(113, 180, 255, 0.45);
   border-radius: 6px;
-  color: #E5E0C5;
-  font-family: 'Radiance', 'Trajan Pro', serif;
+  color: var(--dota-text-body, #d5d9e8);
   font-size: 10px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
-  text-transform: uppercase;
+  transition:
+    filter var(--dota-hover-speed, 0.25s) ease,
+    transform var(--dota-hover-speed, 0.25s) ease,
+    border-color var(--dota-hover-speed, 0.25s) ease,
+    box-shadow var(--dota-hover-speed, 0.25s) ease;
   letter-spacing: 0.3px;
-  flex-shrink: 0;
 }
 
 .history-button:hover {
-  background: linear-gradient(135deg, rgba(26, 42, 58, 0.8) 0%, rgba(15, 26, 42, 0.8) 100%);
-  border-color: rgba(100, 181, 246, 0.6);
-  box-shadow: 0 2px 8px rgba(100, 181, 246, 0.3);
-  transform: translateY(-1px);
+  filter: brightness(var(--dota-hover-bright, 1.08));
+  transform: translateY(var(--dota-hover-lift, -2px));
 }
 
-.history-button:active {
-  transform: translateY(0);
-}
-
-.history-button-icon {
-  font-size: 12px;
-  filter: drop-shadow(0 0 4px rgba(100, 181, 246, 0.4));
-}
-
-.history-button-text {
-  font-size: 10px;
+.history-button:focus-visible {
+  outline: 2px solid var(--dota-focus-outline, rgba(113, 180, 255, 0.65));
+  outline-offset: 2px;
 }
 
 .guild-description-text {
-  font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
   line-height: 1.4;
-  color: #C8D5E1;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
-  text-align: left;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  flex: 1;
+  color: #d0d5e3;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
   padding-right: 4px;
-  position: relative;
-  min-height: 0;
+  flex: 1;
+  overflow: auto;
 }
 
 .guild-description-block::-webkit-scrollbar {
   width: 6px;
 }
 
-.guild-description-block::-webkit-scrollbar-track {
-  background: rgba(15, 26, 42, 0.4);
-  border-radius: 3px;
-  margin: 2px 0;
-}
-
 .guild-description-block::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, rgba(100, 120, 150, 0.6), rgba(74, 90, 122, 0.6));
+  background-image: linear-gradient(to bottom, rgba(92, 146, 215, 0.7), rgba(58, 99, 147, 0.7));
   border-radius: 3px;
-  border: 1px solid rgba(15, 26, 42, 0.3);
 }
 
-.guild-description-block::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, rgba(120, 140, 170, 0.8), rgba(90, 110, 140, 0.8));
-}
-
-/* Статистика гильдии */
 .guild-stats {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 6px;
   margin-top: 6px;
-  padding: 8px;
-  background: linear-gradient(135deg, rgba(20, 30, 45, 0.6) 0%, rgba(15, 25, 35, 0.5) 100%);
-  border: 1px solid rgba(74, 90, 122, 0.4);
+  padding: 10px;
+  background: linear-gradient(150deg, rgba(8, 14, 23, 0.92), rgba(4, 7, 12, 0.9));
+  border: 1px solid rgba(58, 92, 130, 0.45);
   border-radius: 8px;
-  box-shadow: 
-    0 2px 8px rgba(0, 0, 0, 0.3),
-    inset 0 1px 2px rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.6),
+    inset 0 0 16px rgba(0, 0, 0, 0.65);
+  transition:
+    border-color var(--dota-hover-speed, 0.25s) ease,
+    box-shadow var(--dota-hover-speed, 0.25s) ease;
 }
 
 .stat-item {
@@ -652,32 +538,31 @@
   align-items: center;
   gap: 8px;
   padding: 8px 10px;
-  background: linear-gradient(135deg, rgba(26, 42, 58, 0.6) 0%, rgba(20, 35, 50, 0.5) 100%);
-  border: 2px solid;
+  background: linear-gradient(145deg, rgba(16, 25, 40, 0.75), rgba(7, 11, 18, 0.85));
+  border: 1px solid rgba(66, 96, 150, 0.4);
   border-radius: 8px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    transform var(--dota-hover-speed, 0.25s) ease,
+    filter var(--dota-hover-speed, 0.25s) ease,
+    border-color var(--dota-hover-speed, 0.25s) ease,
+    box-shadow var(--dota-hover-speed, 0.25s) ease;
   position: relative;
   overflow: hidden;
-  width: 100%;
-  min-width: 0;
 }
 
 .stat-item::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
 }
 
 .stat-item:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  transform: translateY(var(--dota-hover-lift-strong, -4px));
+  filter: brightness(var(--dota-hover-bright, 1.08));
 }
 
 .stat-item:hover::before {
@@ -685,44 +570,22 @@
 }
 
 .stat-item.stat-online {
-  border-color: rgba(76, 175, 80, 0.5);
-  background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(26, 42, 58, 0.6) 100%);
-}
-
-.stat-item.stat-online:hover {
-  border-color: rgba(76, 175, 80, 0.8);
-  box-shadow: 
-    0 6px 20px rgba(0, 0, 0, 0.5),
-    0 0 16px rgba(76, 175, 80, 0.4);
+  border-color: rgba(116, 242, 181, 0.4);
+  box-shadow: 0 0 14px rgba(116, 242, 181, 0.25);
 }
 
 .stat-item.stat-active {
-  border-color: rgba(255, 152, 0, 0.5);
-  background: linear-gradient(135deg, rgba(255, 152, 0, 0.1) 0%, rgba(26, 42, 58, 0.6) 100%);
-}
-
-.stat-item.stat-active:hover {
-  border-color: rgba(255, 152, 0, 0.8);
-  box-shadow: 
-    0 6px 20px rgba(0, 0, 0, 0.5),
-    0 0 16px rgba(255, 152, 0, 0.4);
+  border-color: rgba(255, 184, 111, 0.4);
+  box-shadow: 0 0 14px rgba(255, 184, 111, 0.25);
 }
 
 .stat-item.stat-points {
-  border-color: rgba(255, 215, 0, 0.5);
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(26, 42, 58, 0.6) 100%);
-}
-
-.stat-item.stat-points:hover {
-  border-color: rgba(255, 215, 0, 0.8);
-  box-shadow: 
-    0 6px 20px rgba(0, 0, 0, 0.5),
-    0 0 16px rgba(255, 215, 0, 0.4);
+  border-color: rgba(244, 209, 138, 0.4);
+  box-shadow: 0 0 14px rgba(244, 209, 138, 0.25);
 }
 
 .stat-icon-wrapper {
   position: relative;
-  flex-shrink: 0;
   width: 36px;
   height: 36px;
   display: flex;
@@ -732,149 +595,81 @@
 
 .stat-icon {
   font-size: 20px;
-  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.6));
-  position: relative;
-  z-index: 2;
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.65));
   transition: transform 0.3s ease;
 }
 
 .stat-item:hover .stat-icon {
-  transform: scale(1.15);
+  transform: scale(1.12);
 }
 
 .stat-icon-glow {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50px;
-  height: 50px;
+  inset: -12px;
   border-radius: 50%;
   pointer-events: none;
-  z-index: 1;
+  opacity: 0.7;
 }
 
 .stat-glow-green {
-  background: radial-gradient(circle, rgba(76, 175, 80, 0.4) 0%, transparent 70%);
-  animation: stat-glow-pulse 2s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(116, 242, 181, 0.35), transparent 70%);
 }
 
 .stat-glow-orange {
-  background: radial-gradient(circle, rgba(255, 152, 0, 0.4) 0%, transparent 70%);
-  animation: stat-glow-pulse 2s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(255, 184, 111, 0.35), transparent 70%);
 }
 
 .stat-glow-gold {
-  background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, transparent 70%);
-  animation: stat-glow-pulse 2s ease-in-out infinite;
-}
-
-@keyframes stat-glow-pulse {
-  0%, 100% {
-    opacity: 0.6;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.2);
-  }
-}
-
-.stat-pulse {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: rgba(76, 175, 80, 0.5);
-  animation: pulse-ring 2s ease-in-out infinite;
-  z-index: 0;
-}
-
-@keyframes pulse-ring {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1.8);
-    opacity: 0;
-  }
+  background: radial-gradient(circle, rgba(244, 209, 138, 0.35), transparent 70%);
 }
 
 .stat-content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 2px;
   min-width: 0;
-  width: 100%;
-  text-align: left;
 }
 
 .stat-value {
-  font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 14px;
   font-weight: bold;
-  color: #FFD700;
-  text-shadow: 
-    0 0 8px rgba(255, 215, 0, 0.6),
-    0 0 12px rgba(255, 215, 0, 0.3),
+  color: #f4d18a;
+  text-shadow:
+    0 0 10px rgba(244, 209, 138, 0.6),
     1px 1px 2px rgba(0, 0, 0, 0.8);
-  line-height: 1.2;
   white-space: nowrap;
   letter-spacing: 0.5px;
 }
 
 .stat-item.stat-online .stat-value {
-  color: #4CAF50;
-  text-shadow: 
-    0 0 8px rgba(76, 175, 80, 0.6),
-    0 0 12px rgba(76, 175, 80, 0.3),
+  color: #74f2b5;
+  text-shadow:
+    0 0 10px rgba(116, 242, 181, 0.6),
     1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .stat-item.stat-active .stat-value {
-  color: #FF9800;
-  text-shadow: 
-    0 0 8px rgba(255, 152, 0, 0.6),
-    0 0 12px rgba(255, 152, 0, 0.3),
+  color: #ffae64;
+  text-shadow:
+    0 0 10px rgba(255, 174, 100, 0.6),
     1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .stat-label {
-  font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 8px;
-  color: #C8D5E1;
+  color: var(--dota-text-muted, #8aa0c8);
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  line-height: 1.2;
-  white-space: normal;
-  word-wrap: break-word;
   font-weight: 600;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.55);
 }
 
 .stat-hint {
-  font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 7px;
-  color: #8A9BA8;
-  line-height: 1.2;
-  white-space: normal;
-  word-wrap: break-word;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.guild-members {
-  font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 14px;
-  color: #B8C5D1;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
-  text-align: left;
-  width: 100%;
+  color: var(--dota-text-muted, #8aa0c8);
+  line-labelledby: 1.2;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.55);
 }
 
 .guild-actions {
@@ -884,149 +679,89 @@
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  overflow: visible;
 }
 
-/* Универсальные стили для кнопок действий */
 .guild-action-button {
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 10px;
   font-weight: bold;
-  color: #E5E0C5;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.67);
-  text-align: center;
+  color: var(--dota-text-header, #f4e1c1);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.75);
   width: 100%;
-  padding: 6px 8px;
-  background: linear-gradient(135deg, #2b4f6f 0%, #1e3a4b 50%, #2b4f6f 100%);
-  background-size: 200% 100%;
-  border: 1px solid #4a5a7a;
-  border-radius: 5px;
+  padding: 7px 10px;
+  background-image:
+    linear-gradient(135deg, rgba(27, 39, 58, 0.95), rgba(14, 21, 33, 0.95)),
+    url('../assets/images/ui_style_reference/bp_button_simple.png');
+  background-size: cover;
+  border: 1px solid rgba(75, 117, 176, 0.6);
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 
-    0 2px 6px rgba(0, 0, 0, 0.4),
-    inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  transition:
+    filter var(--dota-hover-speed, 0.25s) ease,
+    transform var(--dota-hover-speed, 0.25s) ease,
+    box-shadow var(--dota-hover-speed, 0.25s) ease,
+    border-color var(--dota-hover-speed, 0.25s) ease;
+  box-shadow:
+    0 8px 14px rgba(0, 0, 0, 0.55),
+    inset 0 0 10px rgba(0, 0, 0, 0.7);
   text-transform: uppercase;
-  position: relative;
-  overflow: visible;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  letter-spacing: 0.2px;
-}
-
-.guild-action-button::before {
-  display: none;
+  gap: 6px;
 }
 
 .guild-action-button:hover {
-  background-position: 100% 0;
-  border-color: #5a6a8a;
-  transform: translateY(-2px);
-  box-shadow: 
-    0 6px 16px rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(90, 106, 138, 0.3),
-    inset 0 1px 2px rgba(255, 255, 255, 0.15);
+  filter: brightness(var(--dota-hover-bright, 1.08));
+  transform: translateY(var(--dota-hover-lift, -2px));
+}
+
+.guild-action-button:focus-visible {
+  outline: 2px solid var(--dota-focus-outline, rgba(113, 180, 255, 0.65));
+  outline-offset: 2px;
 }
 
 .guild-action-button:active {
   transform: translateY(0);
-  box-shadow: 
-    0 2px 8px rgba(0, 0, 0, 0.4),
-    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  filter: brightness(0.97);
 }
 
 .button-icon {
   font-size: 12px;
-  flex-shrink: 0;
-  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
-  position: relative;
-  z-index: 1;
-}
-
-.button-text {
-  flex: 1;
-  position: relative;
-  z-index: 1;
+  filter: drop-shadow(0 0 5px rgba(113, 180, 255, 0.4));
 }
 
 .button-badge {
   font-size: 10px;
   padding: 2px 6px;
-  background: rgba(76, 175, 80, 0.2);
-  border: 1px solid rgba(76, 175, 80, 0.4);
+  background: rgba(116, 242, 181, 0.2);
+  border: 1px solid rgba(116, 242, 181, 0.5);
   border-radius: 10px;
-  color: #4CAF50;
+  color: #74f2b5;
   font-weight: bold;
-  position: relative;
-  z-index: 1;
 }
 
-.accept-members-button.has-requests {
-  /* Кнопка остается такой же, как остальные */
-}
-
-.requests-indicator {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  min-width: 18px;
-  height: 18px;
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-  border: 1px solid rgba(26, 42, 58, 0.8);
-  border-radius: 9px;
-  color: #1a2a3a;
-  font-size: 10px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 5px;
-  box-shadow: 
-    0 2px 6px rgba(255, 215, 0, 0.5),
-    0 0 10px rgba(255, 215, 0, 0.3),
-    inset 0 1px 1px rgba(255, 255, 255, 0.3);
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
-  line-height: 1;
-  z-index: 10;
-  animation: badge-bounce 2s ease-in-out infinite;
-  white-space: nowrap;
-  overflow: visible;
-  box-sizing: border-box;
-}
-
+.requests-indicator,
 .admin-actions-indicator {
   position: absolute;
   top: 4px;
   right: 4px;
   min-width: 18px;
   height: 18px;
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-  border: 1px solid rgba(26, 42, 58, 0.8);
+  background: linear-gradient(135deg, #f4d18a, #c28b3d);
+  border: 1px solid rgba(0, 0, 0, 0.6);
   border-radius: 9px;
-  color: #1a2a3a;
+  color: #1c1207;
   font-size: 10px;
   font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 5px;
-  box-shadow: 
-    0 2px 6px rgba(255, 215, 0, 0.5),
-    0 0 10px rgba(255, 215, 0, 0.3),
-    inset 0 1px 1px rgba(255, 255, 255, 0.3);
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
-  line-height: 1;
-  z-index: 10;
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.45),
+    0 0 12px rgba(244, 209, 138, 0.35);
   animation: badge-bounce 2s ease-in-out infinite;
-  white-space: nowrap;
-  overflow: visible;
-  box-sizing: border-box;
-}
-
-.guild-history-button.has-admin-actions {
-  position: relative;
 }
 
 @keyframes badge-bounce {
@@ -1039,89 +774,142 @@
 }
 
 .leave-guild-button {
-  background: linear-gradient(135deg, #6f2b2b 0%, #4a1e1e 50%, #6f2b2b 100%) !important;
-  border-color: #8a4a4a !important;
-  margin-top: 4px;
+  background-image:
+    linear-gradient(135deg, rgba(80, 24, 24, 0.95), rgba(46, 9, 9, 0.95)),
+    url('../assets/images/ui_style_reference/buttom_blue.png');
+  border-color: rgba(165, 66, 66, 0.7);
 }
 
 .leave-guild-button:hover {
-  background: linear-gradient(135deg, #8f3b3b 0%, #6a2e2e 50%, #8f3b3b 100%) !important;
-  border-color: #9a5a5a !important;
-  box-shadow: 
-    0 6px 16px rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(154, 90, 90, 0.4),
-    inset 0 1px 2px rgba(255, 255, 255, 0.15) !important;
-}
-
-.confirm-leave {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  filter: brightness(1.05);
 }
 
 .confirm-message {
-  font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 14px;
-  color: #E5E0C5;
+  color: var(--dota-text-body, #d5d9e8);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.67);
   text-align: center;
-  margin-bottom: 5px;
-}
-
-.confirm-buttons {
-  display: flex;
-  gap: 10px;
-  width: 100%;
-}
-
-.confirm-button,
-.cancel-button {
-  font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 11px;
-  font-weight: bold;
-  color: #E5E0C5;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.67);
-  text-align: center;
-  flex: 1;
-  padding: 5px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border: 2px solid;
-  text-transform: uppercase;
 }
 
 .confirm-button {
-  background: linear-gradient(to bottom, #6f2b2b, #4a1e1e);
-  border-color: #8a4a4a;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4),
-              inset 0 1px 0px #8a4a4a;
-}
-
-.confirm-button:hover {
-  background: linear-gradient(to bottom, #8f3b3b, #6a2e2e);
-  border-color: #9a5a5a;
-  brightness: 1.2;
+  background: linear-gradient(135deg, rgba(92, 22, 22, 0.95), rgba(45, 6, 6, 0.95));
+  border-color: rgba(165, 66, 66, 0.7);
 }
 
 .cancel-button {
-  background: linear-gradient(to bottom, #2b4f6f, #1e3a4b);
-  border-color: #4a5a7a;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4),
-              inset 0 1px 0px #5a6a8a;
+  background: linear-gradient(135deg, rgba(27, 39, 58, 0.95), rgba(14, 21, 33, 0.95));
+  border-color: rgba(75, 117, 176, 0.6);
 }
 
-.cancel-button:hover {
-  background: linear-gradient(to bottom, #3b5f7f, #2e4a5b);
-  border-color: #5a6a8a;
-  brightness: 1.2;
+.guild-panel::after {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(113, 180, 255, 0.08);
+  pointer-events: none;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.7);
 }
 
-.confirm-button:active,
-.cancel-button:active {
-  brightness: 0.9;
-  transform: translateY(1px);
+/* ==========================================================
+   Stage 7 — Scoreboard & neon accent overlays
+   ========================================================== */
+
+.guild-stats {
+  position: relative;
+  isolation: isolate;
 }
 
+.guild-stats::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(33, 48, 72, 0.6);
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+.stat-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 85% 0%, rgba(113, 180, 255, 0.15), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.stat-item:hover::after {
+  opacity: 1;
+}
+
+.guild-points,
+.guild-exp-bar-container,
+.history-button {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.guild-points::after,
+.guild-exp-bar-container::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 6px;
+  border: 1px solid rgba(207, 169, 107, 0.25);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.guild-exp-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(73, 212, 168, 0.4);
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+.guild-description-block::after {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(63, 101, 156, 0.25);
+  pointer-events: none;
+}
+
+.guild-action-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.guild-action-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  transform: skewX(-15deg);
+  transition: left 0.45s ease;
+  pointer-events: none;
+}
+
+.guild-action-button:hover::before {
+  left: 140%;
+}
+
+.requests-indicator,
+.admin-actions-indicator {
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.4));
+}

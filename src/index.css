@@ -5,12 +5,36 @@
 
   color-scheme: dark;
   color: rgba(229, 224, 197, 0.87);
-  background-color: #0f1a2a;
+  background-color: #060910;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --dota-bg-gradient: radial-gradient(circle at 20% 10%, rgba(32, 57, 92, 0.65), transparent 55%),
+    radial-gradient(circle at 80% 0%, rgba(86, 69, 119, 0.5), transparent 45%),
+    linear-gradient(140deg, #050a12 0%, #05070f 55%, #0c1626 100%);
+  --dota-bg-texture: url('./assets/images/ui_style_reference/background.png');
+  --dota-bg-noise: url('./assets/images/ui_style_reference/back_item2.png');
+  --dota-gold: #cfa96b;
+  --dota-gold-dark: #8a6b3f;
+  --dota-obsidian: #0a111c;
+  --dota-blue: #4c70a8;
+  --dota-panel-border: 1px solid rgba(16, 23, 34, 0.8);
+  --dota-outer-shadow: 0 18px 45px rgba(0, 0, 0, 0.75), 0 0 120px rgba(50, 89, 146, 0.25);
+  --dota-inner-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.85), inset 0 0 12px rgba(18, 44, 76, 0.55);
+  --dota-hover-glow: drop-shadow(0 0 10px rgba(113, 180, 255, 0.45))
+    drop-shadow(0 0 20px rgba(60, 140, 210, 0.25));
+  --dota-hover-speed: 0.25s;
+  --dota-hover-bright: 1.08;
+  --dota-hover-bright-strong: 1.15;
+  --dota-hover-lift: -2px;
+  --dota-hover-lift-strong: -4px;
+  --dota-focus-outline: rgba(113, 180, 255, 0.65);
+  --dota-text-header: #f4e1c1;
+  --dota-text-body: #d5d9e8;
+  --dota-text-muted: #8aa0c8;
 }
 
 body {
@@ -21,8 +45,26 @@ body {
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;
-  background: linear-gradient(to bottom, #050a15, #0a1520);
   padding: 20px;
+  color: var(--dota-text-body);
+  background-color: #04070c;
+  background-image: var(--dota-bg-gradient), var(--dota-bg-texture), var(--dota-bg-noise);
+  background-size: 180% 180%, cover, 320px 320px;
+  background-attachment: fixed, fixed, scroll;
+  background-blend-mode: lighten, overlay, soft-light;
+  position: relative;
+  isolation: isolate;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.08), transparent 60%);
+  mix-blend-mode: screen;
+  opacity: 0.4;
+  z-index: -1;
 }
 
 #root {
@@ -31,4 +73,79 @@ body {
   min-height: auto;
   display: flex;
   justify-content: center;
+  color: var(--dota-text-body);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+  background-image: linear-gradient(120deg, rgba(7, 12, 20, 0.92), rgba(5, 8, 16, 0.92)),
+    var(--dota-bg-texture);
+  background-size: cover;
+  border: var(--dota-panel-border);
+  box-shadow: var(--dota-outer-shadow);
+  position: relative;
+  overflow: hidden;
 }
+
+#root::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  box-shadow: inset 0 0 25px rgba(12, 21, 33, 0.8);
+}
+
+/* ============================================
+   Stage 9 — Typography system
+   ============================================ */
+
+:where(body, button, input, textarea, select) {
+  font-family: 'Radiance', 'Trajan Pro', 'Georgia', serif;
+  color: var(--dota-text-body, #d5d9e8);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.65);
+}
+
+:where(h1, h2, h3, h4),
+.text-heading {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  color: var(--dota-text-header, #f4e1c1);
+  text-shadow:
+    0 0 8px rgba(0, 0, 0, 0.85),
+    0 2px 4px rgba(0, 0, 0, 0.55);
+  letter-spacing: 0.6px;
+}
+
+:where(h5, h6),
+.text-subheading {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  color: var(--dota-text-body, #d5d9e8);
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.4px;
+}
+
+:where(p, li, dd, dt, label, span.text-body) {
+  color: var(--dota-text-body, #d5d9e8);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+  line-height: 1.5;
+}
+
+:where(small, .text-muted, .text-meta) {
+  color: var(--dota-text-muted, #8aa0c8);
+  font-size: 0.85em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+.text-gold {
+  color: var(--dota-gold, #cfa96b);
+  text-shadow:
+    0 0 8px rgba(244, 209, 138, 0.55),
+    0 1px 2px rgba(0, 0, 0, 0.65);
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.text-tracked {
+  letter-spacing: 1.2px;
+}
+

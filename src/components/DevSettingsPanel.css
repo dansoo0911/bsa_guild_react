@@ -1,306 +1,274 @@
-/* ============================================
-   ТЕХНИЧЕСКОЕ ОКНО НАСТРОЕК
-   ============================================ */
-
 .dev-settings-panel {
-  width: auto;
-  min-width: 160px;
-  background: linear-gradient(135deg, rgba(15, 25, 40, 0.95) 0%, rgba(10, 18, 30, 0.95) 100%);
-  border: 1px solid rgba(100, 181, 246, 0.3);
-  border-radius: 6px;
-  overflow: visible;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  background-image:
+    radial-gradient(circle at 25% 0%, rgba(73, 105, 158, 0.22), transparent 55%),
+    radial-gradient(circle at 80% 0%, rgba(140, 96, 165, 0.2), transparent 45%),
+    linear-gradient(145deg, rgba(10, 16, 26, 0.95), rgba(4, 7, 12, 0.95)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  border: 1px solid rgba(42, 58, 86, 0.85);
+  border-radius: 14px;
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.85),
+    inset 0 0 30px rgba(0, 0, 0, 0.9);
+  color: #d5d9e8;
+  font-family: 'Radiance', 'Trajan Pro', serif;
+  transition: filter 0.25s ease, border-color 0.25s ease;
+  overflow: hidden;
   position: relative;
-  height: 50px;
-  display: flex;
-  align-items: center;
+  isolation: isolate;
 }
 
-.dev-settings-panel:hover {
-  border-color: rgba(100, 181, 246, 0.5);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+.dev-settings-panel::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(113, 180, 255, 0.12);
+  pointer-events: none;
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.7);
 }
 
 .dev-settings-panel.expanded {
-  border-color: rgba(100, 181, 246, 0.6);
-  box-shadow: 0 4px 16px rgba(100, 181, 246, 0.3);
+  filter: brightness(1.03);
+  border-color: rgba(113, 180, 255, 0.45);
 }
 
 .dev-settings-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10px;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(30, 45, 65, 0.9) 0%, rgba(20, 32, 50, 0.9) 100%);
-  border-bottom: none;
+  padding: 18px 22px;
+  background-image:
+    linear-gradient(135deg, rgba(12, 18, 31, 0.95), rgba(4, 7, 12, 0.95)),
+    url('../assets/images/ui_style_reference/back_item2.png');
+  border-bottom: 1px solid rgba(69, 97, 138, 0.55);
   cursor: pointer;
-  transition: all 0.2s ease;
-  user-select: none;
-  border-radius: 6px;
+  position: relative;
+  z-index: 1;
+  box-shadow:
+    inset 0 0 14px rgba(0, 0, 0, 0.85),
+    0 8px 18px rgba(0, 0, 0, 0.6);
+  transition:
+    filter var(--dota-hover-speed, 0.25s) ease,
+    border-color var(--dota-hover-speed, 0.25s) ease;
 }
 
 .dev-settings-header:hover {
-  background: linear-gradient(135deg, rgba(40, 55, 75, 0.95) 0%, rgba(30, 42, 60, 0.95) 100%);
-  border-bottom-color: rgba(100, 181, 246, 0.4);
+  filter: brightness(var(--dota-hover-bright, 1.08));
+  border-color: rgba(113, 180, 255, 0.5);
 }
 
 .dev-settings-title {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  font-size: 14px;
+  color: #f4e1c1;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
 }
 
 .dev-settings-icon {
-  font-size: 14px;
-  filter: drop-shadow(0 0 4px rgba(100, 181, 246, 0.6));
-}
-
-.dev-settings-label {
-  font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 11px;
-  font-weight: bold;
-  color: #64B5F6;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  text-shadow: 0 0 6px rgba(100, 181, 246, 0.6);
+  font-size: 18px;
+  filter: drop-shadow(0 0 8px rgba(113, 180, 255, 0.35));
 }
 
 .dev-settings-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  font-size: 10px;
-  color: #64B5F6;
-  background: rgba(100, 181, 246, 0.1);
-  border: 1px solid rgba(100, 181, 246, 0.3);
-  border-radius: 3px;
-  transition: all 0.2s ease;
-}
-
-.dev-settings-toggle:hover {
-  background: rgba(100, 181, 246, 0.2);
-  border-color: rgba(100, 181, 246, 0.5);
-}
-
-.dev-settings-panel.expanded .dev-settings-toggle {
-  transform: rotate(180deg);
-  background: rgba(100, 181, 246, 0.25);
-  border-color: rgba(100, 181, 246, 0.6);
+  font-size: 12px;
+  color: #8aa0c8;
+  letter-spacing: 2px;
 }
 
 .dev-settings-content {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  margin-top: 4px;
-  padding: 10px;
-  background: linear-gradient(135deg, rgba(15, 25, 40, 0.98) 0%, rgba(10, 18, 30, 0.98) 100%);
-  border: 1px solid rgba(100, 181, 246, 0.3);
-  border-radius: 6px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
-  z-index: 1000;
-  min-width: 280px;
-  animation: expandSettings 0.3s ease;
+  padding: 18px 22px 22px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-}
-
-@keyframes expandSettings {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-    max-height: 0;
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    max-height: 500px;
-  }
+  gap: 16px;
+  background-image:
+    radial-gradient(circle at 10% 0%, rgba(113, 180, 255, 0.08), transparent 55%),
+    radial-gradient(circle at 80% 0%, rgba(207, 169, 107, 0.08), transparent 50%),
+    linear-gradient(150deg, rgba(7, 10, 16, 0.92), rgba(3, 5, 10, 0.95));
+  border-top: 1px solid rgba(10, 14, 22, 0.8);
 }
 
 .dev-settings-section {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 8px;
-  background: rgba(20, 32, 50, 0.5);
-  border: 1px solid rgba(100, 181, 246, 0.2);
-  border-radius: 4px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background-image:
+    linear-gradient(145deg, rgba(9, 14, 23, 0.94), rgba(3, 5, 10, 0.92)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  border: 1px solid rgba(33, 48, 72, 0.6);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.65),
+    inset 0 0 20px rgba(0, 0, 0, 0.85);
+  position: relative;
+}
+
+.dev-settings-section::after {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  pointer-events: none;
 }
 
 .dev-section-title {
-  font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 10px;
-  font-weight: bold;
-  color: #64B5F6;
-  text-transform: uppercase;
+  font-size: 13px;
+  color: #f4e1c1;
   letter-spacing: 0.5px;
-  margin-bottom: 4px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  text-shadow:
+    0 0 6px rgba(0, 0, 0, 0.9),
+    0 0 20px rgba(113, 180, 255, 0.25);
 }
 
 .dev-role-selector {
   display: flex;
-  gap: 4px;
   flex-wrap: wrap;
+  gap: 8px;
 }
 
 .dev-role-btn {
-  padding: 4px 10px;
-  font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 10px;
-  font-weight: bold;
-  color: #C8D5E1;
-  background: linear-gradient(135deg, rgba(30, 45, 65, 0.6) 0%, rgba(20, 32, 50, 0.6) 100%);
-  border: 1px solid rgba(100, 181, 246, 0.3);
-  border-radius: 4px;
+  flex: 1;
+  min-width: 120px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(69, 97, 138, 0.6);
+  background-image:
+    linear-gradient(135deg, rgba(12, 18, 30, 0.9), rgba(4, 7, 12, 0.95)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  color: #d5d9e8;
+  font-size: 12px;
+  letter-spacing: 0.4px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: nowrap;
+  transition:
+    filter var(--dota-hover-speed, 0.25s) ease,
+    border-color var(--dota-hover-speed, 0.25s) ease,
+    transform var(--dota-hover-speed, 0.25s) ease,
+    box-shadow var(--dota-hover-speed, 0.25s) ease;
+  box-shadow:
+    inset 0 0 10px rgba(0, 0, 0, 0.85),
+    0 6px 12px rgba(0, 0, 0, 0.45);
 }
 
 .dev-role-btn:hover {
-  background: linear-gradient(135deg, rgba(40, 55, 75, 0.7) 0%, rgba(30, 42, 60, 0.7) 100%);
-  border-color: rgba(100, 181, 246, 0.5);
-  color: #90CAF9;
-  transform: translateY(-1px);
+  filter: brightness(var(--dota-hover-bright, 1.08));
+  transform: translateY(var(--dota-hover-lift, -2px));
+}
+
+.dev-role-btn:focus-visible {
+  outline: 2px solid var(--dota-focus-outline, rgba(113, 180, 255, 0.65));
+  outline-offset: 2px;
 }
 
 .dev-role-btn.active {
-  background: linear-gradient(135deg, rgba(100, 181, 246, 0.3) 0%, rgba(66, 165, 245, 0.25) 100%);
-  border-color: rgba(100, 181, 246, 0.6);
-  color: #64B5F6;
-  box-shadow: 0 0 8px rgba(100, 181, 246, 0.4);
+  border-color: rgba(207, 169, 107, 0.8);
+  color: #f4e1c1;
+  box-shadow:
+    0 0 18px rgba(207, 169, 107, 0.35),
+    inset 0 0 12px rgba(0, 0, 0, 0.85);
 }
 
 .dev-current-role {
+  margin-top: 10px;
   display: flex;
+  gap: 6px;
   align-items: center;
-  gap: 8px;
-  padding: 6px 10px;
-  background: rgba(20, 32, 50, 0.6);
-  border: 1px solid rgba(100, 181, 246, 0.3);
-  border-radius: 4px;
-  margin-top: 4px;
+  font-size: 12px;
 }
 
 .dev-current-label {
-  font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 9px;
-  color: #B8C5D1;
-  opacity: 0.8;
+  color: #8aa0c8;
 }
 
 .dev-current-value {
-  font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 11px;
-  font-weight: bold;
-  color: #64B5F6;
-  text-shadow: 0 0 6px rgba(100, 181, 246, 0.7);
-}
-
-.dev-current-value.role-глава {
-  color: #FFD700;
-  text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
-}
-
-.dev-current-value.role-заместитель {
-  color: #FF6B6B;
-  text-shadow: 0 0 8px rgba(255, 107, 107, 0.8);
-}
-
-.dev-current-value.role-ветеран {
-  color: #4ECDC4;
-  text-shadow: 0 0 8px rgba(78, 205, 196, 0.8);
-}
-
-.dev-current-value.role-новобранец {
-  color: #95A5A6;
-  text-shadow: 0 0 8px rgba(149, 165, 166, 0.8);
-}
-
-.dev-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background: rgba(15, 25, 40, 0.4);
-  border: 1px dashed rgba(100, 181, 246, 0.2);
-  border-radius: 4px;
-}
-
-.dev-placeholder-text {
-  font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 10px;
-  color: #6B7A8F;
-  opacity: 0.6;
-  font-style: italic;
+  color: #f4e1c1;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
 }
 
 .dev-crystals-control {
   display: flex;
-  gap: 6px;
+  gap: 8px;
   align-items: center;
 }
 
 .dev-crystals-input {
   flex: 1;
-  padding: 6px 10px;
-  font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 11px;
-  color: #C8D5E1;
-  background: rgba(15, 25, 40, 0.6);
-  border: 1px solid rgba(100, 181, 246, 0.3);
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(48, 72, 110, 0.65);
+  background-image:
+    linear-gradient(145deg, rgba(8, 12, 20, 0.95), rgba(3, 5, 10, 0.95)),
+    url('../assets/images/ui_style_reference/back_item.png');
+  color: #f4e1c1;
+  font-size: 13px;
+  box-shadow:
+    inset 0 0 10px rgba(0, 0, 0, 0.85),
+    0 6px 12px rgba(0, 0, 0, 0.4);
+  transition:
+    border-color var(--dota-hover-speed, 0.25s) ease,
+    box-shadow var(--dota-hover-speed, 0.25s) ease,
+    filter var(--dota-hover-speed, 0.25s) ease;
 }
 
 .dev-crystals-input:focus {
+  border-color: rgba(113, 180, 255, 0.7);
   outline: none;
-  border-color: rgba(100, 181, 246, 0.6);
-  background: rgba(20, 32, 50, 0.8);
-  box-shadow: 0 0 8px rgba(100, 181, 246, 0.3);
+  filter: brightness(var(--dota-hover-bright, 1.08));
+}
+
+.dev-crystals-input:focus-visible {
+  outline: 2px solid var(--dota-focus-outline, rgba(113, 180, 255, 0.65));
+  outline-offset: 2px;
 }
 
 .dev-crystals-apply {
-  padding: 6px 12px;
-  font-family: 'Radiance', 'Trajan Pro', serif;
-  font-size: 10px;
-  font-weight: bold;
-  color: #64B5F6;
-  background: linear-gradient(135deg, rgba(100, 181, 246, 0.2) 0%, rgba(66, 165, 245, 0.15) 100%);
-  border: 1px solid rgba(100, 181, 246, 0.4);
-  border-radius: 4px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(207, 169, 107, 0.7);
+  background-image:
+    linear-gradient(135deg, rgba(27, 41, 61, 0.95), rgba(12, 18, 28, 0.95)),
+    url('../assets/images/ui_style_reference/bp_button_simple.png');
+  color: #f4e1c1;
+  font-size: 12px;
+  letter-spacing: 0.4px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: nowrap;
+  transition:
+    filter var(--dota-hover-speed, 0.25s) ease,
+    transform var(--dota-hover-speed, 0.25s) ease,
+    border-color var(--dota-hover-speed, 0.25s) ease,
+    box-shadow var(--dota-hover-speed, 0.25s) ease;
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.45),
+    inset 0 0 10px rgba(0, 0, 0, 0.85);
 }
 
 .dev-crystals-apply:hover {
-  background: linear-gradient(135deg, rgba(100, 181, 246, 0.3) 0%, rgba(66, 165, 245, 0.25) 100%);
-  border-color: rgba(100, 181, 246, 0.6);
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(100, 181, 246, 0.3);
+  filter: brightness(var(--dota-hover-bright, 1.08));
+  transform: translateY(var(--dota-hover-lift, -2px));
+}
+
+.dev-crystals-apply:focus-visible {
+  outline: 2px solid var(--dota-focus-outline, rgba(113, 180, 255, 0.65));
+  outline-offset: 2px;
 }
 
 .dev-current-value-display {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #8aa0c8;
   display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 10px;
-  background: rgba(20, 32, 50, 0.6);
-  border: 1px solid rgba(100, 181, 246, 0.3);
-  border-radius: 4px;
-  margin-top: 4px;
+  gap: 6px;
 }
 
-/* Спидран настройки */
+.dev-current-value-display .dev-current-value {
+  color: #f4d18a;
+  text-shadow: 0 0 8px rgba(244, 209, 138, 0.4);
+}
+
 .dev-speedrun-control {
   display: flex;
   flex-direction: column;
@@ -309,49 +277,19 @@
 
 .dev-speedrun-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 6px 0;
+  justify-content: space-between;
 }
 
 .dev-speedrun-label {
-  font-size: 11px;
-  color: #B8C5D1;
-  font-weight: 500;
+  font-size: 12px;
+  color: #d5d9e8;
 }
 
-.dev-speedrun-status {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px;
-  background: rgba(20, 30, 45, 0.4);
-  border-radius: 4px;
-  margin-top: 4px;
-}
-
-.dev-speedrun-status-value {
-  font-size: 11px;
-  font-weight: bold;
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-
-.dev-speedrun-status-value.active {
-  color: #4CAF50;
-  background: rgba(76, 175, 80, 0.2);
-}
-
-.dev-speedrun-status-value.inactive {
-  color: #F44336;
-  background: rgba(244, 67, 54, 0.2);
-}
-
-/* Toggle Switch */
 .dev-toggle-switch {
   position: relative;
   display: inline-block;
-  width: 44px;
+  width: 48px;
   height: 24px;
 }
 
@@ -363,40 +301,36 @@
 
 .dev-toggle-slider {
   position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(60, 80, 110, 0.6);
-  transition: 0.3s;
-  border-radius: 24px;
-  border: 1px solid rgba(100, 181, 246, 0.3);
+  inset: 0;
+  border-radius: 12px;
+  background: rgba(33, 48, 72, 0.75);
+  border: 1px solid rgba(63, 101, 156, 0.55);
+  transition: background 0.2s ease, border-color 0.2s ease;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.75);
 }
 
-.dev-toggle-slider:before {
+.dev-toggle-slider::before {
+  content: '';
   position: absolute;
-  content: "";
-  height: 18px;
-  width: 18px;
-  left: 2px;
-  bottom: 2px;
-  background-color: #B8C5D1;
-  transition: 0.3s;
+  top: 2px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
+  background: linear-gradient(145deg, rgba(15, 22, 34, 0.95), rgba(6, 10, 16, 0.95));
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.5),
+    inset 0 0 6px rgba(0, 0, 0, 0.8);
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .dev-toggle-switch input:checked + .dev-toggle-slider {
-  background-color: rgba(100, 181, 246, 0.4);
-  border-color: rgba(100, 181, 246, 0.6);
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.6), rgba(33, 58, 41, 0.85));
+  border-color: rgba(107, 184, 107, 0.8);
 }
 
-.dev-toggle-switch input:checked + .dev-toggle-slider:before {
-  transform: translateX(20px);
-  background-color: #64B5F6;
-}
-
-.dev-toggle-switch:hover .dev-toggle-slider {
-  box-shadow: 0 0 8px rgba(100, 181, 246, 0.4);
+.dev-toggle-switch input:checked + .dev-toggle-slider::before {
+  transform: translateX(22px);
+  background: linear-gradient(145deg, rgba(73, 212, 168, 0.95), rgba(34, 113, 78, 0.95));
 }
 

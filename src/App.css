@@ -10,6 +10,24 @@
   align-items: flex-start;
   gap: 0;
   position: relative;
+  width: 100%;
+  padding: 8px;
+  background-image:
+    linear-gradient(145deg, rgba(4, 8, 16, 0.92), rgba(8, 18, 32, 0.85)),
+    url('./assets/images/ui_style_reference/back3.png');
+  background-size: cover;
+  border: 1px solid rgba(22, 30, 46, 0.75);
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+}
+
+.app-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+  box-shadow: inset 0 0 35px rgba(7, 12, 20, 0.85);
 }
 
 .chat-section {
@@ -28,20 +46,49 @@
   max-width: 1100px;
   height: 700px;
   min-height: 700px;
-  background: linear-gradient(to bottom, #0f1a2a, #1a2a3a);
+  background-color: rgba(6, 11, 18, 0.92);
+  background-image:
+    linear-gradient(165deg, rgba(12, 25, 42, 0.85), rgba(3, 6, 12, 0.95)),
+    url('./assets/images/ui_style_reference/shop_backgraund.png');
+  background-size: cover;
+  background-blend-mode: soft-light;
   display: flex;
   flex-direction: column;
   font-family: 'Radiance', 'Trajan Pro', 'Georgia', serif;
-  border: 3px solid #4a5a7a;
+  border: 1px solid rgba(31, 49, 72, 0.9);
+  border-top-color: rgba(124, 151, 198, 0.5);
+  border-left-color: rgba(69, 97, 138, 0.5);
   border-radius: 12px 0 0 12px;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8),
-              0 0 100px rgba(74, 90, 122, 0.2),
-              inset 0 0 20px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.8),
+    0 0 120px rgba(48, 83, 131, 0.35),
+    inset 0 0 50px rgba(4, 8, 16, 0.85),
+    inset 0 4px 20px rgba(15, 32, 54, 0.45);
   overflow: hidden;
   position: relative;
+  isolation: isolate;
 }
 
+.app-container::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow:
+    inset 0 0 18px rgba(0, 0, 0, 0.55),
+    0 0 28px rgba(136, 197, 255, 0.1);
+  pointer-events: none;
+}
 
+.app-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 0%, rgba(150, 192, 255, 0.18), transparent 45%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
 
 .main-content {
   display: flex;
@@ -52,6 +99,12 @@
   min-height: 0;
   align-items: stretch;
   overflow: hidden;
+  background: linear-gradient(135deg, rgba(8, 15, 27, 0.92), rgba(4, 9, 18, 0.95));
+  border-radius: 10px;
+  box-shadow:
+    inset 0 0 25px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  position: relative;
 }
 
 .main-content.speedrun-container {
@@ -74,11 +127,21 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  background: linear-gradient(160deg, rgba(9, 16, 27, 0.95), rgba(5, 9, 18, 0.8));
+  border: 1px solid rgba(34, 53, 79, 0.6);
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: var(--dota-outer-shadow);
 }
 
 .right-panel {
   flex: 1;
   min-width: 0;
+  background: linear-gradient(160deg, rgba(6, 12, 22, 0.9), rgba(3, 5, 9, 0.85));
+  border: 1px solid rgba(32, 48, 69, 0.6);
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.65);
 }
 
 .player-info {
@@ -88,14 +151,17 @@
   align-items: center;
   gap: 10px;
   padding: 10px;
-  background: linear-gradient(135deg, #1a2a3a 0%, #0f1a2a 50%, #1a2a3a 100%);
-  background-size: 200% 100%;
-  border: 1px solid #4a5a7a;
-  border-radius: 6px;
-  box-shadow: 
-    0 2px 8px rgba(0, 0, 0, 0.4),
-    0 0 15px rgba(74, 90, 122, 0.2),
-    inset 0 1px 2px rgba(255, 255, 255, 0.08);
+  background-image:
+    linear-gradient(130deg, rgba(14, 23, 36, 0.95), rgba(6, 11, 19, 0.92)),
+    url('./assets/images/ui_style_reference/player_back.png');
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(63, 99, 145, 0.75);
+  border-radius: 8px;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.65),
+    0 0 25px rgba(71, 117, 182, 0.25),
+    inset 0 0 18px rgba(0, 0, 0, 0.55);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -108,23 +174,17 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.05),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
   transition: left 0.5s ease;
 }
 
 .player-info:hover {
-  background-position: 100% 0;
-  border-color: #5a6a8a;
-  box-shadow: 
-    0 6px 16px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(74, 90, 122, 0.3),
-    inset 0 1px 2px rgba(255, 255, 255, 0.12);
-  transform: translateY(-2px);
+  border-color: rgba(138, 192, 255, 0.85);
+  box-shadow:
+    0 16px 30px rgba(0, 0, 0, 0.75),
+    0 0 35px rgba(71, 117, 182, 0.4),
+    inset 0 0 22px rgba(10, 25, 46, 0.8);
+  filter: brightness(1.08);
 }
 
 .player-info:hover::before {
@@ -139,11 +199,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(25, 40, 60, 0.9) 0%, rgba(15, 25, 40, 0.9) 100%);
-  box-shadow: 
-    0 2px 8px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(100, 181, 246, 0.2) inset,
-    0 0 12px rgba(100, 181, 246, 0.15);
+  background: linear-gradient(145deg, rgba(20, 32, 52, 0.95), rgba(8, 16, 29, 0.95));
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(80, 160, 255, 0.2) inset,
+    0 0 18px rgba(80, 160, 255, 0.25);
   flex-shrink: 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -152,7 +212,7 @@
 
 .player-info:hover .player-avatar-small {
   border-color: rgba(100, 181, 246, 0.7);
-  box-shadow: 
+  box-shadow:
     0 0 20px rgba(100, 181, 246, 0.5),
     0 4px 12px rgba(0, 0, 0, 0.6),
     0 0 0 1px rgba(100, 181, 246, 0.3) inset,
@@ -164,8 +224,8 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 18px;
   font-weight: bold;
-  color: #64B5F6;
-  text-shadow: 
+  color: #64b5f6;
+  text-shadow:
     0 0 8px rgba(100, 181, 246, 0.8),
     0 0 16px rgba(100, 181, 246, 0.4),
     1px 1px 2px rgba(0, 0, 0, 0.9);
@@ -196,10 +256,10 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 14px;
   font-weight: bold;
-  color: #E5E0C5;
-  text-shadow: 
-    0 0 6px rgba(229, 224, 197, 0.3),
-    1px 1px 2px rgba(0, 0, 0, 0.8);
+  color: var(--dota-text-header);
+  text-shadow:
+    0 0 6px rgba(229, 224, 197, 0.35),
+    1px 1px 2px rgba(0, 0, 0, 0.9);
   text-align: left;
   line-height: 1.2;
   letter-spacing: 0.2px;
@@ -216,23 +276,23 @@
 }
 
 .role-глава {
-  color: #FF0000;
-  text-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+  color: #ff6464;
+  text-shadow: 0 0 8px rgba(255, 42, 42, 0.65);
 }
 
 .role-заместитель {
-  color: #FF69B4;
-  text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+  color: #ff8ee0;
+  text-shadow: 0 0 8px rgba(255, 105, 180, 0.6);
 }
 
 .role-ветеран {
-  color: #8A2BE2;
-  text-shadow: 0 0 8px rgba(138, 43, 226, 0.5);
+  color: #b888ff;
+  text-shadow: 0 0 8px rgba(138, 43, 226, 0.55);
 }
 
 .role-новобранец {
-  color: #4169E1;
-  text-shadow: 0 0 8px rgba(65, 105, 225, 0.5);
+  color: #7db6ff;
+  text-shadow: 0 0 8px rgba(65, 105, 225, 0.55);
 }
 
 .player-points,
@@ -240,8 +300,8 @@
   font-family: 'Radiance', 'Trajan Pro', serif;
   font-size: 13px;
   font-weight: bold;
-  color: #4CAF50;
-  text-shadow: 
+  color: #9de06c;
+  text-shadow:
     0 0 8px rgba(76, 175, 80, 0.6),
     0 0 16px rgba(76, 175, 80, 0.3);
   text-align: left;
@@ -267,12 +327,46 @@
 
 .player-merits-value {
   font-weight: 700;
-  color: #4CAF50;
-  text-shadow: 
+  color: #9de06c;
+  text-shadow:
     0 0 8px rgba(76, 175, 80, 0.6),
     0 0 16px rgba(76, 175, 80, 0.3);
 }
 
+/* ============================================
+   Stage 9 — Typography harmonization for app shell
+   ============================================ */
+
+:where(.player-name, .player-name-small, .guild-name) {
+  color: var(--dota-text-header, #f4e1c1);
+  text-shadow:
+    0 0 8px rgba(0, 0, 0, 0.85),
+    0 2px 4px rgba(0, 0, 0, 0.65);
+  letter-spacing: 0.3px;
+}
+
+:where(.player-role, .player-role-small) {
+  color: var(--dota-text-muted, #8aa0c8);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.65);
+}
+
+:where(.player-points, .player-merits-small, .player-merits-value) {
+  color: #9de06c;
+  text-shadow:
+    0 0 10px rgba(76, 175, 80, 0.55),
+    0 2px 4px rgba(0, 0, 0, 0.7);
+  letter-spacing: 0.3px;
+}
+
+.player-points::before {
+  font-size: 14px;
+}
+
+:where(.player-role, .player-role-small, .player-points, .player-merits-small) {
+  font-family: 'Radiance', 'Trajan Pro', serif;
+}
 
 /* Адаптация для мобильных устройств */
 @media (max-width: 768px) {
@@ -288,3 +382,4 @@
     width: 100%;
   }
 }
+
