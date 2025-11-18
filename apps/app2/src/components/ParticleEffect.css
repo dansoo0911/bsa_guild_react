@@ -1,0 +1,77 @@
+.particle-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.particle-win .particle {
+  background: radial-gradient(circle, #ffd700 0%, #ff8c00 50%, transparent 100%);
+  box-shadow: 0 0 10px #ffd700, 0 0 20px #ff8c00;
+  animation: particleWin 2s ease-out forwards;
+}
+
+.particle-jackpot .particle {
+  background: radial-gradient(circle, #00ffff 0%, #0096ff 50%, transparent 100%);
+  box-shadow: 0 0 15px #00ffff, 0 0 30px #0096ff;
+  animation: particleJackpot 2s ease-out forwards;
+}
+
+.particle-big-win .particle {
+  background: radial-gradient(circle, #ff00ff 0%, #ff0080 50%, transparent 100%);
+  box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff0080;
+  animation: particleBigWin 2.5s ease-out forwards;
+}
+
+@keyframes particleWin {
+  0% {
+    transform: translate(0, 0) scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, -200px) scale(1.5) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes particleJackpot {
+  0% {
+    transform: translate(0, 0) scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, -300px) scale(2) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes particleBigWin {
+  0% {
+    transform: translate(0, 0) scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, -400px) scale(2.5) rotate(720deg);
+    opacity: 0;
+  }
+}
+

@@ -1,0 +1,243 @@
+.inventory-panel {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 100;
+}
+
+.inventory-toggle {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, 
+    rgba(100, 50, 150, 0.9) 0%, 
+    rgba(150, 50, 200, 0.9) 100%
+  );
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 15px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 
+    0 0 20px rgba(150, 50, 200, 0.6),
+    inset 0 0 15px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.inventory-toggle:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 
+    0 0 30px rgba(150, 50, 200, 0.8),
+    inset 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.inventory-icon {
+  font-size: 1.5rem;
+}
+
+.inventory-label {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.inventory-count {
+  background: rgba(255, 200, 0, 0.8);
+  color: #000;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  min-width: 30px;
+  text-align: center;
+}
+
+.inventory-content {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  background: linear-gradient(135deg, 
+    rgba(20, 20, 30, 0.98) 0%, 
+    rgba(40, 20, 30, 0.98) 100%
+  );
+  border: 3px solid rgba(150, 50, 200, 0.6);
+  border-radius: 20px;
+  padding: 20px;
+  min-width: 350px;
+  max-width: 400px;
+  max-height: 500px;
+  overflow-y: auto;
+  box-shadow: 
+    0 0 40px rgba(150, 50, 200, 0.6),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  animation: inventorySlideUp 0.3s ease-out;
+}
+
+@keyframes inventorySlideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.inventory-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(150, 50, 200, 0.4);
+}
+
+.inventory-header h3 {
+  color: #ffd700;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.inventory-hint {
+  color: #ffaa00;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.inventory-empty {
+  text-align: center;
+  color: #888;
+  padding: 40px 20px;
+  font-size: 1.1rem;
+}
+
+.inventory-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.inventory-item {
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(150, 50, 200, 0.4);
+  border-radius: 15px;
+  padding: 15px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.inventory-item:hover {
+  border-color: rgba(150, 50, 200, 0.8);
+  background: rgba(150, 50, 200, 0.2);
+  transform: translateX(5px);
+  box-shadow: 0 0 20px rgba(150, 50, 200, 0.4);
+}
+
+.item-image-container {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.item-image {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+}
+
+.item-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: rgba(255, 200, 0, 0.9);
+  color: #000;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.item-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.item-exchange {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.exchange-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.exchange-value {
+  font-size: 0.95rem;
+}
+
+.item-hint {
+  font-size: 0.75rem;
+  color: #888;
+  font-style: italic;
+}
+
+/* Скроллбар */
+.inventory-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.inventory-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+.inventory-content::-webkit-scrollbar-thumb {
+  background: rgba(150, 50, 200, 0.6);
+  border-radius: 4px;
+}
+
+.inventory-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 50, 200, 0.8);
+}
+
+@media (max-width: 768px) {
+  .inventory-panel {
+    bottom: 10px;
+    left: 10px;
+  }
+  
+  .inventory-content {
+    min-width: 300px;
+    max-width: calc(100vw - 40px);
+  }
+  
+  .inventory-toggle {
+    padding: 10px 15px;
+    font-size: 0.8rem;
+  }
+  
+  .inventory-label {
+    display: none;
+  }
+}
+

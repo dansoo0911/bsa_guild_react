@@ -1,22 +1,22 @@
 {
-  "name": "react_app",
+  "name": "react-apps-workspace",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev:app1": "npm run dev --workspace=apps/app1",
+    "build:app1": "npm run build --workspace=apps/app1",
+    "preview:app1": "npm run preview --workspace=apps/app1",
+    "dev:app2": "npm run dev --workspace=apps/app2",
+    "build:app2": "npm run build --workspace=apps/app2",
+    "preview:app2": "npm run preview --workspace=apps/app2",
+    "dev": "npm run dev:app1",
+    "build": "npm run build:app1",
+    "preview": "npm run preview:app1"
   },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.43",
-    "@types/react-dom": "^18.2.17",
-    "@vitejs/plugin-react": "^4.2.1",
-    "vite": "^7.2.2"
-  }
+  "devDependencies": {}
 }
 

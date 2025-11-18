@@ -1,0 +1,397 @@
+.unified-inventory-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.unified-inventory-toggle {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, 
+    rgba(200, 50, 50, 0.9) 0%, 
+    rgba(150, 0, 0, 0.9) 100%
+  );
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 15px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 
+    0 0 20px rgba(200, 50, 50, 0.6),
+    inset 0 0 15px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+.unified-inventory-toggle:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 
+    0 0 30px rgba(200, 50, 50, 0.8),
+    inset 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.unified-inventory-icon {
+  font-size: 1.5rem;
+  animation: casinoIconPulse 2s ease-in-out infinite;
+}
+
+@keyframes casinoIconPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.unified-inventory-label {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.unified-inventory-count {
+  background: rgba(255, 200, 0, 0.9);
+  color: #000;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  min-width: 30px;
+  text-align: center;
+}
+
+.free-spins-badge {
+  background: rgba(0, 255, 0, 0.9);
+  color: #000;
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  margin-left: 5px;
+}
+
+.unified-inventory-content {
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  background: linear-gradient(135deg, 
+    rgba(15, 10, 20, 0.98) 0%, 
+    rgba(30, 15, 25, 0.98) 100%
+  );
+  border: 3px solid rgba(200, 50, 50, 0.6);
+  border-radius: 20px;
+  padding: 20px;
+  min-width: 450px;
+  max-width: 500px;
+  max-height: 600px;
+  overflow-y: auto;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.6),
+    0 0 50px rgba(200, 50, 50, 0.6),
+    inset 0 0 30px rgba(255, 200, 0, 0.1);
+  animation: inventorySlideUp 0.3s ease-out;
+}
+
+@keyframes inventorySlideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Табы */
+.inventory-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(255, 140, 0, 0.3);
+}
+
+.inventory-tab {
+  flex: 1;
+  padding: 12px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.inventory-tab:hover {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 140, 0, 0.1);
+}
+
+.inventory-tab.active {
+  color: #ffd700;
+  border-bottom-color: #ffd700;
+  background: rgba(255, 200, 0, 0.1);
+}
+
+/* Контент табов */
+.inventory-tab-content {
+  min-height: 200px;
+}
+
+.inventory-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(255, 140, 0, 0.3);
+}
+
+.inventory-header h3 {
+  color: #ffd700;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+  font-weight: 900;
+}
+
+.inventory-hint {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+.inventory-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.inventory-empty p {
+  margin: 10px 0;
+}
+
+/* Предметы */
+.inventory-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.inventory-item {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.5) 0%, 
+    rgba(30, 15, 20, 0.5) 100%
+  );
+  border: 2px solid rgba(255, 140, 0, 0.3);
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.inventory-item:hover {
+  border-color: rgba(255, 200, 0, 0.6);
+  transform: translateX(5px);
+  box-shadow: 0 5px 20px rgba(255, 140, 0, 0.3);
+}
+
+.item-image-container {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-image {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+}
+
+.item-quantity {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: rgba(255, 200, 0, 0.9);
+  color: #000;
+  padding: 4px 8px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item-name {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+.item-exchange-value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.exchange-currency-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.item-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.action-button {
+  flex: 1;
+  padding: 8px 15px;
+  border: 2px solid rgba(255, 140, 0, 0.5);
+  border-radius: 10px;
+  background: linear-gradient(135deg, 
+    rgba(255, 140, 0, 0.3) 0%, 
+    rgba(255, 100, 0, 0.3) 100%
+  );
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.action-button:hover {
+  background: linear-gradient(135deg, 
+    rgba(255, 140, 0, 0.6) 0%, 
+    rgba(255, 100, 0, 0.6) 100%
+  );
+  border-color: rgba(255, 200, 0, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);
+}
+
+.claim-button {
+  background: linear-gradient(135deg, 
+    rgba(0, 200, 0, 0.4) 0%, 
+    rgba(0, 150, 0, 0.4) 100%
+  );
+  border-color: rgba(0, 255, 0, 0.5);
+}
+
+.claim-button:hover {
+  background: linear-gradient(135deg, 
+    rgba(0, 200, 0, 0.7) 0%, 
+    rgba(0, 150, 0, 0.7) 100%
+  );
+  border-color: rgba(0, 255, 0, 0.8);
+  box-shadow: 0 5px 15px rgba(0, 255, 0, 0.4);
+}
+
+.exchange-button {
+  background: linear-gradient(135deg, 
+    rgba(0, 150, 255, 0.4) 0%, 
+    rgba(0, 100, 255, 0.4) 100%
+  );
+  border-color: rgba(0, 200, 255, 0.5);
+}
+
+.exchange-button:hover {
+  background: linear-gradient(135deg, 
+    rgba(0, 150, 255, 0.7) 0%, 
+    rgba(0, 100, 255, 0.7) 100%
+  );
+  border-color: rgba(0, 200, 255, 0.8);
+  box-shadow: 0 5px 15px rgba(0, 200, 255, 0.4);
+}
+
+.free-spins-info {
+  margin-top: 15px;
+  padding: 12px;
+  background: linear-gradient(135deg, 
+    rgba(0, 255, 0, 0.2) 0%, 
+    rgba(0, 200, 0, 0.3) 100%
+  );
+  border: 2px solid rgba(0, 255, 0, 0.5);
+  border-radius: 12px;
+  text-align: center;
+  color: #00ff00;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.free-spins-icon {
+  font-size: 1.2rem;
+}
+
+/* Скроллбар */
+.inventory-items::-webkit-scrollbar,
+.unified-inventory-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.inventory-items::-webkit-scrollbar-track,
+.unified-inventory-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.inventory-items::-webkit-scrollbar-thumb,
+.unified-inventory-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 140, 0, 0.5);
+  border-radius: 10px;
+}
+
+.inventory-items::-webkit-scrollbar-thumb:hover,
+.unified-inventory-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 140, 0, 0.7);
+}
+
+@media (max-width: 768px) {
+  .unified-inventory-panel {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin-top: 20px;
+  }
+  
+  .unified-inventory-content {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    min-width: 100%;
+  }
+}
+

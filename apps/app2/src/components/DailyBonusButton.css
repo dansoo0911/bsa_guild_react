@@ -1,0 +1,94 @@
+.daily-bonus-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, 
+    rgba(255, 200, 0, 0.9) 0%, 
+    rgba(255, 140, 0, 0.9) 100%
+  );
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 100;
+  box-shadow: 
+    0 0 20px rgba(255, 200, 0, 0.6),
+    inset 0 0 15px rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.daily-bonus-button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 
+    0 0 30px rgba(255, 200, 0, 0.8),
+    inset 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.daily-bonus-button.pulse {
+  animation: bonusPulse 1s ease-in-out infinite;
+}
+
+@keyframes bonusPulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(255, 200, 0, 0.6),
+      inset 0 0 15px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 40px rgba(255, 200, 0, 0.9),
+      0 0 60px rgba(255, 140, 0, 0.6),
+      inset 0 0 20px rgba(255, 255, 255, 0.4);
+  }
+}
+
+.bonus-icon {
+  font-size: 1.5rem;
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(-10deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(10deg);
+  }
+}
+
+.bonus-text {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.bonus-streak {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .daily-bonus-button {
+    top: 10px;
+    left: 10px;
+    padding: 10px 15px;
+    font-size: 0.8rem;
+  }
+  
+  .bonus-text {
+    display: none;
+  }
+}
+

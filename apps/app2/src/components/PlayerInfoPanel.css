@@ -1,0 +1,295 @@
+.player-info-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  background: linear-gradient(135deg, 
+    rgba(15, 10, 20, 0.95) 0%, 
+    rgba(30, 15, 25, 0.95) 50%,
+    rgba(20, 10, 20, 0.95) 100%
+  );
+  border: 3px solid rgba(255, 140, 0, 0.5);
+  border-radius: 20px;
+  padding: 20px;
+  min-width: 280px;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 
+    0 10px 35px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(255, 140, 0, 0.4),
+    inset 0 0 30px rgba(255, 200, 0, 0.1);
+  animation: fadeInUp 0.6s ease-out, pulseGlow 4s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.player-info-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 15px 45px rgba(0, 0, 0, 0.6),
+    0 0 50px rgba(255, 140, 0, 0.6),
+    inset 0 0 40px rgba(255, 200, 0, 0.15);
+}
+
+.player-info-main {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Валюта */
+.player-currency {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid rgba(255, 140, 0, 0.3);
+}
+
+.currency-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.currency-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+  animation: float3D 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.currency-item:hover .currency-icon {
+  transform: scale(1.15) rotateY(15deg);
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 1));
+}
+
+.currency-value {
+  font-size: 1.5rem;
+  font-weight: 900;
+  background: linear-gradient(180deg, #ffffff 0%, #ffd700 50%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+  font-family: 'Arial Black', sans-serif;
+  letter-spacing: 1px;
+  animation: textGlowPulse 2s ease-in-out infinite;
+}
+
+/* Уровень */
+.player-level-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.level-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.level-label {
+  font-size: 0.9rem;
+  color: #ffaa00;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.level-value {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #fff;
+  font-family: 'Arial Black', sans-serif;
+}
+
+.level-progress-bar {
+  width: 100%;
+  height: 30px;
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.7) 0%, 
+    rgba(20, 10, 15, 0.7) 100%
+  );
+  border-radius: 15px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 140, 0, 0.4);
+  position: relative;
+  box-shadow: 
+    inset 0 2px 10px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(255, 140, 0, 0.2);
+}
+
+.level-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(0, 150, 255, 0.9) 0%,
+    rgba(0, 200, 255, 1) 25%,
+    rgba(100, 255, 255, 1) 50%,
+    rgba(0, 200, 255, 1) 75%,
+    rgba(0, 150, 255, 0.9) 100%
+  );
+  background-size: 200% 100%;
+  box-shadow: 
+    0 0 20px rgba(0, 150, 255, 0.8),
+    0 0 40px rgba(0, 200, 255, 0.6),
+    inset 0 0 15px rgba(100, 255, 255, 0.4);
+  animation: progressShimmer 2s linear infinite;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.5s ease;
+}
+
+.level-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  animation: shimmer 2s infinite;
+}
+
+.level-progress-text {
+  position: relative;
+  z-index: 2;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 
+    0 0 5px rgba(255, 255, 255, 0.8),
+    0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* VIP */
+.player-vip-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 2px solid rgba(255, 140, 0, 0.3);
+}
+
+.vip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vip-label {
+  font-size: 0.9rem;
+  color: #ffd700;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.vip-value {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #ffd700;
+  font-family: 'Arial Black', sans-serif;
+}
+
+.vip-progress-bar {
+  width: 100%;
+  height: 30px;
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.7) 0%, 
+    rgba(20, 10, 15, 0.7) 100%
+  );
+  border-radius: 15px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 200, 0, 0.4);
+  position: relative;
+  box-shadow: 
+    inset 0 2px 10px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(255, 200, 0, 0.2);
+}
+
+.vip-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(255, 200, 0, 0.8) 0%,
+    rgba(255, 140, 0, 0.9) 50%,
+    rgba(255, 200, 0, 0.8) 100%
+  );
+  box-shadow: 
+    0 0 20px rgba(255, 200, 0, 0.8),
+    inset 0 0 15px rgba(255, 255, 200, 0.4);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.5s ease;
+}
+
+.vip-progress-text {
+  position: relative;
+  z-index: 2;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 
+    0 0 5px rgba(255, 255, 255, 0.8),
+    0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Level Up Notification */
+.level-up-notification {
+  margin-top: 15px;
+  padding: 15px;
+  background: linear-gradient(135deg, 
+    rgba(0, 255, 0, 0.2) 0%, 
+    rgba(0, 200, 0, 0.3) 100%
+  );
+  border: 2px solid rgba(0, 255, 0, 0.6);
+  border-radius: 15px;
+  animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.level-up-content h3 {
+  color: #00ff00;
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+}
+
+.level-up-content p {
+  color: #fff;
+  text-align: center;
+  margin: 5px 0;
+}
+
+.level-up-bonuses {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 255, 0, 0.3);
+}
+
+.level-up-bonuses p {
+  color: #ffd700;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .player-info-panel {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+}
+

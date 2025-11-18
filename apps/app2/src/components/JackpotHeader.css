@@ -1,0 +1,126 @@
+.jackpot-header {
+  text-align: center;
+  padding: 18px 20px 16px;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.jackpot-title {
+  font-size: 3.2rem;
+  font-weight: 900;
+  background: linear-gradient(
+    90deg,
+    #ffd700 0%,
+    #ffaa00 20%,
+    #ff8c00 40%,
+    #ff6b00 60%,
+    #ff8c00 80%,
+    #ffd700 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 40px rgba(255, 140, 0, 0.6);
+  margin-bottom: 15px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font-family: 'Arial Black', sans-serif;
+  animation: 
+    glow 2s ease-in-out infinite alternate,
+    gradientText 3s linear infinite;
+  position: relative;
+  filter: drop-shadow(0 0 20px rgba(255, 200, 0, 0.5));
+}
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 10px rgba(255, 140, 0, 0.5));
+  }
+  to {
+    filter: drop-shadow(0 0 20px rgba(255, 140, 0, 0.8));
+  }
+}
+
+.jackpot-amount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.diamond-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(0, 150, 255, 0.8));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.jackpot-value {
+  font-size: 2.6rem;
+  font-weight: 900;
+  background: linear-gradient(180deg, #ffffff 0%, #00d4ff 50%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 
+    0 0 15px rgba(255, 255, 255, 0.9),
+    0 0 30px rgba(0, 200, 255, 0.8),
+    0 0 50px rgba(0, 150, 255, 0.6);
+  font-family: 'Arial Black', sans-serif;
+  letter-spacing: 3px;
+  animation: textGlowPulse 2s ease-in-out infinite;
+  position: relative;
+}
+
+.jackpot-value::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  animation: shimmer 3s infinite;
+  pointer-events: none;
+}
+
+.jackpot-description {
+  font-size: 0.9rem;
+  color: #ffaa00;
+  text-shadow: 0 0 5px rgba(255, 170, 0, 0.5);
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .jackpot-title {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+  }
+  
+  .jackpot-value {
+    font-size: 1.8rem;
+  }
+  
+  .diamond-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
